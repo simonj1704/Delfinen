@@ -4,7 +4,7 @@ import src.Member;
 
 public class EliteSwimmer extends Member {
     private String coach;
-    private String swimmingDiscipline;
+    private String swimmingDiscipline; // Ryg, crawl, butterfly, breast
 
     public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
         setName(name);
