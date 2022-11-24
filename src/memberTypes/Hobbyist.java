@@ -1,4 +1,4 @@
 package src.memberTypes;
 
-public class EliteSwimmer {
+public class Hobbyist {
 }
