@@ -4,12 +4,14 @@ import src.Member;
 
 public class EliteSwimmer extends Member {
     private String coach;
+    private String swimmingDiscipline;
 
-    public EliteSwimmer(String name, int age, String coach, boolean isPassive, boolean hasArrears) {
+    public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
         setName(name);
         setAge(age);
         setTypeOfSwimmer("Elite Swimmer");
         setCoach(coach);
+        setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
     }
@@ -20,5 +22,13 @@ public class EliteSwimmer extends Member {
 
     public String getCoach() {
         return coach;
+    }
+
+    public void setSwimmingDiscipline(String swimmingDiscipline) {
+        this.swimmingDiscipline = swimmingDiscipline;
+    }
+
+    public String getSwimmingDiscipline() {
+        return swimmingDiscipline;
     }
 }
