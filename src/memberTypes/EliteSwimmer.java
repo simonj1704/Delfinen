@@ -1,4 +1,6 @@
 package src.memberTypes;
 
-public class EliteSwimmer {
+import src.Member;
+
+public class EliteSwimmer extends Member {
 }
