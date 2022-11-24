@@ -1,4 +1,6 @@
 package src.memberTypes;
 
-public class Motionist {
+import src.Member;
+
+public class Motionist extends Member {
 }
