@@ -1,3 +1,5 @@
+package src;
+
 public class Member {
     private int age;
     private String name;
