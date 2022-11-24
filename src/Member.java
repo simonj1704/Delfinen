@@ -13,10 +13,9 @@ public class Member {
     public Member(){
 
     }
-    public Member(String name, int age, String typeOfMembership, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
+    public Member(String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
         setName(name);
         setAge(age);
-        setTypeOfMembership(typeOfMembership);
         setTypeOfSwimmer(typeOfSwimmer);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
@@ -29,14 +28,14 @@ public class Member {
     public int getAge() {
         return age;
     }
-    public String getTypeOfMembership() {
-        return typeOfMembership;
-    }
     public String getTypeOfSwimmer() {
         return typeOfSwimmer;
     }
     public boolean hasArrears() {
         return hasArrears;
+    }
+    public String getTypeOfMembership() {
+        return typeOfMembership;
     }
     public boolean isPassive() {
         return isPassive;
@@ -61,5 +60,17 @@ public class Member {
     }
     public void setTypeOfSwimmer(String typeOfSwimmer) {
         this.typeOfSwimmer = typeOfSwimmer;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", typeOfMembership='" + typeOfMembership + '\'' +
+                ", typeOfSwimmer='" + typeOfSwimmer + '\'' +
+                ", isPassive=" + isPassive +
+                ", hasArrears=" + hasArrears +
+                '}';
     }
 }
