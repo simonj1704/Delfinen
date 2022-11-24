@@ -4,7 +4,7 @@ import src.Member;
 
 public class EliteSwimmer extends Member {
     private String coach;
-    private String swimmingDiscipline; // Ryg, crawl, butterfly, breast
+    private String swimmingDiscipline; // Ryg, crawl, butterfly, breaststroke
 
     public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
         setName(name);
@@ -30,5 +30,13 @@ public class EliteSwimmer extends Member {
 
     public String getSwimmingDiscipline() {
         return swimmingDiscipline;
+    }
+
+    @Override
+    public String toString() {
+        return "EliteSwimmer{" +
+                "coach='" + coach + '\'' +
+                ", swimmingDiscipline='" + swimmingDiscipline + '\'' +
+                '}';
     }
 }
