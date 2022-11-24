@@ -1,4 +1,4 @@
-package memberTypes;
+package src.memberTypes;
 
-public class SeniorMotionist {
+public class Motionist {
 }
