@@ -9,6 +9,10 @@ public class Member {
     private boolean hasArrears; // Restance
 
     // Constructors
+
+    public Member(){
+
+    }
     public Member(String name, int age, String typeOfMembership, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
         setName(name);
         setAge(age);
