@@ -1,4 +1,4 @@
 package src.memberTypes;
 
-public class Hobbyist {
+public class Motionist {
 }
