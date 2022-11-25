@@ -87,7 +87,7 @@ public class Member {
         } else {
             isPassive = false;
         }
-        Member newMember = new Member(name,age,typeOfSwimmer,isPassive,false);
+        Member newMember = new Member(name,age,isPassive,false, typeOfSwimmer);
 
     }
 
