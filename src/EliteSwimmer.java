@@ -1,4 +1,4 @@
-package src.memberTypes;
+package src;
 
 import src.Member;
 
