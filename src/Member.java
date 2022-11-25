@@ -75,23 +75,24 @@ public class Member {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
-    public void addMember(){
-        Scanner in = new Scanner(System.in);
-        Member member;
-        System.out.println("Type member name: ");
-        name = in.nextLine();
-        System.out.println("Type member age: ");
-        age = in.nextInt();
-        in.nextLine(); //Scanner bug
-        System.out.println("Choose type of swimmer: ");
-        typeOfSwimmer = in.nextLine();
-        System.out.println("Passive or active subscription?");
-        if (in.nextLine().equals("Passive".toLowerCase())){
-            isPassive = true;
-        } else {
-            isPassive = false;
+    public void addMember(int choice){
+        switch (choice){
+            case 1 -> createHobbyist();
+            case 2 -> createElite();
+            case 3 -> createMember();
         }
-        Member newMember = new Member(name,age,isPassive,false, typeOfSwimmer);
+    }
+
+    public void createMember(){
+
+    }
+
+    public void createElite(){
+
+        EliteSwimmer elite = new EliteSwimmer();
+    }
+
+    public void createHobbyist(){
 
     }
 
