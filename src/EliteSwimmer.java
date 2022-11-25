@@ -12,7 +12,7 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
     }
 
-    public void setCoach(String coach){
+    public void setCoach(String coach) {
         this.coach = coach;
     }
 

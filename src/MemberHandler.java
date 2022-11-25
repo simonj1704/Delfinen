@@ -1,13 +1,15 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
+    private boolean isRunning = true;
+
+    public MemberHandler(){
+    }
 
 
     public void addMember(int choice, String name, int age) {
@@ -34,17 +36,20 @@ public class MemberHandler {
 
         coach = getCoach();
         discipline = getDiscipline();
-        while (true) {
+        while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
             if (in.nextLine().equalsIgnoreCase("y")) {
                 discipline = discipline + ", " + getDiscipline();
+                isRunning = false;
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
+                System.out.println("You chose to not enter another discipline.");
+                isRunning = false;
             } else {
-                break;
+                System.out.println("I don't understand what you mean. Enter y or n!");
+                isRunning = true;
             }
         }
-
         members.add(new EliteSwimmer(name, age, coach, discipline));
-
     }
 
     public void createHobbyist(String name, int age) {
@@ -64,26 +69,34 @@ public class MemberHandler {
 
     public boolean isPassive() {
         boolean isPassive = false;
-        String userChoice;
         System.out.println("Is the member passive (y) or active (n)");
-        userChoice = in.nextLine();
-        if (userChoice.equals("y")) {
-            isPassive = true;
-        } else if (userChoice.equals("n")) {
-            isPassive = false;
+        while (isRunning) {
+            if (in.nextLine().equalsIgnoreCase("y")) {
+                isPassive = true;
+                isRunning = false;
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
+                isPassive = false;
+                isRunning = false;
+            } else {
+                System.out.println("I don't understand what you mean. Enter y or n!");
+            }
         }
         return isPassive;
     }
 
     public boolean hasArrears() {
         boolean hasArrears = false;
-        String userChoice;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
-        userChoice = in.nextLine();
-        if (userChoice.equals("y")) {
-            hasArrears = true;
-        } else if (userChoice.equals("n")) {
-            hasArrears = false;
+        while (isRunning) {
+            if (in.nextLine().equalsIgnoreCase("y")) {
+                hasArrears = true;
+                isRunning = false;
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
+                hasArrears = false;
+                isRunning = false;
+            } else {
+                System.out.println("I don't understand what you mean. Enter y or n!");
+            }
         }
         return hasArrears;
     }
