@@ -13,7 +13,7 @@ public class TrainingTime {
     private LocalDate date;
 
     // Constructors
-    public TrainingTime(EliteSwimmer eliteSwimmer, LocalDate date, int trainingSeconds, int trainingMilSeconds, String discipline) {
+    public TrainingTime(LocalDate date, int trainingSeconds, int trainingMilSeconds, String discipline) {
         setTrainingSeconds(trainingSeconds);
         setTrainingMilSeconds(trainingMilSeconds);
         setDiscipline(discipline);
