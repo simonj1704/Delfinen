@@ -13,7 +13,7 @@ public class TournamentBoard {
 
 
     // Constructors
-    public TournamentBoard(EliteSwimmer eliteSwimmer, LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
+    public TournamentBoard(LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
                            int placementTimeMiliseconds) {
         setPlacement(placement);
         setDiscipline(discipline);
