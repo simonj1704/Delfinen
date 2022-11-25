@@ -6,14 +6,10 @@ public class EliteSwimmer extends Member {
     private String coach;
     private String swimmingDiscipline; // Ryg, crawl, butterfly, breaststroke
 
-    public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
-        setName(name);
-        setAge(age);
-        setTypeOfSwimmer("Elite Swimmer");
+    public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline) {
+        super(name, age, false, false, "Elite Swimmer");
         setCoach(coach);
         setSwimmingDiscipline(swimmingDiscipline);
-        setIsPassive(isPassive);
-        setHasArrears(hasArrears);
     }
 
     public void setCoach(String coach){
@@ -35,8 +31,14 @@ public class EliteSwimmer extends Member {
     @Override
     public String toString() {
         return "EliteSwimmer{" +
-                "coach='" + coach + '\'' +
+                "name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                ", coach='" + coach + '\'' +
                 ", swimmingDiscipline='" + swimmingDiscipline + '\'' +
+                ", typeOfMembership='" + getTypeOfMembership() + '\'' +
+                ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
+                ", isPassive=" + isPassive() +
+                ", hasArrears=" + hasArrears() +
                 '}';
     }
 }

@@ -9,16 +9,21 @@ public class Member {
     private boolean hasArrears; // Restance
 
     // Constructors
-
-    public Member(){
-
-    }
-    public Member(String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
+    public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
         setName(name);
         setAge(age);
-        setTypeOfSwimmer(typeOfSwimmer);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
+        setTypeOfSwimmer(typeOfSwimmer);
+        setTypeOfMembership(age);
+    }
+
+    public void setTypeOfMembership(int age) {
+        if (age < 18) {
+            typeOfMembership = "Junior";
+        } else {
+            typeOfMembership = "Senior";
+        }
     }
 
     // Getters
@@ -77,6 +82,4 @@ public class Member {
                 ", hasArrears=" + hasArrears +
                 '}';
     }
-
-
 }
