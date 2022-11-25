@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-    private String userChoice = in.nextLine();
     private boolean isRunning = true;
 
 
@@ -66,10 +65,10 @@ public class MemberHandler {
         boolean isPassive = false;
         System.out.println("Is the member passive (y) or active (n)");
         while (isRunning){
-            if (userChoice.equalsIgnoreCase("y")) {
+            if (in.nextLine().equalsIgnoreCase("y")) {
                 isPassive = true;
                 isRunning = false;
-            } else if (userChoice.equalsIgnoreCase("n")) {
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
                 isPassive = false;
                 isRunning = false;
             } else {
@@ -83,10 +82,10 @@ public class MemberHandler {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
         while (isRunning){
-            if (userChoice.equalsIgnoreCase("y")) {
+            if (in.nextLine().equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
-            } else if (userChoice.equalsIgnoreCase("n")) {
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
                 hasArrears = false;
                 isRunning = false;
             } else {
