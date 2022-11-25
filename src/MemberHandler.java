@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
+    private String userChoice = in.nextLine();
+    private boolean isRunning = true;
 
 
     public void addMember(int choice, String name, int age) {
@@ -64,26 +66,34 @@ public class MemberHandler {
 
     public boolean isPassive() {
         boolean isPassive = false;
-        String userChoice;
         System.out.println("Is the member passive (y) or active (n)");
-        userChoice = in.nextLine();
-        if (userChoice.equals("y")) {
-            isPassive = true;
-        } else if (userChoice.equals("n")) {
-            isPassive = false;
+        while (isRunning){
+            if (userChoice.equals("y")) {
+                isPassive = true;
+                isRunning = false;
+            } else if (userChoice.equals("n")) {
+                isPassive = false;
+                isRunning = false;
+            } else {
+                System.out.println("I don't understand what you mean.");
+            }
         }
         return isPassive;
     }
 
     public boolean hasArrears() {
         boolean hasArrears = false;
-        String userChoice;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
-        userChoice = in.nextLine();
-        if (userChoice.equals("y")) {
-            hasArrears = true;
-        } else if (userChoice.equals("n")) {
-            hasArrears = false;
+        while (isRunning){
+            if (userChoice.equals("y")) {
+                hasArrears = true;
+                isRunning = false;
+            } else if (userChoice.equals("n")) {
+                hasArrears = false;
+                isRunning = false;
+            } else {
+                System.out.println("I don't understand what you mean.");
+            }
         }
         return hasArrears;
     }
