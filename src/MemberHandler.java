@@ -33,17 +33,20 @@ public class MemberHandler {
 
         coach = getCoach();
         discipline = getDiscipline();
-        while (true) {
+        while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
             if (in.nextLine().equalsIgnoreCase("y")) {
                 discipline = discipline + ", " + getDiscipline();
+                isRunning = false;
+            } else if (in.nextLine().equalsIgnoreCase("n")){
+                System.out.println("You chose to not enter another discipline.");
+                isRunning = false;
             } else {
-                break;
+                System.out.println("I don't understand what you mean. Enter y or n!");
+                isRunning = true;
             }
         }
-
         members.add(new EliteSwimmer(name, age, coach, discipline));
-
     }
 
     public void createHobbyist(String name, int age) {
@@ -64,7 +67,7 @@ public class MemberHandler {
     public boolean isPassive() {
         boolean isPassive = false;
         System.out.println("Is the member passive (y) or active (n)");
-        while (isRunning){
+        while (isRunning) {
             if (in.nextLine().equalsIgnoreCase("y")) {
                 isPassive = true;
                 isRunning = false;
@@ -81,7 +84,7 @@ public class MemberHandler {
     public boolean hasArrears() {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
-        while (isRunning){
+        while (isRunning) {
             if (in.nextLine().equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
