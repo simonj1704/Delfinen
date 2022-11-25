@@ -7,7 +7,7 @@ public class Main {
 
     private void run() {
         String menuHeader = "Delfinen";
-        String leadText = "Choices";
+        String leadText = "Please choose an option\n";
         String[] menuItems = {"1. Create Hobbyist", "2. Create Elite Swimmer", "3. Create Member"};
         Menu menu = new Menu(menuHeader, leadText, menuItems);
         MemberHandler memberHandler = new MemberHandler();

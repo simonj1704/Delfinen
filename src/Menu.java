@@ -23,7 +23,7 @@ public class Menu {
     public int readChoice() {
         Scanner scanner = new Scanner(System.in);
         boolean validChoice = false;
-        int choice = -1;
+        int choice = 0;
 
         while (!validChoice) {
             System.out.print(leadText);
