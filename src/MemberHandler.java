@@ -72,7 +72,7 @@ public class MemberHandler {
                 isPassive = false;
                 isRunning = false;
             } else {
-                System.out.println("I don't understand what you mean.");
+                System.out.println("I don't understand what you mean. Enter y or n!");
             }
         }
         return isPassive;
@@ -89,7 +89,7 @@ public class MemberHandler {
                 hasArrears = false;
                 isRunning = false;
             } else {
-                System.out.println("I don't understand what you mean.");
+                System.out.println("I don't understand what you mean. Enter y or n!");
             }
         }
         return hasArrears;
