@@ -3,6 +3,8 @@ package src;
 import src.memberTypes.EliteSwimmer;
 import src.memberTypes.Hobbyist;
 
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
         new Main().run();
@@ -12,5 +14,7 @@ public class Main {
         System.out.println(mem1.toString());
         Member mem2 = new Hobbyist("Søren Banjamus", 12);
         System.out.println(mem2.toString());
+
+
     }
 }
