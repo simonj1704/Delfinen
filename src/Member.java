@@ -62,6 +62,10 @@ public class Member {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
+    public void addMember(){
+
+    }
+
     @Override
     public String toString() {
         return "Member{" +
@@ -73,4 +77,6 @@ public class Member {
                 ", hasArrears=" + hasArrears +
                 '}';
     }
+
+
 }
