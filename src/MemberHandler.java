@@ -9,6 +9,9 @@ public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
 
+    public MemberHandler(){
+    }
+
 
 
     public void addMember(int choice, String name, int age){
