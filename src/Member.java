@@ -11,6 +11,8 @@ public class Member {
     private String typeOfSwimmer; // Elite / hobbyist
     private boolean isPassive;
     private boolean hasArrears; // Restance
+    private int id = 0;
+    private static int nextId;
 
     // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
@@ -20,6 +22,8 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
+        id += nextId++;
+
     }
 
     public void setTypeOfMembership(int age) {
