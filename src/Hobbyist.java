@@ -8,15 +8,4 @@ public class Hobbyist extends Member {
         super(name, age, false, false, "Hobbyist");
     }
 
-    @Override
-    public String toString() {
-        return "Hobbyist{" +
-                "name='" + getName() + '\'' +
-                ", age=" + getAge() +
-                ", typeOfMembership='" + getTypeOfMembership() + '\'' +
-                ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
-                ", isPassive=" + isPassive() +
-                ", hasArrears=" + hasArrears() +
-                '}';
-    }
 }

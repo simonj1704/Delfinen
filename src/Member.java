@@ -12,8 +12,8 @@ public class Member {
     private String typeOfSwimmer; // Elite / hobbyist
     private boolean isPassive;
     private boolean hasArrears; // Restance
-    private int id = 0;
-    private static int nextId;
+    private int id;
+    private static int nextId = 0;
 
     // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
@@ -23,7 +23,7 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
-        id += nextId++;
+        id = nextId++;
 
     }
 
@@ -86,11 +86,16 @@ public class Member {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
+    public int getId(){
+        return id;
+    }
+
 
     @Override
     public String toString() {
         return "Member{" +
-                "age=" + age +
+                "ID = " + id +
+                ", age=" + age +
                 ", name='" + name + '\'' +
                 ", typeOfMembership='" + typeOfMembership + '\'' +
                 ", typeOfSwimmer='" + typeOfSwimmer + '\'' +

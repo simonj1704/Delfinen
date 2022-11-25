@@ -13,15 +13,14 @@ public class Main {
         MemberHandler memberHandler = new MemberHandler();
         int choice;
 
-        menu.printMenu();
-        choice = menu.readChoice();
-
-        System.out.println("What name: ");
+        System.out.print("What name: ");
         String name = memberHandler.in.nextLine();
-        System.out.println("age: ");
+        System.out.print("age: ");
         int age = memberHandler.in.nextInt();
         memberHandler.in.nextLine();
-        memberHandler.addMember(choice, name, age);
+        menu.printMenu();
+        
+        memberHandler.addMember(menu.readChoice(), name, age);
 
         System.out.println(memberHandler.members);
     }
