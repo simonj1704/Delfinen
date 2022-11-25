@@ -1,6 +1,10 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Member {
+    ArrayList<Member> members = new ArrayList<>();
     private int age;
     private String name;
     private String typeOfMembership; // Senior / junior
@@ -63,6 +67,22 @@ public class Member {
     }
 
     public void addMember(){
+        Scanner in = new Scanner(System.in);
+        Member member;
+        System.out.println("Type member name: ");
+        name = in.nextLine();
+        System.out.println("Type member age: ");
+        age = in.nextInt();
+        in.nextLine(); //Scanner bug
+        System.out.println("Choose type of swimmer: ");
+        typeOfSwimmer = in.nextLine();
+        System.out.println("Passive or active subscription?");
+        if (in.nextLine().equals("Passive".toLowerCase())){
+            isPassive = true;
+        } else {
+            isPassive = false;
+        }
+        Member newMember = new Member(name,age,typeOfSwimmer,isPassive,false);
 
     }
 
