@@ -66,10 +66,10 @@ public class MemberHandler {
         boolean isPassive = false;
         System.out.println("Is the member passive (y) or active (n)");
         while (isRunning){
-            if (userChoice.equals("y")) {
+            if (userChoice.equalsIgnoreCase("y")) {
                 isPassive = true;
                 isRunning = false;
-            } else if (userChoice.equals("n")) {
+            } else if (userChoice.equalsIgnoreCase("n")) {
                 isPassive = false;
                 isRunning = false;
             } else {
@@ -83,10 +83,10 @@ public class MemberHandler {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
         while (isRunning){
-            if (userChoice.equals("y")) {
+            if (userChoice.equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
-            } else if (userChoice.equals("n")) {
+            } else if (userChoice.equalsIgnoreCase("n")) {
                 hasArrears = false;
                 isRunning = false;
             } else {
