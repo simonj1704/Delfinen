@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Member {
-    ArrayList<Member> members = new ArrayList<>();
+    public ArrayList<Member> members = new ArrayList<>();
+    Scanner in = new Scanner(System.in);
     private int age;
     private String name;
     private String typeOfMembership; // Senior / junior
@@ -75,10 +76,11 @@ public class Member {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
-    public void addMember(int choice){
+    public void addMember(int choice, String name, int age){
+
         switch (choice){
             case 1 -> createHobbyist();
-            case 2 -> createElite();
+            case 2 -> createElite(name, age);
             case 3 -> createMember();
         }
     }
@@ -87,9 +89,15 @@ public class Member {
 
     }
 
-    public void createElite(){
+    public void createElite(String name, int age){
+        String coach;
+        String dicipline;
 
-        EliteSwimmer elite = new EliteSwimmer();
+        coach = in.nextLine();
+        dicipline = in.nextLine();
+
+        members.add(new EliteSwimmer(name, age, coach, dicipline));
+
     }
 
     public void createHobbyist(){
