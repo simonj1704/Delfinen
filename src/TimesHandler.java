@@ -1,12 +1,14 @@
 package src;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.time.LocalDate;
 
 public class TimesHandler {
     Scanner in = new Scanner(System.in);
     LocalDate date = LocalDate.now();
+    ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
 
     //Testing
     EliteSwimmer eliteSwimmer = new EliteSwimmer("Michael", 42, "Maria", "Butterfly");
@@ -30,7 +32,8 @@ public class TimesHandler {
         trainingTimeMilSeconds = in.nextInt();
         in.nextLine();
 
-        TrainingTime newTime = new TrainingTime(eliteSwimmer, date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
+        TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
+        addTime(newTime);
     }
 
     public void createTournamentResult(){
@@ -49,4 +52,10 @@ public class TimesHandler {
                 placementTimeMiliseconds);
 
     }
+
+
+    public void addTime(TrainingTime newTime) {
+        trainingTimes.add(newTime);
+    }
+
 }
