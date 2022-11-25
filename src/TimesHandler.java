@@ -45,7 +45,7 @@ public class TimesHandler {
         placementTimeMiliseconds = in.nextInt();
         in.nextLine();
 
-        TournamentBoard tournamentBoard = new TournamentBoard(eliteSwimmer,date,tourneyName,placement,placementTimeSeconds,
+        TournamentBoard tournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds,
                 placementTimeMiliseconds);
 
     }
