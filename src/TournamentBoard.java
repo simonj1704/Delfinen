@@ -9,12 +9,11 @@ public class TournamentBoard {
 
 
     // Constructors
-    public TournamentBoard(int month, int date, int hour, int minutes, int seconds) {
+    public TournamentBoard(int month, int date, int hour, int minutes) {
         setMonth(month);
         setDate(date);
         setHour(hour);
         setMinutes(minutes);
-        setSeconds(seconds);
     }
 
 
@@ -31,9 +30,6 @@ public class TournamentBoard {
     public int getMinutes() {
         return minutes;
     }
-    public int getSeconds() {
-        return seconds;
-    }
 
     // Setters
     public void setMonth(int month) {
@@ -47,8 +43,5 @@ public class TournamentBoard {
     }
     public void setMinutes(int minutes) {
         this.minutes = minutes;
-    }
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
     }
 }
