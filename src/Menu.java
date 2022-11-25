@@ -17,13 +17,13 @@ public class Menu {
         String printString = menuHeader + "\n";
         for (int i = 0; i < menuItems.length; i++)
             printString += menuItems[i] + "\n";
-        System.out.println("\n" + printString);
+        System.out.print("\n" + printString);
     }
 
     public int readChoice() {
         Scanner scanner = new Scanner(System.in);
         boolean validChoice = false;
-        int choice = 0;
+        int choice = -1;
 
         while (!validChoice) {
             System.out.print(leadText);

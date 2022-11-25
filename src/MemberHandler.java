@@ -13,7 +13,6 @@ public class MemberHandler {
 
 
     public void addMember(int choice, String name, int age) {
-
         switch (choice) {
             case 1 -> createHobbyist(name, age);
             case 2 -> createElite(name, age);
@@ -33,15 +32,17 @@ public class MemberHandler {
     public void createElite(String name, int age) {
         String coach;
         String discipline;
+        String input;
 
         coach = getCoach();
         discipline = getDiscipline();
         while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
-            if (in.nextLine().equalsIgnoreCase("y")) {
+            input = in.nextLine();
+            if (input.equalsIgnoreCase("y")) {
                 discipline = discipline + ", " + getDiscipline();
-                isRunning = false;
-            } else if (in.nextLine().equalsIgnoreCase("n")) {
+                isRunning = true;
+            } else if (input.equalsIgnoreCase("n")) {
                 System.out.println("You chose to not enter another discipline.");
                 isRunning = false;
             } else {
