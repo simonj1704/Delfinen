@@ -76,33 +76,6 @@ public class Member {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
-    public void addMember(int choice, String name, int age){
-
-        switch (choice){
-            case 1 -> createHobbyist();
-            case 2 -> createElite(name, age);
-            case 3 -> createMember();
-        }
-    }
-
-    public void createMember(){
-
-    }
-
-    public void createElite(String name, int age){
-        String coach;
-        String dicipline;
-
-        coach = in.nextLine();
-        dicipline = in.nextLine();
-
-        members.add(new EliteSwimmer(name, age, coach, dicipline));
-
-    }
-
-    public void createHobbyist(){
-
-    }
 
     @Override
     public String toString() {
