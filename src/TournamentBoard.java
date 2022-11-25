@@ -1,47 +1,68 @@
 package src;
 
+import java.time.LocalDate;
+
 public class TournamentBoard {
-    private int month;
-    private int date;
-    private int hour;
-    private int minutes;
-    private int seconds;
+    LocalDate date;
+
+    private String tourneyName;
+    private String placement;
+    private int placementTimeSeconds;
+    private int placementTimeMiliseconds;
+    private String discipline;
 
 
     // Constructors
-    public TournamentBoard(int month, int date, int hour, int minutes) {
-        setMonth(month);
-        setDate(date);
-        setHour(hour);
-        setMinutes(minutes);
+    public TournamentBoard(EliteSwimmer eliteSwimmer, LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
+                           int placementTimeMiliseconds) {
+        setPlacement(placement);
+        setDiscipline(discipline);
+        setPlacementTimeSeconds(placementTimeSeconds);
+        setPlacementTimeMiliseconds(placementTimeMiliseconds);
+        setTourneyName(tourneyName);
+        this.date = date;
     }
 
 
     // Getters
-    public int getMonth() {
-        return month;
+    public String getDiscipline(){
+        return discipline;
     }
-    public int getDate() {
-        return date;
+
+
+    public int getPlacementTimeSeconds(){
+        return placementTimeSeconds;
     }
-    public int getHour() {
-        return hour;
+    public int getPlacementTimeMiliseconds(){
+        return placementTimeMiliseconds;
     }
-    public int getMinutes() {
-        return minutes;
+    public String getPlacement(){
+        return tourneyName;
+    }
+    public String getTourneyName(){
+        return tourneyName;
     }
 
     // Setters
-    public void setMonth(int month) {
-        this.month = month;
+
+
+    public void setDiscipline(String discipline) {
+        this.discipline = discipline;
     }
-    public void setDate(int date) {
-        this.date = date;
+
+    public void setPlacementTimeSeconds(int placementTimeSeconds) {
+        this.placementTimeSeconds = placementTimeSeconds;
     }
-    public void setHour(int hour) {
-        this.hour = hour;
+
+    public void setPlacementTimeMiliseconds(int placementTimeMiliseconds) {
+        this.placementTimeMiliseconds = placementTimeMiliseconds;
     }
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
+
+    public void setPlacement(String placement){
+        this.placement = placement;
+    }
+    public void setTourneyName(String tourneyName){
+        this.tourneyName = tourneyName;
     }
 }
+

@@ -1,8 +1,6 @@
 package src;
 
 
-import src.memberTypes.EliteSwimmer;
-
 import java.time.LocalDate;
 
 public class TrainingTime {
