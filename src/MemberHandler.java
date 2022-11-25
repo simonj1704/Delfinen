@@ -38,7 +38,7 @@ public class MemberHandler {
             if (in.nextLine().equalsIgnoreCase("y")) {
                 discipline = discipline + ", " + getDiscipline();
                 isRunning = false;
-            } else if (in.nextLine().equalsIgnoreCase("n")){
+            } else if (in.nextLine().equalsIgnoreCase("n")) {
                 System.out.println("You chose to not enter another discipline.");
                 isRunning = false;
             } else {

@@ -1,8 +1,5 @@
 package src;
 
-
-import src.memberTypes.EliteSwimmer;
-
 import java.time.LocalDate;
 
 public class TrainingTime {
@@ -27,9 +24,11 @@ public class TrainingTime {
     public int getTrainingMilSeconds() {
         return trainingMilSeconds;
     }
+
     public int getTrainingSeconds() {
         return trainingSeconds;
     }
+
     public String getDiscipline() {
         return discipline;
     }
@@ -38,9 +37,11 @@ public class TrainingTime {
     public void setTrainingMilSeconds(int trainingMilSeconds) {
         this.trainingMilSeconds = trainingMilSeconds;
     }
+
     public void setTrainingSeconds(int trainingSeconds) {
         this.trainingSeconds = trainingSeconds;
     }
+
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
     }

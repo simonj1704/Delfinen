@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         new Main().run();
     }
+
     private void run() {
         Member mem1 = new EliteSwimmer("Michael Phelps", 36, "Rikke Nyborg", "Freestyle");
         System.out.println(mem1.toString());

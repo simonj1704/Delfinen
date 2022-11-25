@@ -39,18 +39,23 @@ public class Member {
     public String getName() {
         return name;
     }
+
     public int getAge() {
         return age;
     }
+
     public String getTypeOfSwimmer() {
         return typeOfSwimmer;
     }
+
     public boolean hasArrears() {
         return hasArrears;
     }
+
     public String getTypeOfMembership() {
         return typeOfMembership;
     }
+
     public boolean isPassive() {
         return isPassive;
     }
@@ -60,18 +65,23 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
+
     public void setHasArrears(boolean hasArrears) {
         this.hasArrears = hasArrears;
     }
+
     public void setIsPassive(boolean passive) {
         isPassive = passive;
     }
+
     public void setTypeOfMembership(String typeOfMembership) {
         this.typeOfMembership = typeOfMembership;
     }
+
     public void setTypeOfSwimmer(String typeOfSwimmer) {
         this.typeOfSwimmer = typeOfSwimmer;
     }

@@ -1,7 +1,5 @@
 package src;
 
-import src.memberTypes.EliteSwimmer;
-
 import java.util.Scanner;
 import java.time.LocalDate;
 
