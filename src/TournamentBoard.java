@@ -21,12 +21,15 @@ public class TournamentBoard {
     public int getMonth() {
         return month;
     }
+
     public int getDate() {
         return date;
     }
+
     public int getHour() {
         return hour;
     }
+
     public int getMinutes() {
         return minutes;
     }
@@ -35,12 +38,15 @@ public class TournamentBoard {
     public void setMonth(int month) {
         this.month = month;
     }
+
     public void setDate(int date) {
         this.date = date;
     }
+
     public void setHour(int hour) {
         this.hour = hour;
     }
+
     public void setMinutes(int minutes) {
         this.minutes = minutes;
     }
