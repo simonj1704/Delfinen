@@ -24,7 +24,7 @@ public class MemberHandler {
     public void createMember(String name, int age) {
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
-        String typeOfSwimmer = in.nextLine();
+        String typeOfSwimmer = input;
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
 
