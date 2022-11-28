@@ -7,6 +7,7 @@ public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
+    private String input;
 
     public MemberHandler(){
     }
@@ -32,10 +33,10 @@ public class MemberHandler {
     public void createElite(String name, int age) {
         String coach;
         String discipline;
-        String input;
 
         coach = getCoach();
         discipline = getDiscipline();
+        input = in.nextLine();
         while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
             input = in.nextLine();
@@ -71,11 +72,12 @@ public class MemberHandler {
     public boolean isPassive() {
         boolean isPassive = false;
         System.out.println("Is the member passive (y) or active (n)");
+        input = in.nextLine();
         while (isRunning) {
-            if (in.nextLine().equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("y")) {
                 isPassive = true;
                 isRunning = false;
-            } else if (in.nextLine().equalsIgnoreCase("n")) {
+            } else if (input.equalsIgnoreCase("n")) {
                 isPassive = false;
                 isRunning = false;
             } else {
@@ -88,11 +90,12 @@ public class MemberHandler {
     public boolean hasArrears() {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? yes (y) or no (n)");
+        input = in.nextLine();
         while (isRunning) {
-            if (in.nextLine().equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
-            } else if (in.nextLine().equalsIgnoreCase("n")) {
+            } else if (input.equalsIgnoreCase("n")) {
                 hasArrears = false;
                 isRunning = false;
             } else {

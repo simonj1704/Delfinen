@@ -36,7 +36,7 @@ public class TimesHandler {
         addTime(newTime);
     }
 
-    public void createTournamentResult(){
+    /*public void createTournamentResult(){
         System.out.println("Input tourney name");
         tourneyName = in.nextLine();
         System.out.println("Input tournament placement");
@@ -51,7 +51,7 @@ public class TimesHandler {
         TournamentBoard tournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds,
                 placementTimeMiliseconds);
 
-    }
+    }*/
 
 
     public void addTime(TrainingTime newTime) {
