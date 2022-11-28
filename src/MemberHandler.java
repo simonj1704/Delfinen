@@ -71,7 +71,7 @@ public class MemberHandler {
 
     public boolean isPassive() {
         boolean isPassive = false;
-        System.out.println("Is the member passive (y) or active (n)");
+        System.out.println("Is the member passive (Y) or active (N)");
         input = in.nextLine();
         while (isRunning) {
             if (input.equalsIgnoreCase("y")) {
@@ -89,7 +89,7 @@ public class MemberHandler {
 
     public boolean hasArrears() {
         boolean hasArrears = false;
-        System.out.println("Does the member have arrears? yes (y) or no (n)");
+        System.out.println("Does the member have arrears? (Y/N)");
         input = in.nextLine();
         while (isRunning) {
             if (input.equalsIgnoreCase("y")) {
