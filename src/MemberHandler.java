@@ -1,5 +1,8 @@
 package src;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,12 +11,20 @@ public class MemberHandler {
     public TimesHandler timesHandler = new TimesHandler();
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
-    private boolean isRunning;
+    private boolean isRunning = true;
     private String input;
 
     public MemberHandler() {
     }
 
+    public void writeMember(String member){
+        try {
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv",true));
+            fileWriter.println(member);
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void addMember(int choice, String name, int age) {
         switch (choice) {
@@ -32,15 +43,36 @@ public class MemberHandler {
 
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
-
+        writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
     }
 
     public void createElite(String name, int age) {
         String coach;
         String discipline;
 
+
         coach = getCoach();
         discipline = getDiscipline();
+        EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline);
+        members.add(eliteSwimmer);
+        writeMember(eliteSwimmer.printMember(eliteSwimmer));
+    }
+
+    public void createHobbyist(String name, int age) {
+        Hobbyist hobbyist = new Hobbyist(name, age);
+        members.add(hobbyist);
+        writeMember(hobbyist.printMember(hobbyist));
+    }
+
+    public String getCoach() {
+        System.out.print("Who is the Coach: ");
+        return in.nextLine();
+    }
+
+    public String getDiscipline() {
+        String discipline;
+        System.out.print("What is the discipline: ");
+        discipline = in.nextLine();
         while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
             input = in.nextLine();
@@ -55,21 +87,7 @@ public class MemberHandler {
                 isRunning = true;
             }
         }
-        members.add(new EliteSwimmer(name, age, coach, discipline));
-    }
-
-    public void createHobbyist(String name, int age) {
-        members.add(new Hobbyist(name, age));
-    }
-
-    public String getCoach() {
-        System.out.print("Who is the Coach: ");
-        return in.nextLine();
-    }
-
-    public String getDiscipline() {
-        System.out.print("What is the discipline: ");
-        return in.nextLine();
+        return discipline;
     }
 
     public String getTypeOfSwimmer() {

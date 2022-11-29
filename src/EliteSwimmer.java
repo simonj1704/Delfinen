@@ -12,6 +12,15 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
     }
 
+    public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
+        super(id, name, age, "Elite Swimmer", false, false);
+        setCoach(coach);
+        setSwimmingDiscipline(swimmingDiscipline);
+        setIsPassive(isPassive);
+        setHasArrears(hasArrears);
+        ;
+    }
+
     public void setCoach(String coach) {
         this.coach = coach;
     }
@@ -26,6 +35,15 @@ public class EliteSwimmer extends Member {
 
     public String getSwimmingDiscipline() {
         return swimmingDiscipline;
+    }
+
+
+    public String printMember(EliteSwimmer member){
+        String out;
+        out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
+                member.getTypeOfSwimmer() + ";" + member.getCoach() + ";" + member.getSwimmingDiscipline()
+                + ";" + member.isPassive() + ";" + member.hasArrears();
+        return out;
     }
 
     @Override

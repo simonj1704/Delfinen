@@ -27,6 +27,17 @@ public class Member {
 
     }
 
+    public Member(int id,String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
+        setName(name);
+        setAge(age);
+        setIsPassive(isPassive);
+        setHasArrears(hasArrears);
+        setTypeOfSwimmer(typeOfSwimmer);
+        setTypeOfMembership(age);
+        this.id = id;
+
+    }
+
     public Member() {}
 
 
@@ -91,6 +102,13 @@ public class Member {
 
     public int getId(){
         return id;
+    }
+
+    public String printMember(Member member){
+        String out;
+        out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
+        member.getTypeOfSwimmer() + ";" + member.isPassive() + ";" + member.hasArrears();
+        return out;
     }
 
 
