@@ -11,6 +11,13 @@ public class Main {
         String[] menuItems = {"1. Create Hobbyist", "2. Create Elite Swimmer", "3. Create Member"};
         Menu menu = new Menu(menuHeader, leadText, menuItems);
         MemberHandler memberHandler = new MemberHandler();
+
+        memberHandler.addMember(2,"Michael", 36);
+        memberHandler.addMember(2,"sad", 26);
+        memberHandler.addMember(2,"hgdf", 336);
+        System.out.println(memberHandler.members);
+        memberHandler.placeTimeOnSwimmer();
+
         int choice;
 
         System.out.print("What name: ");

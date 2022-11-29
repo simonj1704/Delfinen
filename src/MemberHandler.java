@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
+    public TimesHandler timesHandler = new TimesHandler();
+    public Member member = new Member();
     Scanner in = new Scanner(System.in);
     private boolean isRunning;
     private String input;
@@ -82,6 +84,16 @@ public class MemberHandler {
         return typeOfSwimmer;
     }
 
+    public void placeTimeOnSwimmer() {
+        int searchId;
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                Object eliteSwimmer = members.get(i);
+            }
+        }
+    }
 
     public boolean isPassive() {
         boolean isPassive = false;

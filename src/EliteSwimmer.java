@@ -33,6 +33,7 @@ public class EliteSwimmer extends Member {
         return "EliteSwimmer{" +
                 "name='" + getName() + '\'' +
                 ", age=" + getAge() +
+                ", id=" + getId() +
                 ", coach='" + coach + '\'' +
                 ", swimmingDiscipline='" + swimmingDiscipline + '\'' +
                 ", typeOfMembership='" + getTypeOfMembership() + '\'' +
