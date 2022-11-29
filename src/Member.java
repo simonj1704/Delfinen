@@ -27,6 +27,9 @@ public class Member {
 
     }
 
+    public Member() {}
+
+
     public void setTypeOfMembership(int age) {
         if (age < 18) {
             typeOfMembership = "Junior";

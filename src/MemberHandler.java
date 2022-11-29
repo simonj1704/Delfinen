@@ -5,11 +5,13 @@ import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
+    public TimesHandler timesHandler = new TimesHandler();
+    public Member member = new Member();
     Scanner in = new Scanner(System.in);
-    private boolean isRunning = true;
+    private boolean isRunning;
     private String input;
 
-    public MemberHandler(){
+    public MemberHandler() {
     }
 
 
@@ -22,9 +24,12 @@ public class MemberHandler {
     }
 
     public void createMember(String name, int age) {
+        String typeOfSwimmer;
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
-        String typeOfSwimmer = in.nextLine();
+
+        typeOfSwimmer = getTypeOfSwimmer();
+
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
 
@@ -36,7 +41,6 @@ public class MemberHandler {
 
         coach = getCoach();
         discipline = getDiscipline();
-        input = in.nextLine();
         while (isRunning) {
             System.out.print("Do you want to add more disciplines(Y/N): ");
             input = in.nextLine();
@@ -58,7 +62,6 @@ public class MemberHandler {
         members.add(new Hobbyist(name, age));
     }
 
-
     public String getCoach() {
         System.out.print("Who is the Coach: ");
         return in.nextLine();
@@ -69,11 +72,34 @@ public class MemberHandler {
         return in.nextLine();
     }
 
+    public String getTypeOfSwimmer() {
+        String typeOfSwimmer = "";
+        System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
+        int choice = in.nextInt();
+        switch (choice) {
+            case 1 -> typeOfSwimmer = "Hobbyist";
+            case 2 -> typeOfSwimmer = "Elite Swimmer";
+            default -> System.out.println("Please enter a valid number.");
+        }
+        return typeOfSwimmer;
+    }
+
+    public void placeTimeOnSwimmer() {
+        int searchId;
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                Object eliteSwimmer = members.get(i);
+            }
+        }
+    }
+
     public boolean isPassive() {
         boolean isPassive = false;
-        System.out.println("Is the member passive (y) or active (n)");
-        input = in.nextLine();
         while (isRunning) {
+            System.out.println("Is the member passive (Y) or active (N)");
+            input = in.nextLine();
             if (input.equalsIgnoreCase("y")) {
                 isPassive = true;
                 isRunning = false;
@@ -82,6 +108,7 @@ public class MemberHandler {
                 isRunning = false;
             } else {
                 System.out.println("I don't understand what you mean. Enter y or n!");
+                isRunning = true;
             }
         }
         return isPassive;
@@ -89,9 +116,9 @@ public class MemberHandler {
 
     public boolean hasArrears() {
         boolean hasArrears = false;
-        System.out.println("Does the member have arrears? yes (y) or no (n)");
-        input = in.nextLine();
+        System.out.println("Does the member have arrears? (Y/N)");
         while (isRunning) {
+            input = in.nextLine();
             if (input.equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
@@ -100,6 +127,7 @@ public class MemberHandler {
                 isRunning = false;
             } else {
                 System.out.println("I don't understand what you mean. Enter y or n!");
+                isRunning = true;
             }
         }
         return hasArrears;
