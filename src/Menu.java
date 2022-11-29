@@ -21,19 +21,51 @@ public class Menu {
     }
 
     public int readChoice() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner in = new Scanner(System.in);
         boolean validChoice = false;
         int choice = -1;
 
         while (!validChoice) {
             System.out.print(leadText);
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
+            if (in.hasNextInt()) {
+                choice = in.nextInt();
                 validChoice = true;
             } else {
-                scanner.nextLine();
+                in.nextLine();
             }
         }
         return choice;
+    }
+
+    public void userLogin(){
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        System.out.println("Enter username: ");
+
+        if(input.equalsIgnoreCase("coach")){
+            System.out.println("Enter password ");
+            if (input.equalsIgnoreCase("Coach")){
+                //TODO add coachMenu()
+            } else {
+                System.out.println("Invalid password");
+                //TODO add while loop?
+            }
+        } else if (input.equalsIgnoreCase("president")) {
+            System.out.println("Enter password: ");
+            if(input.equalsIgnoreCase("president")){
+                //TODO add presidentMenu()
+            } else {
+                System.out.println("Invalid password");
+            }
+            
+        } else if (input.equalsIgnoreCase("treasurer")) {
+            System.out.println("Enter password");
+            if (input.equalsIgnoreCase("treasurer")){
+                //TODO add treasurerMenu()
+            } else {
+                System.out.println("Invalid password");
+            }
+            
+        }
     }
 }
