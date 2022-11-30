@@ -58,6 +58,41 @@ public class FileHandler {
         }
     }
 
+    public void changeMember(){
+        int choice;
+        System.out.println(readMembers);
+        System.out.print("What member do you want to change(ID): ");
+        choice = in.nextInt();
+        Member member = readMembers.get(choice);
+        System.out.println(readMembers.get(choice-1));
+        System.out.print("What do you want to change: ");
+        String change = in.nextLine();
+        switch (change){
+            case "name" -> {
+                System.out.print("What do you want to change it to: ");
+                readMembers.get(choice).setName(in.nextLine());
+            }
+            case "age" -> {
+                System.out.print("What do you want to change the age to: ");
+                readMembers.get(choice).setAge(in.nextInt());
+            }
+            case "swimmer" -> {
+                System.out.print("What do you want to set this member as: ");
+                readMembers.get(choice).setTypeOfSwimmer(in.nextLine());
+            }
+            case "passive" -> {
+                System.out.print("Do you want to set this member as passive: ");
+                String passive = in.nextLine();
+                readMembers.get(choice).setHasArrears(passive.equals("yes"));
+            }
+            case "arrears" -> {
+                System.out.print("Do you want to give this member arrears: ");
+                String arrears = in.nextLine();
+                readMembers.get(choice).setHasArrears(arrears.equals("yes"));
+            }
+        }
+    }
+
     public static void main(String[] args) {
         FileHandler fileHandler = new FileHandler();
         fileHandler.setReadMembers();
