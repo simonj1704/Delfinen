@@ -34,8 +34,9 @@ public class FileHandler {
                             Integer.parseInt(tokens.get(2)), tokens.get(4),
                             Boolean.parseBoolean(tokens.get(5)), Boolean.parseBoolean(tokens.get(6))));
                 }
-
+                tokenReader.close();
             }
+            fileReader.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -53,6 +54,7 @@ public class FileHandler {
                 fileWriter.println(new Member().printMember(readMembers.get(i)));
             }
             System.out.println("Member succesfully deleted");
+            fileWriter.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
