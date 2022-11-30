@@ -70,6 +70,7 @@ public class EliteSwimmer extends Member {
                 ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
                 ", isPassive=" + isPassive() +
                 ", hasArrears=" + hasArrears() +
+                ", Tournamentresults= " +tournamentTimes +
                 '}';
     }
 }
