@@ -6,7 +6,6 @@ public class Main {
     }
 
     private void run() {
-        new Menu().userLogin();
 
         String menuHeader = "Delfinen";
         String leadText = "Please choose an option\n";
