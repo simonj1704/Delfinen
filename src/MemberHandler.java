@@ -3,16 +3,25 @@ package src;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
-    public TimesHandler timesHandler = new TimesHandler();
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
     private String input;
+    private String inputDiscipline;
+    private int trainingTimeSeconds;
+    private int trainingTimeMilSeconds;
+    private String tourneyName;
+    private String placement;
+    private int placementTimeSeconds;
+    private int placementTimeMiliseconds;
+    LocalDate date = LocalDate.now();
+    ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
 
     public MemberHandler() {
         member.setNextId();
@@ -36,11 +45,9 @@ public class MemberHandler {
     }
 
     public void createMember(String name, int age) {
-        String typeOfSwimmer;
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
-
-        typeOfSwimmer = getTypeOfSwimmer();
+        String typeOfSwimmer = getTypeOfSwimmer();
 
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
@@ -95,23 +102,13 @@ public class MemberHandler {
         String typeOfSwimmer = "";
         System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
         int choice = in.nextInt();
+        in.nextLine();
         switch (choice) {
             case 1 -> typeOfSwimmer = "Hobbyist";
             case 2 -> typeOfSwimmer = "Elite Swimmer";
             default -> System.out.println("Please enter a valid number.");
         }
         return typeOfSwimmer;
-    }
-
-    public void placeTimeOnSwimmer() {
-        int searchId;
-        System.out.printf("Input ID for Timeplacement on Swimmer: ");
-        searchId = in.nextInt();
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getId() == searchId) {
-                Object eliteSwimmer = members.get(i);
-            }
-        }
     }
 
     public boolean isPassive() {
@@ -136,8 +133,8 @@ public class MemberHandler {
     public boolean hasArrears() {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? (Y/N)");
+        input = in.nextLine();
         while (isRunning) {
-            input = in.nextLine();
             if (input.equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
@@ -150,5 +147,53 @@ public class MemberHandler {
             }
         }
         return hasArrears;
+    }
+
+    public void createTrainingTime() {
+        int searchId;
+        System.out.print("Input Discipline ");
+        inputDiscipline = in.nextLine();
+        System.out.print("Input Training Time in Seconds: ");
+        trainingTimeSeconds = in.nextInt();
+        in.nextLine();
+        System.out.print("Input Training Time in Milliseconds: ");
+        trainingTimeMilSeconds = in.nextInt();
+        in.nextLine();
+        TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        in.nextLine();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+                eliteSwimmer.addTime(newTime);
+                System.out.printf(eliteSwimmer.toString());
+            }
+        }
+    }
+
+    public void createTournamentResult(){
+        int searchId;
+        System.out.println("Input tourney name");
+        tourneyName = in.nextLine();
+        System.out.println("Input tournament placement");
+        placement = in.nextLine();
+        System.out.println("Input swimtime seconds");
+        placementTimeSeconds = in.nextInt();
+        in.nextLine();
+        System.out.println("Input swimtime ms");
+        placementTimeMiliseconds = in.nextInt();
+        in.nextLine();
+        TournamentBoard newtournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds
+                ,placementTimeMiliseconds);
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        in.nextLine();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+                eliteSwimmer.addTourney(newtournamentBoard);
+            }
+        }
     }
 }

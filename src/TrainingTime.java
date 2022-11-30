@@ -4,9 +4,6 @@ package src;
 import java.time.LocalDate;
 
 public class TrainingTime {
-    private int resultMonth;
-    private int resultDate;
-    private int year;
     private int trainingSeconds;
     private int trainingMilSeconds;
     private String discipline;
@@ -41,5 +38,15 @@ public class TrainingTime {
     }
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainingTime{" +
+                "trainingSeconds=" + trainingSeconds +
+                ", trainingMilSeconds=" + trainingMilSeconds +
+                ", discipline='" + discipline + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

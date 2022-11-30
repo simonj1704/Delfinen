@@ -68,4 +68,13 @@ public class Menu {
             
         }
     }
+    public void coachMenu(){
+
+    }
+    public void treasurerMenu(){
+
+    }
+    public void presidentMenu(){
+
+    }
 }

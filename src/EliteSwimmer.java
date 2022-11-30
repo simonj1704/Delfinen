@@ -2,9 +2,13 @@ package src;
 
 import src.Member;
 
+import java.util.ArrayList;
+
 public class EliteSwimmer extends Member {
     private String coach;
     private String swimmingDiscipline; // Ryg, crawl, butterfly, breaststroke
+    private ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
+    private ArrayList<TournamentBoard> tournamentTimes = new ArrayList<>();
 
     public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline) {
         super(name, age, false, false, "Elite Swimmer");
@@ -46,6 +50,14 @@ public class EliteSwimmer extends Member {
         return out;
     }
 
+    public void addTime(TrainingTime newTime) {
+        trainingTimes.add(newTime);
+    }
+    public void addTourney(TournamentBoard newTournamentBoard){
+        tournamentTimes.add(newTournamentBoard);
+
+    }
+
     @Override
     public String toString() {
         return "EliteSwimmer{" +
@@ -58,6 +70,8 @@ public class EliteSwimmer extends Member {
                 ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
                 ", isPassive=" + isPassive() +
                 ", hasArrears=" + hasArrears() +
+                ", Tournamentresults= " +tournamentTimes +
+                ", trainingTimes=" + trainingTimes.toString() +
                 '}';
     }
 }
