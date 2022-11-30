@@ -66,6 +66,9 @@ public class FileHandler {
             System.out.println(e.getMessage());
         }
     }
+    public void printMember(){
+        setReadMembers();
+    }
 
     public void changeMember(){
         int choice;

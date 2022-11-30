@@ -67,7 +67,7 @@ public class Menu {
                 //TODO add tournamentResultPrint
                 break;
             case 5:
-                //TODO add print overview of all members?
+                new FileHandler().printMember();
         }
     }
     public void treasurerMenu(){
@@ -84,7 +84,6 @@ public class Menu {
         leadText = "Please choose an option:";
         menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members"};
         Menu menu = new Menu(menuHeader,leadText,menuItems);
-        MemberHandler memberHandler = new MemberHandler();
         Scanner in = new Scanner(System.in);
         menu.printMenu();
         int inputChoice = in.nextInt();
@@ -95,13 +94,13 @@ public class Menu {
                 int choice = 0;
                 String name = "";
                 int age = 0;
-                memberHandler.addMember(choice, name , age);
+                new MemberHandler().addMember(choice, name , age);
                 break;
             case 2:
-                //TODO deleteMember()
+                new FileHandler().deleteMember();
                 break;
             case 3:
-                //TODO printMembers()
+                new FileHandler().printMember();
         }
 
     }
