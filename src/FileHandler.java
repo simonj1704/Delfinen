@@ -47,7 +47,14 @@ public class FileHandler {
         System.out.println(readMembers);
         System.out.print("What member do you want to delete(ID): ");
         delete = in.nextInt();
-        readMembers.remove(delete-1);
+        in.nextLine();
+        int index = -1;
+        for (int i = 0; i < readMembers.size(); i++) {
+            if (readMembers.get(i).getId() == delete){
+                index = i;
+            }
+        }
+        readMembers.remove(index);
         try {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
             for (int i = 0; i < readMembers.size(); i++) {
@@ -65,33 +72,52 @@ public class FileHandler {
         System.out.println(readMembers);
         System.out.print("What member do you want to change(ID): ");
         choice = in.nextInt();
-        Member member = readMembers.get(choice);
-        System.out.println(readMembers.get(choice-1));
+        in.nextLine();
+        int index = -1;
+        for (int i = 0; i < readMembers.size(); i++) {
+            if (readMembers.get(i).getId() == choice){
+                index = i;
+            }
+        }
+        System.out.println(readMembers.get(index));
         System.out.print("What do you want to change: ");
         String change = in.nextLine();
         switch (change){
             case "name" -> {
                 System.out.print("What do you want to change it to: ");
-                readMembers.get(choice).setName(in.nextLine());
+                readMembers.get(index).setName(in.nextLine());
             }
             case "age" -> {
                 System.out.print("What do you want to change the age to: ");
-                readMembers.get(choice).setAge(in.nextInt());
+                int age = in.nextInt();
+                in.nextLine();
+                readMembers.get(index).setAge(age);
+                readMembers.get(index).setTypeOfMembership(age);
             }
             case "swimmer" -> {
                 System.out.print("What do you want to set this member as: ");
-                readMembers.get(choice).setTypeOfSwimmer(in.nextLine());
+                readMembers.get(index).setTypeOfSwimmer(in.nextLine());
             }
             case "passive" -> {
                 System.out.print("Do you want to set this member as passive: ");
                 String passive = in.nextLine();
-                readMembers.get(choice).setHasArrears(passive.equals("yes"));
+                readMembers.get(index).setHasArrears(passive.equals("yes"));
             }
             case "arrears" -> {
                 System.out.print("Do you want to give this member arrears: ");
                 String arrears = in.nextLine();
-                readMembers.get(choice).setHasArrears(arrears.equals("yes"));
+                readMembers.get(index).setHasArrears(arrears.equals("yes"));
             }
+        }
+        try {
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
+            for (int i = 0; i < readMembers.size(); i++) {
+                fileWriter.println(new Member().printMember(readMembers.get(i)));
+            }
+            System.out.println("Member succesfully Changed");
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -99,6 +125,7 @@ public class FileHandler {
         FileHandler fileHandler = new FileHandler();
         fileHandler.setReadMembers();
         System.out.println(fileHandler.readMembers);
-        fileHandler.deleteMember();
+        //fileHandler.deleteMember();
+        fileHandler.changeMember();
     }
 }
