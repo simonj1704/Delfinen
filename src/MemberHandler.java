@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
-    public TimesHandler timesHandler = new TimesHandler();
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
@@ -25,6 +24,7 @@ public class MemberHandler {
     ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
 
     public MemberHandler() {
+        member.setNextId();
     }
 
     public void writeMember(String member){
@@ -42,6 +42,10 @@ public class MemberHandler {
             case 2 -> createElite(name, age);
             case 3 -> createMember(name, age);
         }
+    }
+
+    public void deleteMember(){
+
     }
 
     public void createMember(String name, int age) {
@@ -149,10 +153,6 @@ public class MemberHandler {
         return hasArrears;
     }
 
-    //Testing
-    EliteSwimmer eliteSwimmer = new EliteSwimmer("Michael", 42, "Maria", "Butterfly");
-    //
-
     public void createTrainingTime() {
         int searchId;
         System.out.print("Input Discipline ");
@@ -199,9 +199,5 @@ public class MemberHandler {
                 eliteSwimmer.addTourney(newtournamentBoard);
             }
         }
-
-        TournamentBoard tournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds,
-                placementTimeMiliseconds);
-
     }
 }
