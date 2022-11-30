@@ -171,6 +171,7 @@ public class MemberHandler {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
                 eliteSwimmer.addTime(newTime);
+                System.out.printf(eliteSwimmer.toString());
             }
         }
     }
