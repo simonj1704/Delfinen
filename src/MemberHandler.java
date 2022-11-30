@@ -176,7 +176,8 @@ public class MemberHandler {
         }
     }
 
-    /*public void createTournamentResult(){
+    public void createTournamentResult(){
+        int searchId;
         System.out.println("Input tourney name");
         tourneyName = in.nextLine();
         System.out.println("Input tournament placement");
@@ -187,9 +188,20 @@ public class MemberHandler {
         System.out.println("Input swimtime ms");
         placementTimeMiliseconds = in.nextInt();
         in.nextLine();
+        TournamentBoard newtournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds
+                ,placementTimeMiliseconds);
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        in.nextLine();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+                eliteSwimmer.addTourney(newtournamentBoard);
+            }
+        }
 
         TournamentBoard tournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds,
                 placementTimeMiliseconds);
 
-    }*/
+    }
 }
