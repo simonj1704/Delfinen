@@ -31,6 +31,7 @@ public class MemberHandler {
         try {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv",true));
             fileWriter.println(member);
+            fileWriter.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -44,9 +45,6 @@ public class MemberHandler {
         }
     }
 
-    public void deleteMember(){
-
-    }
 
     public void createMember(String name, int age) {
         boolean isPassive = isPassive();
