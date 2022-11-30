@@ -8,6 +8,7 @@ public class EliteSwimmer extends Member {
     private String coach;
     private String swimmingDiscipline; // Ryg, crawl, butterfly, breaststroke
     private ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
+    private ArrayList<TournamentBoard> tournamentTimes = new ArrayList<>();
 
     public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline) {
         super(name, age, false, false, "Elite Swimmer");
@@ -51,6 +52,10 @@ public class EliteSwimmer extends Member {
 
     public void addTime(TrainingTime newTime) {
         trainingTimes.add(newTime);
+    }
+    public void addTourney(TournamentBoard newTournamentBoard){
+        tournamentTimes.add(newTournamentBoard);
+
     }
 
     @Override
