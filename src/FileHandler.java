@@ -57,6 +57,9 @@ public class FileHandler {
             System.out.println(e.getMessage());
         }
     }
+    public void printMember(){
+        setReadMembers();
+    }
 
     public static void main(String[] args) {
         FileHandler fileHandler = new FileHandler();
