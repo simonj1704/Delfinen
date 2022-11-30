@@ -6,6 +6,8 @@ public class Main {
     }
 
     private void run() {
+        new Menu().userLogin();
+
         String menuHeader = "Delfinen";
         String leadText = "Please choose an option\n";
         String[] menuItems = {"1. Create Hobbyist", "2. Create Elite Swimmer", "3. Create Member"};
