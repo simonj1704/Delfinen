@@ -111,18 +111,6 @@ public class MemberHandler {
         return typeOfSwimmer;
     }
 
-    public void placeTimeOnSwimmer() {
-        int searchId;
-        System.out.printf("Input ID for Timeplacement on Swimmer: ");
-        searchId = in.nextInt();
-        in.nextLine();
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getId() == searchId) {
-                Object eliteSwimmer = members.get(i);
-            }
-        }
-    }
-
     public boolean isPassive() {
         boolean isPassive = false;
         while (isRunning) {
@@ -165,9 +153,8 @@ public class MemberHandler {
     EliteSwimmer eliteSwimmer = new EliteSwimmer("Michael", 42, "Maria", "Butterfly");
     //
 
-
-
     public void createTrainingTime() {
+        int searchId;
         System.out.print("Input Discipline ");
         inputDiscipline = in.nextLine();
         System.out.print("Input Training Time in Seconds: ");
@@ -176,9 +163,16 @@ public class MemberHandler {
         System.out.print("Input Training Time in Milliseconds: ");
         trainingTimeMilSeconds = in.nextInt();
         in.nextLine();
-
         TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
-        addTime(newTime);
+        System.out.printf("Input ID for Timeplacement on Swimmer: ");
+        searchId = in.nextInt();
+        in.nextLine();
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+                eliteSwimmer.addTime(newTime);
+            }
+        }
     }
 
     /*public void createTournamentResult(){
@@ -197,9 +191,4 @@ public class MemberHandler {
                 placementTimeMiliseconds);
 
     }*/
-
-
-    public void addTime(TrainingTime newTime) {
-        trainingTimes.add(newTime);
-    }
 }
