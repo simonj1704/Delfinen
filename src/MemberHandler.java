@@ -35,11 +35,9 @@ public class MemberHandler {
     }
 
     public void createMember(String name, int age) {
-        String typeOfSwimmer;
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
-
-        typeOfSwimmer = getTypeOfSwimmer();
+        String typeOfSwimmer = getTypeOfSwimmer();
 
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
@@ -137,8 +135,8 @@ public class MemberHandler {
     public boolean hasArrears() {
         boolean hasArrears = false;
         System.out.println("Does the member have arrears? (Y/N)");
+        input = in.nextLine();
         while (isRunning) {
-            input = in.nextLine();
             if (input.equalsIgnoreCase("y")) {
                 hasArrears = true;
                 isRunning = false;
