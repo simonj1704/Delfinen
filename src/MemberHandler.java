@@ -15,6 +15,7 @@ public class MemberHandler {
     private String input;
 
     public MemberHandler() {
+        member.setNextId();
     }
 
     public void writeMember(String member){
