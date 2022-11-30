@@ -44,6 +44,10 @@ public class MemberHandler {
         }
     }
 
+    public void deleteMember(){
+
+    }
+
     public void createMember(String name, int age) {
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
