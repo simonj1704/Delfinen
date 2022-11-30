@@ -94,6 +94,7 @@ public class MemberHandler {
         String typeOfSwimmer = "";
         System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
         int choice = in.nextInt();
+        in.nextLine();
         switch (choice) {
             case 1 -> typeOfSwimmer = "Hobbyist";
             case 2 -> typeOfSwimmer = "Elite Swimmer";
@@ -106,6 +107,7 @@ public class MemberHandler {
         int searchId;
         System.out.printf("Input ID for Timeplacement on Swimmer: ");
         searchId = in.nextInt();
+        in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 Object eliteSwimmer = members.get(i);
