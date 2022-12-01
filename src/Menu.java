@@ -79,7 +79,7 @@ public class Menu {
         while (isRunning) {
             menuHeader = "Main Menu:";
             leadText = "Please choose an option:";
-            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Quit" };
+            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Change Member", "5. Quit" };
             printMenu();
             System.out.print("Enter input: ");
             int inputChoice = readChoiceInt();
@@ -96,6 +96,9 @@ public class Menu {
                     memberHandler.printMembers();
                     break;
                 case 4:
+                    memberHandler.changeMember();
+                    break;
+                case 5:
                     System.out.println("You've chosen to Quit.");
                     isRunning = false;
                     break;
