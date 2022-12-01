@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class MemberHandler {
     public ArrayList<Member> members = new ArrayList<>();
+    public FileHandler fileHandler = new FileHandler();
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
@@ -18,18 +19,24 @@ public class MemberHandler {
     private int trainingTimeMilSeconds;
     private String tourneyName;
     private String placement;
+    private int nextId;
     private int placementTimeSeconds;
     private int placementTimeMiliseconds;
     LocalDate date = LocalDate.now();
     ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
 
     public MemberHandler() {
-        member.setNextId();
+        member.setNextId(setNextId());
+    }
+
+    public int setNextId(){
+        fileHandler.setReadMembers();
+        return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size()-1).getId() +1;
     }
 
     public void writeMember(String member){
         try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv",true));
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
             fileWriter.println(member);
             fileWriter.close();
         } catch (FileNotFoundException e) {
@@ -37,11 +44,25 @@ public class MemberHandler {
         }
     }
 
-    public void addMember(int choice, String name, int age) {
+    public void addMember() {
+        int choice = 0;
+        int age = 0;
+        String name;
+        System.out.printf("1. Create Hobbyist. \n2. Create Elite Swimmer. \n3. Create Member. \nEnter Input: ");
+        choice = in.nextInt();
+
+        System.out.printf("Enter Name: ");
+        in.nextLine();
+        name = in.nextLine();
+
+        System.out.printf("Enter Age: ");
+        age = in.nextInt();
+
         switch (choice) {
             case 1 -> createHobbyist(name, age);
             case 2 -> createElite(name, age);
             case 3 -> createMember(name, age);
+            default -> System.out.printf("Error.");
         }
     }
 
@@ -76,6 +97,7 @@ public class MemberHandler {
 
     public String getCoach() {
         System.out.print("Who is the Coach: ");
+        in.nextLine();
         return in.nextLine();
     }
 

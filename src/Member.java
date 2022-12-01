@@ -6,8 +6,6 @@ import java.util.Scanner;
 public class Member {
     public ArrayList<Member> members = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-    FileHandler fileHandler = new FileHandler();
-
     private int age;
     private String name;
     private String typeOfMembership; // Senior / junior
@@ -15,8 +13,11 @@ public class Member {
     private boolean isPassive;
     private boolean hasArrears; // Restance
     private int id;
-    private static int nextId = 0;
+    private static int nextId;
 
+    public void setNextId(int nextId){
+        Member.nextId = nextId;
+    }
 
     // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
@@ -105,11 +106,6 @@ public class Member {
 
     public int getId(){
         return id;
-    }
-
-    public void setNextId(){
-        fileHandler.setReadMembers();
-        nextId = fileHandler.readMembers.get(fileHandler.readMembers.size()-1).getId() +1;
     }
 
     public String printMember(Member member){

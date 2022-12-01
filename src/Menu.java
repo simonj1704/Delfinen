@@ -6,7 +6,8 @@ public class Menu {
     private String menuHeader;
     private String leadText;
     private String[] menuItems;
-
+    MemberHandler memberHandler = new MemberHandler();
+    Scanner in = new Scanner(System.in);
     public Menu(){
 
     }
@@ -25,7 +26,6 @@ public class Menu {
     }
 
     public int readChoice() {
-        Scanner in = new Scanner(System.in);
         boolean validChoice = false;
         int choice = -1;
 
@@ -46,10 +46,7 @@ public class Menu {
         leadText = "Please choose an option:";
         menuItems = new String[]{"1. add a training result", "2. add a tournament result", "3. view training results",
                 "4. view tournament results"};
-        Menu menu = new Menu(menuHeader,leadText,menuItems);
-        MemberHandler memberHandler = new MemberHandler();
-        Scanner in = new Scanner(System.in);
-        menu.printMenu();
+        printMenu();
         int inputChoice = in.nextInt();
         in.nextLine();
 
@@ -67,50 +64,44 @@ public class Menu {
                 //TODO add tournamentResultPrint
                 break;
             case 5:
-                new FileHandler().printMember();
         }
     }
     public void treasurerMenu(){
         menuHeader = "Welcome treasurer";
         leadText = "Please choose an option:";
         menuItems = new String[]{"1. view arrears"};
-        Menu menu = new Menu(menuHeader,leadText,menuItems);
-        menu.printMenu();
+        printMenu();
         //TODO add print arrears
 
     }
     public void presidentMenu(){
-        menuHeader = "Welcome president";
-        leadText = "Please choose an option:";
-        menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members"};
-        Menu menu = new Menu(menuHeader,leadText,menuItems);
-        Scanner in = new Scanner(System.in);
-        menu.printMenu();
-        int inputChoice = in.nextInt();
-        in.nextLine();
+        while (true) {
+            menuHeader = "Welcome president";
+            leadText = "Please choose an option:";
+            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members"};
+            printMenu();
+            System.out.printf("Enter input: ");
+            int inputChoice = in.nextInt();
+            in.nextLine();
 
-        switch (inputChoice){
-            case 1:
-                int choice = 0;
-                String name = "";
-                int age = 0;
-                new MemberHandler().addMember(choice, name , age);
-                break;
-            case 2:
-                new FileHandler().deleteMember();
-                break;
-            case 3:
-                new FileHandler().printMember();
+            switch (inputChoice) {
+                case 1:
+                    memberHandler.addMember();
+                    break;
+                case 2:
+                    memberHandler.fileHandler.deleteMember();
+                    break;
+                case 3:
+                    System.out.printf("WIP.");
+            }
         }
-
     }
     public void userLogin(){
-        Scanner in = new Scanner(System.in);
         String username;
         String password;
-        System.out.println("Enter username: ");
+        System.out.print("Enter username: ");
         username = in.nextLine();
-        System.out.println("Enter password ");
+        System.out.print("Enter password: ");
         password = in.nextLine();
 
         if(username.equalsIgnoreCase("President") && password.equalsIgnoreCase("president")){
