@@ -9,10 +9,9 @@ import java.util.Scanner;
 
 public class FileHandler {
 
-
-
     ArrayList<Member> readMembers = new ArrayList<>();
     Scanner in = new Scanner(System.in);
+    private static int nextId = 0;
 
     public void setReadMembers(){
         try {
@@ -42,6 +41,7 @@ public class FileHandler {
         }
     }
 
+
     public void deleteMember(){
         int delete;
         System.out.println(readMembers);
@@ -65,9 +65,6 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-    }
-    public void printMember(){
-        setReadMembers();
     }
 
     public void changeMember(){
@@ -122,13 +119,5 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public static void main(String[] args) {
-        FileHandler fileHandler = new FileHandler();
-        fileHandler.setReadMembers();
-        System.out.println(fileHandler.readMembers);
-        //fileHandler.deleteMember();
-        fileHandler.changeMember();
     }
 }
