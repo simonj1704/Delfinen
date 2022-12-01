@@ -1,7 +1,5 @@
 package src;
 
-import src.Member;
-
 import java.util.ArrayList;
 
 public class EliteSwimmer extends Member {
@@ -22,7 +20,6 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
-        ;
     }
 
     public void setCoach(String coach) {
@@ -70,7 +67,7 @@ public class EliteSwimmer extends Member {
                 ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
                 ", isPassive=" + isPassive() +
                 ", hasArrears=" + hasArrears() +
-                ", Tournamentresults= " +tournamentTimes +
+                ", Tournament-results= " + tournamentTimes +
                 ", trainingTimes=" + trainingTimes.toString() +
                 '}';
     }

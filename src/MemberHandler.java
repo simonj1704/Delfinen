@@ -14,27 +14,19 @@ public class MemberHandler {
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
     private String input;
-    private String inputDiscipline;
-    private int trainingTimeSeconds;
-    private int trainingTimeMilSeconds;
-    private String tourneyName;
-    private String placement;
-    private int nextId;
-    private int placementTimeSeconds;
-    private int placementTimeMiliseconds;
     LocalDate date = LocalDate.now();
-    ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
 
     public MemberHandler() {
         member.setNextId(setNextId());
     }
 
-    public int setNextId(){
+    public int setNextId() {
         fileHandler.setReadMembers();
-        return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size()-1).getId() +1;
+        int nextId;
+        return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
     }
 
-    public void writeMember(String member){
+    public void writeMember(String member) {
         try {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
             fileWriter.println(member);
@@ -45,33 +37,31 @@ public class MemberHandler {
     }
 
     public void addMember() {
-        int choice = 0;
-        int age = 0;
+        int choice;
+        int age;
         String name;
-        System.out.printf("1. Create Hobbyist. \n2. Create Elite Swimmer. \n3. Create Member. \nEnter Input: ");
-        choice = in.nextInt();
+        System.out.print("1. Create Hobbyist. \n2. Create Elite Swimmer. \n3. Create Member. \nEnter Input: ");
+        choice = readChoiceInt();
 
-        System.out.printf("Enter Name: ");
+        System.out.print("Enter Name: ");
         in.nextLine();
         name = in.nextLine();
 
-        System.out.printf("Enter Age: ");
-        age = in.nextInt();
+        System.out.print("Enter Age: ");
+        age = readChoiceInt();
 
         switch (choice) {
             case 1 -> createHobbyist(name, age);
             case 2 -> createElite(name, age);
             case 3 -> createMember(name, age);
-            default -> System.out.printf("Error.");
+            default -> System.out.print("Error.");
         }
     }
-
 
     public void createMember(String name, int age) {
         boolean isPassive = isPassive();
         boolean hasArrears = hasArrears();
         String typeOfSwimmer = getTypeOfSwimmer();
-
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
         writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
@@ -80,7 +70,6 @@ public class MemberHandler {
     public void createElite(String name, int age) {
         String coach;
         String discipline;
-
 
         coach = getCoach();
         discipline = getDiscipline();
@@ -93,6 +82,32 @@ public class MemberHandler {
         Hobbyist hobbyist = new Hobbyist(name, age);
         members.add(hobbyist);
         writeMember(hobbyist.printMember(hobbyist));
+    }
+
+    public void printMembers() {
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            System.out.println("---------------");
+            System.out.printf("ID     : %5d%n", fileHandler.readMembers.get(i).getId());
+            System.out.printf("Name   : %5s%n", fileHandler.readMembers.get(i).getName());
+            System.out.printf("Age    : %5d%n", fileHandler.readMembers.get(i).getAge());
+            System.out.printf("Type   : %5s%n", fileHandler.readMembers.get(i).getTypeOfMembership());
+        }
+    }
+
+    public int readChoiceInt() {
+        boolean validChoice = false;
+        int choice = -1;
+
+        while (!validChoice) {
+            if (in.hasNextInt()) {
+                choice = in.nextInt();
+                validChoice = true;
+            } else {
+                System.out.print("Please choose an option\n");
+                in.nextLine();
+            }
+        }
+        return choice;
     }
 
     public String getCoach() {
@@ -125,7 +140,7 @@ public class MemberHandler {
     public String getTypeOfSwimmer() {
         String typeOfSwimmer = "";
         System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
-        int choice = in.nextInt();
+        int choice = readChoiceInt();
         in.nextLine();
         switch (choice) {
             case 1 -> typeOfSwimmer = "Hobbyist";
@@ -144,7 +159,6 @@ public class MemberHandler {
                 isPassive = true;
                 isRunning = false;
             } else if (input.equalsIgnoreCase("n")) {
-                isPassive = false;
                 isRunning = false;
             } else {
                 System.out.println("I don't understand what you mean. Enter y or n!");
@@ -163,7 +177,6 @@ public class MemberHandler {
                 hasArrears = true;
                 isRunning = false;
             } else if (input.equalsIgnoreCase("n")) {
-                hasArrears = false;
                 isRunning = false;
             } else {
                 System.out.println("I don't understand what you mean. Enter y or n!");
@@ -176,16 +189,16 @@ public class MemberHandler {
     public void createTrainingTime() {
         int searchId;
         System.out.print("Input Discipline ");
-        inputDiscipline = in.nextLine();
+        String inputDiscipline = in.nextLine();
         System.out.print("Input Training Time in Seconds: ");
-        trainingTimeSeconds = in.nextInt();
+        int trainingTimeSeconds = readChoiceInt();
         in.nextLine();
         System.out.print("Input Training Time in Milliseconds: ");
-        trainingTimeMilSeconds = in.nextInt();
+        int trainingTimeMilSeconds = readChoiceInt();
         in.nextLine();
         TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
-        System.out.printf("Input ID for Timeplacement on Swimmer: ");
-        searchId = in.nextInt();
+        System.out.print("Input ID for Time-placement on Swimmer: ");
+        searchId = readChoiceInt();
         in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
@@ -196,29 +209,28 @@ public class MemberHandler {
         }
     }
 
-    public void createTournamentResult(){
+    public void createTournamentResult() {
         int searchId;
         System.out.println("Input tourney name");
-        tourneyName = in.nextLine();
+        String tourneyName = in.nextLine();
         System.out.println("Input tournament placement");
-        placement = in.nextLine();
-        System.out.println("Input swimtime seconds");
-        placementTimeSeconds = in.nextInt();
+        String placement = in.nextLine();
+        System.out.println("Input swim time seconds");
+        int placementTimeSeconds = readChoiceInt();
         in.nextLine();
-        System.out.println("Input swimtime ms");
-        placementTimeMiliseconds = in.nextInt();
+        System.out.println("Input swim time ms");
+        int placementTimeMilliseconds = readChoiceInt();
         in.nextLine();
-        TournamentBoard newtournamentBoard = new TournamentBoard(date,tourneyName,placement,placementTimeSeconds
-                ,placementTimeMiliseconds);
-        System.out.printf("Input ID for Timeplacement on Swimmer: ");
-        searchId = in.nextInt();
+        TournamentBoard newTournamentBoard = new TournamentBoard(date, tourneyName, placement, placementTimeSeconds
+                , placementTimeMilliseconds);
+        System.out.print("Input ID for Time-placement on Swimmer: ");
+        searchId = readChoiceInt();
         in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
-                eliteSwimmer.addTourney(newtournamentBoard);
+                eliteSwimmer.addTourney(newTournamentBoard);
             }
         }
     }
-
 }

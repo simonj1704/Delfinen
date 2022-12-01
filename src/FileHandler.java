@@ -11,7 +11,7 @@ public class FileHandler {
 
     ArrayList<Member> readMembers = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-    private static int nextId = 0;
+    private static final int nextId = 0;
 
     public void setReadMembers(){
         try {
@@ -41,7 +41,6 @@ public class FileHandler {
         }
     }
 
-
     public void deleteMember(){
         int delete;
         System.out.println(readMembers);
@@ -60,7 +59,7 @@ public class FileHandler {
             for (int i = 0; i < readMembers.size(); i++) {
                 fileWriter.println(new Member().printMember(readMembers.get(i)));
             }
-            System.out.println("Member succesfully deleted");
+            System.out.println("Member successfully deleted");
             fileWriter.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -114,7 +113,7 @@ public class FileHandler {
             for (int i = 0; i < readMembers.size(); i++) {
                 fileWriter.println(new Member().printMember(readMembers.get(i)));
             }
-            System.out.println("Member succesfully Changed");
+            System.out.println("Member successfully Changed");
             fileWriter.close();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

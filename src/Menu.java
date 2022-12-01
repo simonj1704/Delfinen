@@ -8,9 +8,6 @@ public class Menu {
     private String[] menuItems;
     MemberHandler memberHandler = new MemberHandler();
     Scanner in = new Scanner(System.in);
-    public Menu(){
-
-    }
 
     public Menu(String menuHeader, String leadText, String[] menuItems) {
         this.menuHeader = menuHeader;
@@ -25,17 +22,17 @@ public class Menu {
         System.out.print("\n" + printString);
     }
 
-    public int readChoice() {
+    public int readChoiceInt() {
         boolean validChoice = false;
         int choice = -1;
 
         while (!validChoice) {
-            System.out.print(leadText);
             if (in.hasNextInt()) {
                 choice = in.nextInt();
                 validChoice = true;
             } else {
                 in.nextLine();
+                System.out.print(leadText);
             }
         }
         return choice;
@@ -44,10 +41,10 @@ public class Menu {
     public void coachMenu(){
         menuHeader = "Welcome Coach";
         leadText = "Please choose an option:";
-        menuItems = new String[]{"1. add a training result", "2. add a tournament result", "3. view training results",
-                "4. view tournament results"};
+        menuItems = new String[]{"1. Add a training result", "2. Add a tournament result", "3. View training results",
+                "4. View tournament results"};
         printMenu();
-        int inputChoice = in.nextInt();
+        int inputChoice = readChoiceInt();
         in.nextLine();
 
         switch (inputChoice){
@@ -66,6 +63,7 @@ public class Menu {
             case 5:
         }
     }
+
     public void treasurerMenu(){
         menuHeader = "Welcome treasurer";
         leadText = "Please choose an option:";
@@ -74,14 +72,17 @@ public class Menu {
         //TODO add print arrears
 
     }
+
     public void presidentMenu(){
-        while (true) {
-            menuHeader = "Welcome president";
+        boolean isRunning = true;
+        System.out.print("\nWelcome President.");
+        while (isRunning) {
+            menuHeader = "Main Menu:";
             leadText = "Please choose an option:";
-            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members"};
+            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Quit" };
             printMenu();
-            System.out.printf("Enter input: ");
-            int inputChoice = in.nextInt();
+            System.out.print("Enter input: ");
+            int inputChoice = readChoiceInt();
             in.nextLine();
 
             switch (inputChoice) {
@@ -92,10 +93,16 @@ public class Menu {
                     memberHandler.fileHandler.deleteMember();
                     break;
                 case 3:
-                    System.out.printf("WIP.");
+                    memberHandler.printMembers();
+                    break;
+                case 4:
+                    System.out.println("You've chosen to Quit.");
+                    isRunning = false;
+                    break;
             }
         }
     }
+
     public void userLogin(){
         String username;
         String password;
@@ -113,31 +120,5 @@ public class Menu {
         } else {
             System.out.println("Access denied.");
         }
-
-       /* if(input.equalsIgnoreCase("coach")){
-            System.out.println("Enter password ");
-            if (input.equalsIgnoreCase("Coach")){
-                coachMenu();
-            } else {
-                System.out.println("Invalid password");
-                //TODO add while loop?
-            }
-        } else if (input.equalsIgnoreCase("president")) {
-            System.out.println("Enter password: ");
-            if(input.equalsIgnoreCase("president")){
-                presidentMenu();
-            } else {
-                System.out.println("Invalid password");
-            }
-
-        } else if (input.equalsIgnoreCase("treasurer")) {
-            System.out.println("Enter password");
-            if (input.equalsIgnoreCase("treasurer")){
-                treasurerMenu();
-            } else {
-                System.out.println("Invalid password");
-            }
-
-        }*/
     }
 }

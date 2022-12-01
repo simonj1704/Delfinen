@@ -8,17 +8,17 @@ public class TournamentBoard {
     private String tourneyName;
     private String placement;
     private int placementTimeSeconds;
-    private int placementTimeMiliseconds;
+    private int placementTimeMilliseconds;
     private String discipline;
 
 
     // Constructors
     public TournamentBoard(LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
-                           int placementTimeMiliseconds) {
+                           int placementTimeMilliseconds) {
         setPlacement(placement);
         setDiscipline(discipline);
         setPlacementTimeSeconds(placementTimeSeconds);
-        setPlacementTimeMiliseconds(placementTimeMiliseconds);
+        setPlacementTimeMilliseconds(placementTimeMilliseconds);
         setTourneyName(tourneyName);
         this.date = date;
     }
@@ -33,8 +33,8 @@ public class TournamentBoard {
     public int getPlacementTimeSeconds(){
         return placementTimeSeconds;
     }
-    public int getPlacementTimeMiliseconds(){
-        return placementTimeMiliseconds;
+    public int getPlacementTimeMilliseconds(){
+        return placementTimeMilliseconds;
     }
     public String getPlacement(){
         return tourneyName;
@@ -54,8 +54,8 @@ public class TournamentBoard {
         this.placementTimeSeconds = placementTimeSeconds;
     }
 
-    public void setPlacementTimeMiliseconds(int placementTimeMiliseconds) {
-        this.placementTimeMiliseconds = placementTimeMiliseconds;
+    public void setPlacementTimeMilliseconds(int placementTimeMilliseconds) {
+        this.placementTimeMilliseconds = placementTimeMilliseconds;
     }
 
     public void setPlacement(String placement){
