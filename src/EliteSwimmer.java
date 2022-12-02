@@ -67,6 +67,7 @@ public class EliteSwimmer extends Member {
                 ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
                 ", isPassive=" + isPassive() +
                 ", hasArrears=" + hasArrears() +
+                ", subscriptionPrice" + getSubscriptionPrice() +
                 ", Tournament-results= " + tournamentTimes +
                 ", trainingTimes=" + trainingTimes.toString() +
                 '}';

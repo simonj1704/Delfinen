@@ -83,7 +83,6 @@ public class Menu {
             printMenu();
             System.out.print("Enter input: ");
             int inputChoice = readChoiceInt();
-            in.nextLine();
 
             switch (inputChoice) {
                 case 1:
