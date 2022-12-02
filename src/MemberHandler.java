@@ -86,16 +86,9 @@ public class MemberHandler {
 
     public void printMembers() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            System.out.print("ID: " + fileHandler.readMembers.get(i).getId() + "     " +
-                            "Name: " + fileHandler.readMembers.get(i).getName() + "     " +
-                            "Age: " + fileHandler.readMembers.get(i).getAge() + "     " +
-                            "Type: " + fileHandler.readMembers.get(i).getTypeOfMembership() + "     " +
-                            "Arrears: " + fileHandler.readMembers.get(i).hasArrears() + "\n");
-
-            /*System.out.printf("ID     : %5s%n", fileHandler.readMembers.get(i).getId());
-            System.out.printf("Name   : %5s%n", fileHandler.readMembers.get(i).getName());
-            System.out.printf("Age    : %5d%n", fileHandler.readMembers.get(i).getAge());
-            System.out.printf("Type   : %5s%n", fileHandler.readMembers.get(i).getTypeOfMembership());*/
+            System.out.printf("ID: %-4d Name: %-30s Age: %-4d Type: %-8s Arrears: %-7s\n", fileHandler.readMembers.get(i).getId(),
+                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                    fileHandler.readMembers.get(i).getTypeOfMembership(),fileHandler.readMembers.get(i).hasArrears());
         }
     }
 
