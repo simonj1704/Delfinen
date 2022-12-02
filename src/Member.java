@@ -12,6 +12,7 @@ public class Member {
     private String typeOfSwimmer; // Elite / hobbyist
     private boolean isPassive;
     private boolean hasArrears; // Restance
+    private int subscriptionPrice;
     private int id;
     private static int nextId;
 
@@ -106,6 +107,19 @@ public class Member {
 
     public int getId(){
         return id;
+    }
+
+    public void setSubscriptionPrice(){
+        if (age < 18){
+            this.subscriptionPrice = 1000;
+        } else if (age > 60) {
+            this.subscriptionPrice = 1200;
+        } else {
+            this.subscriptionPrice = 1600;
+        }
+    }
+    public int getSubscriptionPrice(){
+        return subscriptionPrice;
     }
 
     public String printMember(Member member){
