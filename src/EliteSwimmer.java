@@ -93,6 +93,15 @@ public class EliteSwimmer extends Member {
         }
     }
 
+    public void printTournaments(){
+        for (int i = 0; i < tournamentTimes.size(); i++) {
+            System.out.printf("%s %s %s %d %d",tournamentTimes.get(i).getTourneyName(),
+                    tournamentTimes.get(i).getPlacement(), tournamentTimes.get(i).getDiscipline(),
+                    tournamentTimes.get(i).getPlacementTimeSeconds(),
+                    tournamentTimes.get(i).getPlacementTimeMilliseconds());
+        }
+    }
+
     @Override
     public String toString() {
         return "EliteSwimmer{" +
