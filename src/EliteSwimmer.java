@@ -61,14 +61,14 @@ public class EliteSwimmer extends Member {
                 "name='" + getName() + '\'' +
                 ", age=" + getAge() +
                 ", id=" + getId() +
-                ", coach='" + coach + '\'' +
-                ", swimmingDiscipline='" + swimmingDiscipline + '\'' +
+                ", coach='" + getCoach() + '\'' +
+                ", swimmingDiscipline='" + getSwimmingDiscipline() + '\'' +
                 ", typeOfMembership='" + getTypeOfMembership() + '\'' +
                 ", typeOfSwimmer='" + getTypeOfSwimmer() + '\'' +
                 ", isPassive=" + isPassive() +
                 ", hasArrears=" + hasArrears() +
                 ", subscriptionPrice" + getSubscriptionPrice() +
-                ", Tournament-results= " + tournamentTimes +
+                ", Tournament-results= " + tournamentTimes.toString() +
                 ", trainingTimes=" + trainingTimes.toString() +
                 '}';
     }

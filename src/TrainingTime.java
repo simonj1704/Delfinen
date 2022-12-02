@@ -40,6 +40,8 @@ public class TrainingTime {
         this.discipline = discipline;
     }
 
+
+
     @Override
     public String toString() {
         return "TrainingTime{" +
