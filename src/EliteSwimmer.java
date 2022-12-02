@@ -47,6 +47,17 @@ public class EliteSwimmer extends Member {
         return out;
     }
 
+    @Override
+    public String printMember(Member member) {
+        return super.printMember(member);
+    }
+
+    public void viewMember(EliteSwimmer member){
+        System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Subscription Price: %-7d Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
+                member.getId(), member.getName(), member.getAge(), member.getTypeOfMembership(),
+                member.getSubscriptionPrice(), member.getTypeOfSwimmer(), member.hasArrears(), member.isPassive());
+    }
+
     public void addTime(TrainingTime newTime) {
         trainingTimes.add(newTime);
     }

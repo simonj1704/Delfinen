@@ -75,12 +75,12 @@ public class MemberHandler {
 
     public void printMembers() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i).getTypeOfMembership().equals("Elite Swimmer")) {
-                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Member: %-15s Coach: %-10s Arrears: %-7s Passive Member: %-7s\n", fileHandler.readMembers.get(i).getId(),
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Member: %-15s Coach: %-10s Disciplines: %-20s Arrears: %-7s Passive Member: %-7s\n", fileHandler.readMembers.get(i).getId(),
                         fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
                         fileHandler.readMembers.get(i).getTypeOfMembership(), fileHandler.readMembers.get(i).getTypeOfSwimmer(),
-                        fileHandler.readMembers.get(i), fileHandler.readMembers.get(i).hasArrears(),
-                        fileHandler.readMembers.get(i).isPassive());
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(), ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
+                        fileHandler.readMembers.get(i).hasArrears(), fileHandler.readMembers.get(i).isPassive());
             } else {
                 System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
                         fileHandler.readMembers.get(i).getId(), fileHandler.readMembers.get(i).getName(),

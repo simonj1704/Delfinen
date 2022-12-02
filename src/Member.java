@@ -134,6 +134,12 @@ public class Member {
         return out;
     }
 
+    public void viewMember(Member member){
+        System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Subscription Price: %-7d Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
+                member.getId(), member.getName(), member.getAge(), member.getTypeOfMembership(),
+                member.getSubscriptionPrice(), member.getTypeOfSwimmer(), member.hasArrears(), member.isPassive());
+    }
+
 
     @Override
     public String toString() {
