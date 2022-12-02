@@ -45,7 +45,6 @@ public class Menu {
                 "4. View tournament results"};
         printMenu();
         int inputChoice = readChoiceInt();
-        in.nextLine();
 
         switch (inputChoice){
             case 1:
@@ -65,11 +64,27 @@ public class Menu {
     }
 
     public void treasurerMenu(){
-        menuHeader = "Welcome treasurer";
-        leadText = "Please choose an option:";
-        menuItems = new String[]{"1. view arrears"};
-        printMenu();
-        //TODO add print arrears
+        boolean isRunning = true;
+        System.out.println("Welcome Treasurer");
+        while (isRunning) {
+            menuHeader = "Main Menu";
+            leadText = "Please choose an option:";
+            menuItems = new String[]{"1. View Arrears", "2. Change Arrears", "3. Quit"};
+            printMenu();
+            int input = readChoiceInt();
+
+            switch (input) {
+                case 1:
+                    memberHandler.printMembers();
+                    break;
+                case 2:
+                    memberHandler.changeArrears();
+                    break;
+                case 3:
+                    System.out.println("You've chosen to Quit.");
+                    isRunning = false;
+            }
+        }
     }
 
     public void presidentMenu(){

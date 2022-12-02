@@ -140,6 +140,49 @@ public class MemberHandler {
         }
     }
 
+
+    public void changeArrears(){
+        boolean isRunning = true;
+        int choice;
+        printMembers();
+        System.out.print("What member do you want to change(ID): ");
+        choice = readChoiceInt();
+        int index = -1;
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i).getId() == choice){
+                index = i;
+            }
+        }
+        System.out.println("------------------------------------------------");
+        System.out.print("ID: " + fileHandler.readMembers.get(index).getId() + "     " +
+                "Name: " + fileHandler.readMembers.get(index).getName() + "     " +
+                "Age: " + fileHandler.readMembers.get(index).getAge() + "     " +
+                "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
+                "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "\n");
+        System.out.println("------------------------------------------------");
+        System.out.println("What do you want to change: ");
+        System.out.println("Passive\nArrears");
+        while (isRunning) {
+            String change = in.nextLine();
+            switch (change.toLowerCase()) {
+                case "passive" -> {
+                    System.out.print("Do you want to set this member as passive(yes) or register active(no): ");
+                    String passive = in.nextLine();
+                    fileHandler.readMembers.get(index).setHasArrears(passive.equals("yes"));
+                    isRunning = false;
+                }
+                case "arrears" -> {
+                    System.out.print("Do you want to give this member arrears(yes) or remove arrears(no): ");
+                    String arrears = in.nextLine();
+                    fileHandler.readMembers.get(index).setHasArrears(arrears.equals("yes"));
+                    isRunning = false;
+                }
+                default -> System.out.println("Unknown Input.");
+            }
+            fileHandler.changeMember();
+        }
+    }
+
     public int readChoiceInt() {
         boolean validChoice = false;
         int choice = -1;
