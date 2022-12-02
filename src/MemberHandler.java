@@ -89,7 +89,6 @@ public class MemberHandler {
                         fileHandler.readMembers.get(i).isPassive());
             }
         }
-        System.out.println(fileHandler.readMembers);
     }
 
     public void changeMember(){
