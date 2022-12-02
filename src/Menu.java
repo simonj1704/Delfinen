@@ -69,7 +69,7 @@ public class Menu {
         while (isRunning) {
             menuHeader = "Main Menu";
             leadText = "Please choose an option:";
-            menuItems = new String[]{"1. View Arrears", "2. Change Arrears", "3. Quit"};
+            menuItems = new String[]{"1. View Arrears/Passive", "2. Change Arrears/Passive", "3. Quit"};
             printMenu();
             int input = readChoiceInt();
 
