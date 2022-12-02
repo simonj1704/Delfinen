@@ -75,10 +75,21 @@ public class MemberHandler {
 
     public void printMembers() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            System.out.printf("ID: %-4d Name: %-30s Age: %-4d Type: %-8s Arrears: %-7s\n", fileHandler.readMembers.get(i).getId(),
-                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                    fileHandler.readMembers.get(i).getTypeOfMembership(),fileHandler.readMembers.get(i).hasArrears());
+            if (fileHandler.readMembers.get(i).getTypeOfMembership().equals("Elite Swimmer")) {
+                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Member: %-15s Coach: %-10s Arrears: %-7s Passive Member: %-7s\n", fileHandler.readMembers.get(i).getId(),
+                        fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                        fileHandler.readMembers.get(i).getTypeOfMembership(), fileHandler.readMembers.get(i).getTypeOfSwimmer(),
+                        fileHandler.readMembers.get(i), fileHandler.readMembers.get(i).hasArrears(),
+                        fileHandler.readMembers.get(i).isPassive());
+            } else {
+                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
+                        fileHandler.readMembers.get(i).getId(), fileHandler.readMembers.get(i).getName(),
+                        fileHandler.readMembers.get(i).getAge(), fileHandler.readMembers.get(i).getTypeOfMembership(),
+                        fileHandler.readMembers.get(i).getTypeOfSwimmer(), fileHandler.readMembers.get(i).hasArrears(),
+                        fileHandler.readMembers.get(i).isPassive());
+            }
         }
+        System.out.println(fileHandler.readMembers);
     }
 
     public void changeMember(){

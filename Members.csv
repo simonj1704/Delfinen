@@ -1,11 +1,5 @@
-1;bob;15;Junior;Hobbyist;false;false;1000
-5;John;20;Senior;Hobbyist;false;true;1600
-7;John;15;Junior;Hobbyist;false;false;1000
-8;Michael;36;Senior;Elite Swimmer;false;false;1600
-9;asd;35;Senior;Hobbyist;false;false;1600
-10;sdf;65;Senior;Elite Swimmer;false;false;1200
-11;dfh;43;Senior;Elite Swimmer;false;false;1600
-12;fgsfd;34;Senior;Hobbyist;false;false;1600
-13;Mikkel;34;Senior;Elite Swimmer;false;false;1600
-14;Mikkel;34;Senior;Elite Swimmer;false;false;1600
-15;Mikkel;21;Senior;Elite Swimmer;false;false;1600
+1;bob;15;Junior;Hobbyist;false;false
+2;Mikkel;10;Junior;Elite Swimmer;John;Ryg;false;false
+3;Pat;25;Senior;Elite Swimmer;John;Crawl;false;false
+4;Bob;40;Senior;Hobbyist;false;false;1600
+5;Simon;20;Senior;Elite Swimmer;John;ryg;false;false
