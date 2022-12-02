@@ -62,6 +62,7 @@ public class FileHandler {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
             fileWriter.println(member);
             fileWriter.close();
+            setReadMembers();
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
