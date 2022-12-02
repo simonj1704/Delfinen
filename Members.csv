@@ -1,5 +1,5 @@
-1;bob;15;Junior;Hobbyist;false;false
-2;Mikkel;10;Junior;Elite Swimmer;John;Ryg;false;false
-3;Pat;25;Senior;Elite Swimmer;John;Crawl;false;false
+1;Bob;15;Junior;Hobbyist;false;false;1000
+2;Mikkel;10;Junior;Elite Swimmer;false;false;1000
+3;Pat;25;Senior;Elite Swimmer;false;false;1600
 4;Bob;40;Senior;Hobbyist;false;false;1600
-5;Simon;20;Senior;Elite Swimmer;John;ryg;false;false
+5;Simon;20;Senior;Elite Swimmer;false;true;1600

@@ -39,27 +39,44 @@ public class Menu {
     }
 
     public void coachMenu(){
-        menuHeader = "Welcome Coach";
-        leadText = "Please choose an option:";
-        menuItems = new String[]{"1. Add a training result", "2. Add a tournament result", "3. View training results",
-                "4. View tournament results"};
-        printMenu();
-        int inputChoice = readChoiceInt();
+        boolean isRunning = true;
+        System.out.println("Welcome Coach");
+        while (isRunning) {
+            menuHeader = "Main Menu";
+            leadText = "Please choose an option:";
+            menuItems = new String[]{"1. Add a training result", "2. Add a tournament result", "3. View training results",
+                    "4. View tournament results","5. View Elite Swimmers" , "6. Delete training result", "7. Delete tournament result",
+            "8. Quit"};
+            printMenu();
+            int inputChoice = readChoiceInt();
 
-        switch (inputChoice){
-            case 1:
-                memberHandler.createTrainingTime();
-                break;
-            case 2:
-                memberHandler.createTournamentResult();
-                break;
-            case 3:
-                //TODO add trainingTimePrint
-                break;
-            case 4:
-                //TODO add tournamentResultPrint
-                break;
-            case 5:
+            switch (inputChoice) {
+                case 1:
+                    memberHandler.createTrainingTime();
+                    break;
+                case 2:
+                    memberHandler.createTournamentResult();
+                    break;
+                case 3:
+                    //TODO add trainingTimePrint
+                    break;
+                case 4:
+                    //TODO add tournamentResultPrint
+                    break;
+                case 5:
+                    //View Elite Swimmers
+                    break;
+                case 6:
+                    //Delete Training Result
+                    break;
+                case 7:
+                    //Delete tournament Result
+                    break;
+                case 8:
+                    System.out.println("You've Chosen to Quit.");
+                    isRunning = false;
+                    break;
+            }
         }
     }
 
@@ -69,7 +86,7 @@ public class Menu {
         while (isRunning) {
             menuHeader = "Main Menu";
             leadText = "Please choose an option:";
-            menuItems = new String[]{"1. View Arrears", "2. Change Arrears", "3. Quit"};
+            menuItems = new String[]{"1. View Arrears/Passive", "2. Change Arrears/Passive", "3. Quit"};
             printMenu();
             int input = readChoiceInt();
 
