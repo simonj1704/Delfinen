@@ -24,7 +24,24 @@ public class EliteSwimmer extends Member {
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
         String[] time = splitTimes(times);
+        if (time[0].length() == 1){
+            time = new String[4];
+            time[0] = "Unknown";
+            time[1] = "Unknown";
+            time[2] = "Unknown";
+            time[3] = "Unknown";
+
+        }
         String[] tournament = splitTimes(tourney);
+        if (tournament.length == 1){
+            tournament = new String[6];
+            tournament[0] = "Unknown";
+            tournament[1] = "Unknown";
+            tournament[2] = "Unknown";
+            tournament[3] = "Unknown";
+            tournament[4] = "Unknown";
+            tournament[5] = "Unknown";
+        }
         trainingTimes.add(new TrainingTime(LocalDate.parse(time[3]),Integer.parseInt(time[1]),
                 Integer.parseInt(time[2]), time[0]));
         tournamentTimes.add(new TournamentBoard(LocalDate.parse(tournament[5]), tournament[0],

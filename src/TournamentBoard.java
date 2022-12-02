@@ -3,13 +3,13 @@ package src;
 import java.time.LocalDate;
 
 public class TournamentBoard {
-    LocalDate date;
+    LocalDate date = LocalDate.now();
 
-    private String tourneyName;
-    private String placement;
-    private int placementTimeSeconds;
-    private int placementTimeMilliseconds;
-    private String discipline;
+    private String tourneyName = "Unknown";
+    private String placement = "Unknown";
+    private int placementTimeSeconds = 0;
+    private int placementTimeMilliseconds = 0;
+    private String discipline = "Unknown";
 
 
     // Constructors

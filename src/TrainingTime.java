@@ -4,10 +4,10 @@ package src;
 import java.time.LocalDate;
 
 public class TrainingTime {
-    private int trainingSeconds;
-    private int trainingMilSeconds;
-    private String discipline;
-    private LocalDate date;
+    private int trainingSeconds = 0;
+    private int trainingMilSeconds = 0;
+    private String discipline = "Unknown";
+    private LocalDate date = LocalDate.now();
 
     // Constructors
     public TrainingTime(LocalDate date, int trainingSeconds, int trainingMilSeconds, String discipline) {
