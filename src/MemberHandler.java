@@ -44,7 +44,6 @@ public class MemberHandler {
         choice = readChoiceInt();
 
         System.out.print("Enter Name: ");
-        in.nextLine();
         name = in.nextLine();
 
         System.out.print("Enter Age: ");
@@ -105,7 +104,6 @@ public class MemberHandler {
         printMembers();
         System.out.print("What member do you want to change(ID): ");
         choice = readChoiceInt();
-        in.nextLine();
         int index = -1;
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i).getId() == choice){
@@ -176,6 +174,7 @@ public class MemberHandler {
         while (!validChoice) {
             if (in.hasNextInt()) {
                 choice = in.nextInt();
+                in.nextLine();
                 validChoice = true;
             } else {
                 System.out.print("Please choose an option\n");
@@ -216,7 +215,6 @@ public class MemberHandler {
         String typeOfSwimmer = "";
         System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
         int choice = readChoiceInt();
-        in.nextLine();
         switch (choice) {
             case 1 -> typeOfSwimmer = "Hobbyist";
             case 2 -> typeOfSwimmer = "Elite Swimmer";
@@ -267,14 +265,11 @@ public class MemberHandler {
         String inputDiscipline = in.nextLine();
         System.out.print("Input Training Time in Seconds: ");
         int trainingTimeSeconds = readChoiceInt();
-        in.nextLine();
         System.out.print("Input Training Time in Milliseconds: ");
         int trainingTimeMilSeconds = readChoiceInt();
-        in.nextLine();
         TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
@@ -292,15 +287,12 @@ public class MemberHandler {
         String placement = in.nextLine();
         System.out.println("Input swim time seconds");
         int placementTimeSeconds = readChoiceInt();
-        in.nextLine();
         System.out.println("Input swim time ms");
         int placementTimeMilliseconds = readChoiceInt();
-        in.nextLine();
         TournamentBoard newTournamentBoard = new TournamentBoard(date, tourneyName, placement, placementTimeSeconds
                 , placementTimeMilliseconds);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);

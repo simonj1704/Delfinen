@@ -41,12 +41,28 @@ public class FileHandler {
         }
     }
 
+    public int readChoiceInt() {
+        boolean validChoice = false;
+        int choice = -1;
+
+        while (!validChoice) {
+            if (in.hasNextInt()) {
+                choice = in.nextInt();
+                in.nextLine();
+                validChoice = true;
+            } else {
+                System.out.print("Please choose an option\n");
+                in.nextLine();
+            }
+        }
+        return choice;
+    }
+
     public void deleteMember(){
         int delete;
         System.out.println(readMembers);
         System.out.print("What member do you want to delete(ID): ");
-        delete = in.nextInt();
-        in.nextLine();
+        delete = readChoiceInt();
         int index = -1;
         for (int i = 0; i < readMembers.size(); i++) {
             if (readMembers.get(i).getId() == delete){

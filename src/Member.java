@@ -28,6 +28,7 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
+        setSubscriptionPrice();
         id = nextId++;
 
     }
@@ -39,6 +40,7 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
+        setSubscriptionPrice();
         this.id = id;
 
     }
