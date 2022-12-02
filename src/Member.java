@@ -114,6 +114,8 @@ public class Member {
             this.subscriptionPrice = 1000;
         } else if (this.age > 60) {
             this.subscriptionPrice = 1200;
+        } else if (isPassive){
+            this.subscriptionPrice = 500;
         } else {
             this.subscriptionPrice = 1600;
         }
