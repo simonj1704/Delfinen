@@ -22,7 +22,7 @@ public class FileHandler {
                 while(tokenReader.hasNext()){
                     tokens.add(tokenReader.next());
                 }
-                if (tokens.size() == 10){
+                if (tokens.size() > 8){
                     readMembers.add(new EliteSwimmer(Integer.parseInt(tokens.get(0)), tokens.get(1),
                             Integer.parseInt(tokens.get(2)),
                             tokens.get(5), tokens.get(6),
