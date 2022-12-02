@@ -333,6 +333,7 @@ public class MemberHandler {
                     fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
                     ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
                     ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
+            ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
 
         }
     }
@@ -342,7 +343,9 @@ public class MemberHandler {
                     fileHandler.readMembers.get(i).getId(),
                     fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
                     ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
+                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
+                    ((EliteSwimmer) fileHandler.readMembers.get(i)));
+            ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
         }
     }
 }
