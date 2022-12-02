@@ -28,6 +28,7 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
+        setSubscriptionPrice();
         id = nextId++;
 
     }
@@ -39,6 +40,7 @@ public class Member {
         setHasArrears(hasArrears);
         setTypeOfSwimmer(typeOfSwimmer);
         setTypeOfMembership(age);
+        setSubscriptionPrice();
         this.id = id;
 
     }
@@ -127,7 +129,8 @@ public class Member {
     public String printMember(Member member){
         String out;
         out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
-        member.getTypeOfSwimmer() + ";" + member.isPassive() + ";" + member.hasArrears();
+        member.getTypeOfSwimmer() + ";" + member.isPassive() + ";" + member.hasArrears() + ";"
+                + member.getSubscriptionPrice();
         return out;
     }
 
@@ -142,6 +145,7 @@ public class Member {
                 ", typeOfSwimmer='" + typeOfSwimmer + '\'' +
                 ", isPassive=" + isPassive +
                 ", hasArrears=" + hasArrears +
+                ", subscriptionPrice=" + subscriptionPrice +
                 '}';
     }
 }

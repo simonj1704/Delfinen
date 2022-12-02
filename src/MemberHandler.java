@@ -26,16 +26,6 @@ public class MemberHandler {
         return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
     }
 
-    public void writeMember(String member) {
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
-            fileWriter.println(member);
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void addMember() {
         int choice;
         int age;
@@ -44,7 +34,6 @@ public class MemberHandler {
         choice = readChoiceInt();
 
         System.out.print("Enter Name: ");
-        in.nextLine();
         name = in.nextLine();
 
         System.out.print("Enter Age: ");
@@ -64,7 +53,7 @@ public class MemberHandler {
         String typeOfSwimmer = getTypeOfSwimmer();
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
-        writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
+        fileHandler.writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
     }
 
     public void createElite(String name, int age) {
@@ -75,20 +64,28 @@ public class MemberHandler {
         discipline = getDiscipline();
         EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline);
         members.add(eliteSwimmer);
-        writeMember(eliteSwimmer.printMember(eliteSwimmer));
+        fileHandler.writeMember(eliteSwimmer.printMember(eliteSwimmer));
     }
 
     public void createHobbyist(String name, int age) {
         Hobbyist hobbyist = new Hobbyist(name, age);
         members.add(hobbyist);
-        writeMember(hobbyist.printMember(hobbyist));
+        fileHandler.writeMember(hobbyist.printMember(hobbyist));
     }
 
     public void printMembers() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            System.out.printf("ID: %-4d Name: %-30s Age: %-4d Type: %-8s Arrears: %-7s\n", fileHandler.readMembers.get(i).getId(),
-                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                    fileHandler.readMembers.get(i).getTypeOfMembership(),fileHandler.readMembers.get(i).hasArrears());
+            System.out.print("ID: " + fileHandler.readMembers.get(i).getId() + "     " +
+                            "Name: " + fileHandler.readMembers.get(i).getName() + "     " +
+                            "Age: " + fileHandler.readMembers.get(i).getAge() + "     " +
+                            "Type: " + fileHandler.readMembers.get(i).getTypeOfMembership() + "     " +
+                            "Arrears: " + fileHandler.readMembers.get(i).hasArrears() + "    " +
+                            "Subscription price: " + fileHandler.readMembers.get(i).getSubscriptionPrice() + "\n");
+
+            /*System.out.printf("ID     : %5s%n", fileHandler.readMembers.get(i).getId());
+            System.out.printf("Name   : %5s%n", fileHandler.readMembers.get(i).getName());
+            System.out.printf("Age    : %5d%n", fileHandler.readMembers.get(i).getAge());
+            System.out.printf("Type   : %5s%n", fileHandler.readMembers.get(i).getTypeOfMembership());*/
         }
     }
 
@@ -98,7 +95,6 @@ public class MemberHandler {
         printMembers();
         System.out.print("What member do you want to change(ID): ");
         choice = readChoiceInt();
-        in.nextLine();
         int index = -1;
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i).getId() == choice){
@@ -149,16 +145,7 @@ public class MemberHandler {
                 }
                 default -> System.out.println("Unknown Input.");
             }
-        }
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-            for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-                fileWriter.println(new Member().printMember(fileHandler.readMembers.get(i)));
-            }
-            System.out.println("Member successfully Changed");
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            fileHandler.changeMember();
         }
     }
 
@@ -169,6 +156,7 @@ public class MemberHandler {
         while (!validChoice) {
             if (in.hasNextInt()) {
                 choice = in.nextInt();
+                in.nextLine();
                 validChoice = true;
             } else {
                 System.out.print("Please choose an option\n");
@@ -209,7 +197,6 @@ public class MemberHandler {
         String typeOfSwimmer = "";
         System.out.println("What type of swimmer is the member? (Hobbyist (1) / Elite Swimmer (2)");
         int choice = readChoiceInt();
-        in.nextLine();
         switch (choice) {
             case 1 -> typeOfSwimmer = "Hobbyist";
             case 2 -> typeOfSwimmer = "Elite Swimmer";
@@ -260,14 +247,11 @@ public class MemberHandler {
         String inputDiscipline = in.nextLine();
         System.out.print("Input Training Time in Seconds: ");
         int trainingTimeSeconds = readChoiceInt();
-        in.nextLine();
         System.out.print("Input Training Time in Milliseconds: ");
         int trainingTimeMilSeconds = readChoiceInt();
-        in.nextLine();
         TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
@@ -285,15 +269,12 @@ public class MemberHandler {
         String placement = in.nextLine();
         System.out.println("Input swim time seconds");
         int placementTimeSeconds = readChoiceInt();
-        in.nextLine();
         System.out.println("Input swim time ms");
         int placementTimeMilliseconds = readChoiceInt();
-        in.nextLine();
         TournamentBoard newTournamentBoard = new TournamentBoard(date, tourneyName, placement, placementTimeSeconds
                 , placementTimeMilliseconds);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        in.nextLine();
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).getId() == searchId) {
                 EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);

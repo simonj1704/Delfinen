@@ -70,7 +70,6 @@ public class Menu {
         menuItems = new String[]{"1. view arrears"};
         printMenu();
         //TODO add print arrears
-
     }
 
     public void presidentMenu(){
@@ -83,7 +82,6 @@ public class Menu {
             printMenu();
             System.out.print("Enter input: ");
             int inputChoice = readChoiceInt();
-            in.nextLine();
 
             switch (inputChoice) {
                 case 1:
