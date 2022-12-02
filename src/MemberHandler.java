@@ -89,7 +89,6 @@ public class MemberHandler {
                         fileHandler.readMembers.get(i).isPassive());
             }
         }
-        System.out.println(fileHandler.readMembers);
     }
 
     public void changeMember(){
@@ -169,7 +168,8 @@ public class MemberHandler {
                 "Name: " + fileHandler.readMembers.get(index).getName() + "     " +
                 "Age: " + fileHandler.readMembers.get(index).getAge() + "     " +
                 "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
-                "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "\n");
+                "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "     " +
+                "Passive" + fileHandler.readMembers.get(index).isPassive() + "\n");
         System.out.println("------------------------------------------------");
         System.out.println("What do you want to change: ");
         System.out.println("Passive\nArrears");
