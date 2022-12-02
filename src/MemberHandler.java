@@ -79,7 +79,8 @@ public class MemberHandler {
                             "Name: " + fileHandler.readMembers.get(i).getName() + "     " +
                             "Age: " + fileHandler.readMembers.get(i).getAge() + "     " +
                             "Type: " + fileHandler.readMembers.get(i).getTypeOfMembership() + "     " +
-                            "Arrears: " + fileHandler.readMembers.get(i).hasArrears() + "\n");
+                            "Arrears: " + fileHandler.readMembers.get(i).hasArrears() + "    " +
+                            "Subscription price: " + fileHandler.readMembers.get(i).getSubscriptionPrice() + "\n");
 
             /*System.out.printf("ID     : %5s%n", fileHandler.readMembers.get(i).getId());
             System.out.printf("Name   : %5s%n", fileHandler.readMembers.get(i).getName());
