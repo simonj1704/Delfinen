@@ -160,7 +160,6 @@ public class MemberHandler {
 
     public String getCoach() {
         System.out.print("Who is the Coach: ");
-        in.nextLine();
         return in.nextLine();
     }
 

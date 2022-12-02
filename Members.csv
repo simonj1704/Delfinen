@@ -9,3 +9,5 @@
 13;Mikkel;34;Senior;Elite Swimmer;false;false
 14;Mikkel;34;Senior;Elite Swimmer;false;false
 15;Mikkel;21;Senior;Elite Swimmer;false;false
+16;john;14;Junior;Hobbyist;false;false;1000
+17;ndn;23;Senior;Elite Swimmer;john;ryg;false;false
