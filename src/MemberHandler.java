@@ -112,8 +112,7 @@ public class MemberHandler {
                 }
                 case "age" -> {
                     System.out.print("What do you want to change the age to: ");
-                    int age = in.nextInt();
-                    in.nextLine();
+                    int age = readChoiceInt();
                     fileHandler.readMembers.get(index).setAge(age);
                     fileHandler.readMembers.get(index).setTypeOfMembership(age);
                     isRunning = false;
