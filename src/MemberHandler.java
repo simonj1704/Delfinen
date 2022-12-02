@@ -317,7 +317,7 @@ public class MemberHandler {
     }
     public void trainingTimePrint(){
         for (int i = 0; i < fileHandler.readMembers.size(); i++){
-            System.out.println("ID: ");
+            System.out.println("ID: " + fileHandler.readMembers.get(i));
 
         }
     }
