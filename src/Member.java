@@ -110,9 +110,9 @@ public class Member {
     }
 
     public void setSubscriptionPrice(){
-        if (age < 18){
+        if (this.age < 18){
             this.subscriptionPrice = 1000;
-        } else if (age > 60) {
+        } else if (this.age > 60) {
             this.subscriptionPrice = 1200;
         } else {
             this.subscriptionPrice = 1600;
