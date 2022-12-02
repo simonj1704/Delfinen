@@ -26,16 +26,6 @@ public class MemberHandler {
         return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
     }
 
-    public void writeMember(String member) {
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
-            fileWriter.println(member);
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void addMember() {
         int choice;
         int age;
@@ -63,7 +53,7 @@ public class MemberHandler {
         String typeOfSwimmer = getTypeOfSwimmer();
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
-        writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
+        fileHandler.writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
     }
 
     public void createElite(String name, int age) {
@@ -74,13 +64,13 @@ public class MemberHandler {
         discipline = getDiscipline();
         EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline);
         members.add(eliteSwimmer);
-        writeMember(eliteSwimmer.printMember(eliteSwimmer));
+        fileHandler.writeMember(eliteSwimmer.printMember(eliteSwimmer));
     }
 
     public void createHobbyist(String name, int age) {
         Hobbyist hobbyist = new Hobbyist(name, age);
         members.add(hobbyist);
-        writeMember(hobbyist.printMember(hobbyist));
+        fileHandler.writeMember(hobbyist.printMember(hobbyist));
     }
 
     public void printMembers() {
@@ -154,16 +144,7 @@ public class MemberHandler {
                 }
                 default -> System.out.println("Unknown Input.");
             }
-        }
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-            for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-                fileWriter.println(new Member().printMember(fileHandler.readMembers.get(i)));
-            }
-            System.out.println("Member successfully Changed");
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+            fileHandler.changeMember();
         }
     }
 
