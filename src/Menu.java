@@ -107,16 +107,28 @@ public class Menu {
     public void userLogin(){
         String username;
         String password;
+
+        //Usernames
+        String usernamePresident = "President";
+        String usernameCoach = "Coach";
+        String usernameTreasurer = "Treasurer";
+
+        //Passwords
+        String passwordPresident = "president";
+        String passwordCoach = "coach";
+        String passwordTreasurer = "treasurer";
+
+
         System.out.print("Enter username: ");
         username = in.nextLine();
         System.out.print("Enter password: ");
         password = in.nextLine();
 
-        if(username.equalsIgnoreCase("President") && password.equalsIgnoreCase("president")){
+        if(username.equalsIgnoreCase(usernamePresident) && password.equals(passwordPresident)){
             presidentMenu();
-        } else if (username.equalsIgnoreCase("coach") && password.equalsIgnoreCase("coach")) {
+        } else if (username.equalsIgnoreCase(usernameCoach) && password.equals(passwordCoach)) {
             coachMenu();
-        } else if (username.equalsIgnoreCase("treasurer") && password.equalsIgnoreCase("treasurer")) {
+        } else if (username.equalsIgnoreCase(usernameTreasurer) && password.equals(passwordTreasurer)) {
             treasurerMenu();
         } else {
             System.out.println("Access denied.");
