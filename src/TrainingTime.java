@@ -40,7 +40,9 @@ public class TrainingTime {
         this.discipline = discipline;
     }
 
-
+    public LocalDate getDate(){
+        return date;
+    }
 
     @Override
     public String toString() {

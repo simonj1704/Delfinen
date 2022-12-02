@@ -84,6 +84,14 @@ public class EliteSwimmer extends Member {
         tournamentTimes.add(newTournamentBoard);
 
     }
+    
+    public void printTimes(){
+        for (int i = 0; i < trainingTimes.size(); i++) {
+            System.out.printf("%s %d %d %s",trainingTimes.get(i).getDate(),
+                    trainingTimes.get(i).getTrainingSeconds(), trainingTimes.get(i).getTrainingMilSeconds(),
+                    trainingTimes.get(i).getDiscipline());
+        }
+    }
 
     @Override
     public String toString() {
