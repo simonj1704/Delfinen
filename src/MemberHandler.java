@@ -26,16 +26,6 @@ public class MemberHandler {
         return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
     }
 
-    public void writeMember(String member) {
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
-            fileWriter.println(member);
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public void addMember() {
         int choice;
         int age;
@@ -63,7 +53,7 @@ public class MemberHandler {
         String typeOfSwimmer = getTypeOfSwimmer();
 
         members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
-        writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
+        fileHandler.writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
     }
 
     public void createElite(String name, int age) {
@@ -74,28 +64,20 @@ public class MemberHandler {
         discipline = getDiscipline();
         EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline);
         members.add(eliteSwimmer);
-        writeMember(eliteSwimmer.printMember(eliteSwimmer));
+        fileHandler.writeMember(eliteSwimmer.printMember(eliteSwimmer));
     }
 
     public void createHobbyist(String name, int age) {
         Hobbyist hobbyist = new Hobbyist(name, age);
         members.add(hobbyist);
-        writeMember(hobbyist.printMember(hobbyist));
+        fileHandler.writeMember(hobbyist.printMember(hobbyist));
     }
 
     public void printMembers() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            System.out.print("ID: " + fileHandler.readMembers.get(i).getId() + "     " +
-                            "Name: " + fileHandler.readMembers.get(i).getName() + "     " +
-                            "Age: " + fileHandler.readMembers.get(i).getAge() + "     " +
-                            "Type: " + fileHandler.readMembers.get(i).getTypeOfMembership() + "     " +
-                            "Arrears: " + fileHandler.readMembers.get(i).hasArrears() + "    " +
-                            "Subscription price: " + fileHandler.readMembers.get(i).getSubscriptionPrice() + "\n");
-
-            /*System.out.printf("ID     : %5s%n", fileHandler.readMembers.get(i).getId());
-            System.out.printf("Name   : %5s%n", fileHandler.readMembers.get(i).getName());
-            System.out.printf("Age    : %5d%n", fileHandler.readMembers.get(i).getAge());
-            System.out.printf("Type   : %5s%n", fileHandler.readMembers.get(i).getTypeOfMembership());*/
+            System.out.printf("ID: %-4d Name: %-30s Age: %-4d Type: %-8s Arrears: %-7s\n", fileHandler.readMembers.get(i).getId(),
+                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                    fileHandler.readMembers.get(i).getTypeOfMembership(),fileHandler.readMembers.get(i).hasArrears());
         }
     }
 
@@ -130,8 +112,7 @@ public class MemberHandler {
                 }
                 case "age" -> {
                     System.out.print("What do you want to change the age to: ");
-                    int age = in.nextInt();
-                    in.nextLine();
+                    int age = readChoiceInt();
                     fileHandler.readMembers.get(index).setAge(age);
                     fileHandler.readMembers.get(index).setTypeOfMembership(age);
                     isRunning = false;
@@ -155,16 +136,50 @@ public class MemberHandler {
                 }
                 default -> System.out.println("Unknown Input.");
             }
+            fileHandler.changeMember();
         }
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-            for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-                fileWriter.println(new Member().printMember(fileHandler.readMembers.get(i)));
+    }
+
+
+    public void changeArrears(){
+        boolean isRunning = true;
+        int choice;
+        printMembers();
+        System.out.print("What member do you want to change(ID): ");
+        choice = readChoiceInt();
+        int index = -1;
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i).getId() == choice){
+                index = i;
             }
-            System.out.println("Member successfully Changed");
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+        }
+        System.out.println("------------------------------------------------");
+        System.out.print("ID: " + fileHandler.readMembers.get(index).getId() + "     " +
+                "Name: " + fileHandler.readMembers.get(index).getName() + "     " +
+                "Age: " + fileHandler.readMembers.get(index).getAge() + "     " +
+                "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
+                "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "\n");
+        System.out.println("------------------------------------------------");
+        System.out.println("What do you want to change: ");
+        System.out.println("Passive\nArrears");
+        while (isRunning) {
+            String change = in.nextLine();
+            switch (change.toLowerCase()) {
+                case "passive" -> {
+                    System.out.print("Do you want to set this member as passive(yes) or register active(no): ");
+                    String passive = in.nextLine();
+                    fileHandler.readMembers.get(index).setHasArrears(passive.equals("yes"));
+                    isRunning = false;
+                }
+                case "arrears" -> {
+                    System.out.print("Do you want to give this member arrears(yes) or remove arrears(no): ");
+                    String arrears = in.nextLine();
+                    fileHandler.readMembers.get(index).setHasArrears(arrears.equals("yes"));
+                    isRunning = false;
+                }
+                default -> System.out.println("Unknown Input.");
+            }
+            fileHandler.changeMember();
         }
     }
 
@@ -187,7 +202,6 @@ public class MemberHandler {
 
     public String getCoach() {
         System.out.print("Who is the Coach: ");
-        in.nextLine();
         return in.nextLine();
     }
 

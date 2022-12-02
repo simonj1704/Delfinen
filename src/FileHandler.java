@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileHandler {
-
     ArrayList<Member> readMembers = new ArrayList<>();
     Scanner in = new Scanner(System.in);
     private static final int nextId = 0;
@@ -56,6 +55,30 @@ public class FileHandler {
             }
         }
         return choice;
+    }
+
+    public void writeMember(String member) {
+        try {
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
+            fileWriter.println(member);
+            fileWriter.close();
+            setReadMembers();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void changeMember() {
+        try {
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
+            for (int i = 0; i < readMembers.size(); i++) {
+                fileWriter.println(new Member().printMember(readMembers.get(i)));
+            }
+            System.out.println("Member successfully Changed");
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public void deleteMember(){
