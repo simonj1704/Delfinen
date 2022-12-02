@@ -1,6 +1,9 @@
 package src;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class EliteSwimmer extends Member {
     private String coach;
@@ -14,14 +17,29 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
     }
 
-    public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
+    public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears, String times, String tourney) {
         super(id, name, age, "Elite Swimmer", false, false);
         setCoach(coach);
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
+        String[] time = splitTimes(times);
+        String[] tournament = splitTimes(tourney);
+        trainingTimes.add(new TrainingTime(LocalDate.parse(time[3]),Integer.parseInt(time[1]),
+                Integer.parseInt(time[2]), time[0]));
+        tournamentTimes.add(new TournamentBoard(LocalDate.parse(tournament[5]), tournament[0],
+                tournament[1], Integer.parseInt(tournament[2]), Integer.parseInt(tournament[3])));
     }
 
+    public String[] splitTimes(String input){
+        String[] out = input.split(":");
+        return out;
+    }
+
+    public String[] splitTourney(String input){
+        String[] out = input.split(":");
+        return out;
+    }
     public void setCoach(String coach) {
         this.coach = coach;
     }

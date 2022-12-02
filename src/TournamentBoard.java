@@ -67,10 +67,10 @@ public class TournamentBoard {
 
     @Override
     public String toString() {
-        return "Tournament: " + tourneyName +
-                "\tPlacement : " + placement +
-                "\tTime: " + placementTimeSeconds + ":" + placementTimeMilliseconds+
-                "\tDiscipline" + discipline;
+        return tourneyName +
+                ":" + placement +
+                ":" + placementTimeSeconds + ":" + placementTimeMilliseconds+
+                ":" + discipline + ":" + date;
     }
 }
 

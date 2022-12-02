@@ -26,7 +26,8 @@ public class FileHandler {
                     readMembers.add(new EliteSwimmer(Integer.parseInt(tokens.get(0)), tokens.get(1),
                             Integer.parseInt(tokens.get(2)),
                             tokens.get(5), tokens.get(6),
-                            Boolean.parseBoolean(tokens.get(7)), Boolean.parseBoolean(tokens.get(8))));
+                            Boolean.parseBoolean(tokens.get(7)), Boolean.parseBoolean(tokens.get(8)),
+                            tokens.get(10),tokens.get(11)));
                 } else {
                     readMembers.add(new Member(Integer.parseInt(tokens.get(0)), tokens.get(1),
                             Integer.parseInt(tokens.get(2)), tokens.get(4),
