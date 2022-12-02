@@ -43,7 +43,8 @@ public class EliteSwimmer extends Member {
         String out;
         out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
                 member.getTypeOfSwimmer() + ";" + member.getCoach() + ";" + member.getSwimmingDiscipline()
-                + ";" + member.isPassive() + ";" + member.hasArrears() + ";" + member.getSubscriptionPrice();
+                + ";" + member.isPassive() + ";" + member.hasArrears() + ";" + member.getSubscriptionPrice() + ";"
+                + member.trainingTimes + ";" + member.tournamentTimes;
         return out;
     }
 

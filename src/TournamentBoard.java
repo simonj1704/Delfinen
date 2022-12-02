@@ -64,5 +64,13 @@ public class TournamentBoard {
     public void setTourneyName(String tourneyName){
         this.tourneyName = tourneyName;
     }
+
+    @Override
+    public String toString() {
+        return "Tournament: " + tourneyName +
+                "\tPlacement : " + placement +
+                "\tTime: " + placementTimeSeconds + ":" + placementTimeMilliseconds+
+                "\tDiscipline" + discipline;
+    }
 }
 

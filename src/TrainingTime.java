@@ -44,11 +44,8 @@ public class TrainingTime {
 
     @Override
     public String toString() {
-        return "TrainingTime{" +
-                "trainingSeconds=" + trainingSeconds +
-                ", trainingMilSeconds=" + trainingMilSeconds +
-                ", discipline='" + discipline + '\'' +
-                ", date=" + date +
-                '}';
+        return "Discipline: " + discipline +
+                "\tTime: " + trainingSeconds + ":" + trainingMilSeconds +
+                "\tDate: " + date;
     }
 }
