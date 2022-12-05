@@ -58,10 +58,10 @@ public class Menu {
                     memberHandler.createTournamentResult();
                     break;
                 case 3:
-                    //TODO add trainingTimePrint
+                    memberHandler.trainingTimePrint();
                     break;
                 case 4:
-                    //TODO add tournamentResultPrint
+                    memberHandler.tournamentTimePrint();
                     break;
                 case 5:
                     //View Elite Swimmers

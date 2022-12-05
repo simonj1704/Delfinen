@@ -329,24 +329,28 @@ public class MemberHandler {
     }
     public void trainingTimePrint(){
         for (int i = 0; i < fileHandler.readMembers.size(); i++){
-            System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
-                    fileHandler.readMembers.get(i).getId(),
-                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
-            ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
+                        fileHandler.readMembers.get(i).getId(),
+                        fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
+                ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
+            }
 
         }
     }
     public void tournamentTimePrint(){
         for (int i = 0; i < fileHandler.readMembers.size();i++) {
-            System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
-                    fileHandler.readMembers.get(i).getId(),
-                    fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
-                    ((EliteSwimmer) fileHandler.readMembers.get(i)));
-            ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
+                        fileHandler.readMembers.get(i).getId(),
+                        fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
+                        ((EliteSwimmer) fileHandler.readMembers.get(i)));
+                ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
+            }
         }
     }
 }

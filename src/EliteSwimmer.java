@@ -25,11 +25,10 @@ public class EliteSwimmer extends Member {
         setHasArrears(hasArrears);
         String[] time = splitTimes(times);
         String[] tournament = splitTourney(tourney);
-        if (tournament.length == 0) {
+        if (tournament.length != 0) {
             String[] date = getDate(tournament[5]);
-            System.out.println(Arrays.toString(time));
-            System.out.println(Arrays.toString(date));
             date[2] = date[2].replace("]", "");
+            tournament[0] = tournament[0].replace("[","");
             tournamentTimes.add(new TournamentBoard(
                     LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])),
                     tournament[0],
@@ -38,9 +37,10 @@ public class EliteSwimmer extends Member {
                     Integer.parseInt(tournament[3])
             ));
         }
-        if (time.length == 0) {
+        if (time.length != 0) {
             String[] date = getDate(time[3]);
             date[2] = date[2].replace("]", "");
+            time[0] = time[0].replace("[","");
             trainingTimes.add(new TrainingTime(
                     LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])),
                     Integer.parseInt(time[1]),
