@@ -6,13 +6,13 @@ import java.time.LocalDate;
 public class TrainingTime {
     private int trainingSeconds = 0;
     private int trainingMilSeconds = 0;
+    private double trainingTime = 0;
     private String discipline = "Unknown";
     private LocalDate date = LocalDate.now();
 
     // Constructors
     public TrainingTime(LocalDate date, int trainingSeconds, int trainingMilSeconds, String discipline) {
-        setTrainingSeconds(trainingSeconds);
-        setTrainingMilSeconds(trainingMilSeconds);
+        setTrainingTime(trainingSeconds,trainingMilSeconds);
         setDiscipline(discipline);
         this.date = date;
     }
@@ -28,6 +28,9 @@ public class TrainingTime {
     public String getDiscipline() {
         return discipline;
     }
+    public double getTime(){
+        return trainingTime;
+    }
 
     // Setters
     public void setTrainingMilSeconds(int trainingMilSeconds) {
@@ -38,6 +41,9 @@ public class TrainingTime {
     }
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
+    }
+    public void setTrainingTime(int trainingSeconds, int trainingMilSeconds){
+        trainingTime = Double.parseDouble(trainingSeconds + "." + trainingMilSeconds);
     }
 
     public LocalDate getDate(){

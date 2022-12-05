@@ -1,11 +1,7 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Scanner;
 
 public class MemberHandler {
@@ -355,6 +351,8 @@ public class MemberHandler {
     }
 
     public void top5Print(){
+        System.out.print("What Discipline do you want to print: ");
+        String discipline = in.nextLine();
         ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
@@ -362,10 +360,21 @@ public class MemberHandler {
 
             }
         }
-        TrainingTimesComparator timeSorter = new TrainingTimesComparator();
-        eliteSwimmers.sort(timeSorter);
-        for (int i = 0; i < 4; i++) {
-            System.out.println(eliteSwimmers.get(i));
+        if (discipline.equalsIgnoreCase("ryg")){
+            RygTimeComparator rygSorter = new RygTimeComparator();
+            eliteSwimmers.sort(rygSorter);
+        } else if (discipline.equalsIgnoreCase("crawl")){
+            CrawlTimeComparator crawlSorter = new CrawlTimeComparator();
+            eliteSwimmers.sort(crawlSorter);
+        } else if (discipline.equalsIgnoreCase("bryst")){
+            BrystTimeComparator brystSorter = new BrystTimeComparator();
+            eliteSwimmers.sort(brystSorter);
+        } else if (discipline.equalsIgnoreCase("butterfly")){
+            ButterflyTimeComparator flySorter = new ButterflyTimeComparator();
+            eliteSwimmers.sort(flySorter);
+        }
+        for (int i = 0; i < 5; i++) {
+            System.out.println(eliteSwimmers.get(i).printTimeFor5Top(discipline));
         }
     }
 }

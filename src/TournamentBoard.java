@@ -9,6 +9,7 @@ public class TournamentBoard {
     private String placement = "Unknown";
     private int placementTimeSeconds = 0;
     private int placementTimeMilliseconds = 0;
+    private double placementTime = 0;
     private String discipline = "Unknown";
 
 
@@ -17,8 +18,7 @@ public class TournamentBoard {
                            int placementTimeMilliseconds) {
         setPlacement(placement);
         setDiscipline(discipline);
-        setPlacementTimeSeconds(placementTimeSeconds);
-        setPlacementTimeMilliseconds(placementTimeMilliseconds);
+        setPlacementTime(placementTimeSeconds,placementTimeMilliseconds);
         setTourneyName(tourneyName);
         this.date = date;
     }
@@ -42,6 +42,9 @@ public class TournamentBoard {
     public String getTourneyName(){
         return tourneyName;
     }
+    public double getPlacementTime(){
+        return placementTime;
+    }
 
     // Setters
 
@@ -56,6 +59,9 @@ public class TournamentBoard {
 
     public void setPlacementTimeMilliseconds(int placementTimeMilliseconds) {
         this.placementTimeMilliseconds = placementTimeMilliseconds;
+    }
+    public void setPlacementTime(int placementSeconds, int placementMilliSeconds){
+        placementTime = Double.parseDouble(placementSeconds + "." + placementMilliSeconds);
     }
 
     public void setPlacement(String placement){

@@ -117,10 +117,6 @@ public class EliteSwimmer extends Member {
         }
     }
 
-    public double getTrainingTimes(){
-        System.out.println(trainingTimes);
-        return Double.parseDouble(trainingTimes.get(1) + "." + trainingTimes.get(2));
-    }
     public void printTournaments(){
         for (int i = 0; i < tournamentTimes.size(); i++) {
             System.out.printf("%s %s %s %d %d",tournamentTimes.get(i).getTourneyName(),
@@ -128,6 +124,21 @@ public class EliteSwimmer extends Member {
                     tournamentTimes.get(i).getPlacementTimeSeconds(),
                     tournamentTimes.get(i).getPlacementTimeMilliseconds());
         }
+    }
+
+    public double getTrainingTime(String discipline){
+        for (int i = 0; i < trainingTimes.size(); i++) {
+            if (trainingTimes.get(i).getDiscipline().equalsIgnoreCase(discipline)){
+                return trainingTimes.get(i).getTime();
+            }
+        }
+        return 0;
+    }
+
+    public String printTimeFor5Top(String discipline){
+        String out;
+        out = getId() + " " + getName() + " " + getTrainingTime(discipline);
+        return out;
     }
 
 
