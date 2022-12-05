@@ -23,6 +23,7 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
+        /*
         String[] time = splitTimes(times);
         if (time[0].length() == 1){
             time = new String[4];
@@ -46,7 +47,7 @@ public class EliteSwimmer extends Member {
                 Integer.parseInt(time[2]), time[0]));
         tournamentTimes.add(new TournamentBoard(LocalDate.parse(tournament[5]), tournament[0],
                 tournament[1], Integer.parseInt(tournament[2]), Integer.parseInt(tournament[3])));
-    }
+ */   }
 
     public String[] splitTimes(String input){
         String[] out = input.split(":");
