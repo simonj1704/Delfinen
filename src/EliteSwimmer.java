@@ -25,7 +25,7 @@ public class EliteSwimmer extends Member {
         setHasArrears(hasArrears);
         String[] time = splitTimes(times);
         String[] tournament = splitTourney(tourney);
-        if (tournament.length != 0) {
+        if (tournament.length != 1) {
             String[] date = getDate(tournament[5]);
             date[2] = date[2].replace("]", "");
             tournament[0] = tournament[0].replace("[","");
@@ -37,7 +37,7 @@ public class EliteSwimmer extends Member {
                     Integer.parseInt(tournament[3])
             ));
         }
-        if (time.length != 0) {
+        if (time.length != 1) {
             String[] date = getDate(time[3]);
             date[2] = date[2].replace("]", "");
             time[0] = time[0].replace("[","");
