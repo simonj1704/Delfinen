@@ -121,7 +121,7 @@ public class Menu {
                     memberHandler.addMember();
                     break;
                 case 2:
-                    memberHandler.fileHandler.deleteMember();
+                    memberHandler.deleteMember();
                     break;
                 case 3:
                     memberHandler.printMembers();

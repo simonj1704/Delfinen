@@ -83,26 +83,30 @@ public class FileHandler {
     }
 
     public void deleteMember(){
+        boolean deleted = false;
         int delete;
-        System.out.println(readMembers);
         System.out.print("What member do you want to delete(ID): ");
         delete = readChoiceInt();
         int index = -1;
         for (int i = 0; i < readMembers.size(); i++) {
             if (readMembers.get(i).getId() == delete){
                 index = i;
+                readMembers.remove(index);
+                try {
+                    PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
+                    for (i = 0; i < readMembers.size(); i++) {
+                        fileWriter.println(new Member().printMember(readMembers.get(i)));
+                    }
+                    System.out.println("Member successfully deleted");
+                    deleted = true;
+                    fileWriter.close();
+                } catch (FileNotFoundException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
-        readMembers.remove(index);
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-            for (int i = 0; i < readMembers.size(); i++) {
-                fileWriter.println(new Member().printMember(readMembers.get(i)));
-            }
-            System.out.println("Member successfully deleted");
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+        if (!deleted) {
+            System.out.println("Member not Found.");
         }
     }
 }

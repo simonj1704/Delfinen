@@ -23,6 +23,11 @@ public class MemberHandler {
         return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
     }
 
+    public void deleteMember() {
+        printMembers();
+        fileHandler.deleteMember();
+    }
+
     public void addMember() {
         int choice;
         int age;
@@ -107,38 +112,38 @@ public class MemberHandler {
                 "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
                 "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "\n");
         System.out.println("------------------------------------------------");
-        System.out.println("What do you want to change: ");
-        System.out.println("Name\nAge\nType\nPassive\nArrears");
+        System.out.println("What do you want to Change: ");
+        System.out.println("1. Name\n2. Age\n3. Member\n4. Passive\n5. Arrears");
         while (isRunning) {
-            String change = in.nextLine();
-            switch (change.toLowerCase()) {
-                case "name" -> {
+            int change = readChoiceInt();
+            switch (change) {
+                case 1 -> {
                     System.out.print("What do you want to change the name to: ");
                     fileHandler.readMembers.get(index).setName(in.nextLine());
                     isRunning = false;
                 }
-                case "age" -> {
+                case 2 -> {
                     System.out.print("What do you want to change the age to: ");
                     int age = readChoiceInt();
                     fileHandler.readMembers.get(index).setAge(age);
                     fileHandler.readMembers.get(index).setTypeOfMembership(age);
                     isRunning = false;
                 }
-                case "type" -> {
-                    System.out.print("What type do you want to set this member as: ");
+                case 3 -> {
+                    System.out.print("What Member type do you want to set this Member as: ");
                     fileHandler.readMembers.get(index).setTypeOfSwimmer(in.nextLine());
                     isRunning = false;
                 }
-                case "passive" -> {
-                    System.out.print("Do you want to set this member as passive(yes): ");
+                case 4 -> {
+                    System.out.print("Do you want to set this Member as Passive (yes): ");
                     String passive = in.nextLine();
-                    fileHandler.readMembers.get(index).setHasArrears(passive.equals("yes"));
+                    fileHandler.readMembers.get(index).setIsPassive(passive.equalsIgnoreCase("yes"));
                     isRunning = false;
                 }
-                case "arrears" -> {
-                    System.out.print("Do you want to give this member arrears(yes): ");
+                case 5 -> {
+                    System.out.print("Do you want to give this Member Arrears (yes): ");
                     String arrears = in.nextLine();
-                    fileHandler.readMembers.get(index).setHasArrears(arrears.equals("yes"));
+                    fileHandler.readMembers.get(index).setHasArrears(arrears.equalsIgnoreCase("yes"));
                     isRunning = false;
                 }
                 default -> System.out.println("Unknown Input.");
@@ -218,15 +223,15 @@ public class MemberHandler {
         System.out.print("What is the discipline: ");
         discipline = in.nextLine();
         while (isRunning) {
-            System.out.print("Do you want to add more disciplines(Y/N): ");
+            System.out.print("Do you want to add more disciplines(Yes) or (No): ");
             input = in.nextLine();
-            if (input.equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("yes")) {
                 discipline = discipline + ", " + getDiscipline();
-            } else if (input.equalsIgnoreCase("n")) {
+            } else if (input.equalsIgnoreCase("no")) {
                 System.out.println("You chose to not enter another discipline.");
                 isRunning = false;
             } else {
-                System.out.println("I don't understand what you mean. Enter y or n!");
+                System.out.println("I don't understand what you mean. Enter Yes or No!");
                 isRunning = true;
             }
         }
@@ -248,15 +253,15 @@ public class MemberHandler {
     public boolean isPassive() {
         boolean isPassive = false;
         while (isRunning) {
-            System.out.println("Is the member passive (Y) or active (N)");
+            System.out.print("Is the member passive (Yes) or active (No): ");
             input = in.nextLine();
-            if (input.equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("yes")) {
                 isPassive = true;
                 isRunning = false;
-            } else if (input.equalsIgnoreCase("n")) {
+            } else if (input.equalsIgnoreCase("no")) {
                 isRunning = false;
             } else {
-                System.out.println("I don't understand what you mean. Enter y or n!");
+                System.out.print("I don't understand what you mean. Enter Yes or No: ");
                 isRunning = true;
             }
         }
@@ -265,16 +270,16 @@ public class MemberHandler {
 
     public boolean hasArrears() {
         boolean hasArrears = false;
-        System.out.println("Does the member have arrears? (Y/N)");
+        System.out.print("Does the member have arrears? (Yes) or (No): ");
         input = in.nextLine();
         while (isRunning) {
-            if (input.equalsIgnoreCase("y")) {
+            if (input.equalsIgnoreCase("yes")) {
                 hasArrears = true;
                 isRunning = false;
-            } else if (input.equalsIgnoreCase("n")) {
+            } else if (input.equalsIgnoreCase("no")) {
                 isRunning = false;
             } else {
-                System.out.println("I don't understand what you mean. Enter y or n!");
+                System.out.print("I don't understand what you mean. Enter Yes or No: ");
                 isRunning = true;
             }
         }
