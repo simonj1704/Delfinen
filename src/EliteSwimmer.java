@@ -17,40 +17,47 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
     }
 
-    public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears, String times, String tourney) {
+    public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears, String tourney, String times) {
         super(id, name, age, "Elite Swimmer", false, false);
         setCoach(coach);
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
         String[] time = splitTimes(times);
-        if (time[0].length() == 1){
-            time = new String[4];
-            time[0] = "Unknown";
-            time[1] = "Unknown";
-            time[2] = "Unknown";
-            time[3] = "Unknown";
+        String[] tournament = splitTourney(tourney);
+        if (tournament.length == 0) {
+            String[] date = getDate(tournament[5]);
+            System.out.println(Arrays.toString(time));
+            System.out.println(Arrays.toString(date));
+            date[2] = date[2].replace("]", "");
+            tournamentTimes.add(new TournamentBoard(
+                    LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])),
+                    tournament[0],
+                    tournament[1],
+                    Integer.parseInt(tournament[2]),
+                    Integer.parseInt(tournament[3])
+            ));
+        }
+        if (time.length == 0) {
+            String[] date = getDate(time[3]);
+            date[2] = date[2].replace("]", "");
+            trainingTimes.add(new TrainingTime(
+                    LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])),
+                    Integer.parseInt(time[1]),
+                    Integer.parseInt(time[2]),
+                    time[0]
+            ));
+        }
 
-        }
-        String[] tournament = splitTimes(tourney);
-        if (tournament.length == 1){
-            tournament = new String[6];
-            tournament[0] = "Unknown";
-            tournament[1] = "Unknown";
-            tournament[2] = "Unknown";
-            tournament[3] = "Unknown";
-            tournament[4] = "Unknown";
-            tournament[5] = "Unknown";
-        }
-        trainingTimes.add(new TrainingTime(LocalDate.parse(time[3]),Integer.parseInt(time[1]),
-                Integer.parseInt(time[2]), time[0]));
-        tournamentTimes.add(new TournamentBoard(LocalDate.parse(tournament[5]), tournament[0],
-                tournament[1], Integer.parseInt(tournament[2]), Integer.parseInt(tournament[3])));
     }
 
     public String[] splitTimes(String input){
         String[] out = input.split(":");
         return out;
+    }
+
+    public String[] getDate(String date){
+        return date.split("-");
     }
 
     public String[] splitTourney(String input){
@@ -118,6 +125,7 @@ public class EliteSwimmer extends Member {
                     tournamentTimes.get(i).getPlacementTimeMilliseconds());
         }
     }
+
 
     @Override
     public String toString() {

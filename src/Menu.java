@@ -91,15 +91,12 @@ public class Menu {
             int input = readChoiceInt();
 
             switch (input) {
-                case 1:
-                    memberHandler.printMembers();
-                    break;
-                case 2:
-                    memberHandler.changeArrears();
-                    break;
-                case 3:
+                case 1 -> memberHandler.printMembers();
+                case 2 -> memberHandler.changeArrears();
+                case 3 -> {
                     System.out.println("You've chosen to Quit.");
                     isRunning = false;
+                }
             }
         }
     }

@@ -47,7 +47,7 @@ public class TrainingTime {
     @Override
     public String toString() {
         return discipline +
-                ":" + trainingSeconds + ":" + trainingMilSeconds +
-                ":" + date;
+                ":" + trainingSeconds + ":" + trainingMilSeconds
+                + ":" + date;
     }
 }
