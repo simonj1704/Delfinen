@@ -117,6 +117,10 @@ public class EliteSwimmer extends Member {
         }
     }
 
+    public double getTrainingTimes(){
+        System.out.println(trainingTimes);
+        return Double.parseDouble(trainingTimes.get(1) + "." + trainingTimes.get(2));
+    }
     public void printTournaments(){
         for (int i = 0; i < tournamentTimes.size(); i++) {
             System.out.printf("%s %s %s %d %d",tournamentTimes.get(i).getTourneyName(),

@@ -45,8 +45,9 @@ public class Menu {
             menuHeader = "Main Menu";
             leadText = "Please choose an option:";
             menuItems = new String[]{"1. Add a training result", "2. Add a tournament result", "3. View training results",
-                    "4. View tournament results","5. View Elite Swimmers" , "6. Delete training result", "7. Delete tournament result",
-            "8. Quit"};
+                    "4. View tournament results","5. View Elite Swimmers", "6. View Top 5 Swimmers" ,
+                    "7. Delete training result", "8. Delete tournament result",
+            "9. Quit"};
             printMenu();
             int inputChoice = readChoiceInt();
 
@@ -67,12 +68,15 @@ public class Menu {
                     //View Elite Swimmers
                     break;
                 case 6:
-                    //Delete Training Result
+                    memberHandler.top5Print();
                     break;
                 case 7:
-                    //Delete tournament Result
+                    //Delete Training Result
                     break;
                 case 8:
+                    //Delete tournament Result
+                    break;
+                case 9:
                     System.out.println("You've Chosen to Quit.");
                     isRunning = false;
                     break;

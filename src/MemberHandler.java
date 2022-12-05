@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class MemberHandler {
@@ -351,6 +352,21 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)));
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
             }
+        }
+    }
+
+    public void top5Print(){
+        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
+
+            }
+        }
+        TrainingTimesComparator timeSorter = new TrainingTimesComparator();
+        eliteSwimmers.sort(timeSorter);
+        for (int i = 0; i < 4; i++) {
+            System.out.println(eliteSwimmers.get(i));
         }
     }
 }
