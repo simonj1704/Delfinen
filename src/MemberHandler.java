@@ -296,9 +296,9 @@ public class MemberHandler {
         TrainingTime newTime = new TrainingTime(date, trainingTimeSeconds, trainingTimeMilSeconds, inputDiscipline);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getId() == searchId) {
-                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
                 eliteSwimmer.addTime(newTime);
                 System.out.printf(eliteSwimmer.toString());
             }
@@ -319,10 +319,11 @@ public class MemberHandler {
                 , placementTimeMilliseconds);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        for (int i = 0; i < members.size(); i++) {
-            if (members.get(i).getId() == searchId) {
-                EliteSwimmer eliteSwimmer = (EliteSwimmer) members.get(i);
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i).getId() == searchId) {
+                EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
                 eliteSwimmer.addTourney(newTournamentBoard);
+                System.out.println(eliteSwimmer);
             }
         }
     }
