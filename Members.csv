@@ -1,2 +1,7 @@
 1;Bob;15;Junior;Hobbyist;false;false;1000
-2;John;20;Senior;Elite Swimmer;Bob;ryg;false;false;1600;[Hasnæs Turnering:1. Plads:2:1:Unknown:2022-12-05];[Crawl:20:34:2022-12-05]
+5;Mikkel;23;Senior;Hobbyist;false;false;1600
+6;ASdæ;23;Senior;Hobbyist;false;false;1600
+7;ksjdf;23;Senior;Hobbyist;false;false;1600
+9;Mikkel;23;Senior;Hobbyist;true;false;500
+10;Simon;21;Senior;Elite Swimmer;Daniel;Crawl, Freestyle;false;false;1600;[];[]
+11;Daniel;23;Senior;Elite Swimmer;Daniel;Crawl;false;false;1600;[];[]
