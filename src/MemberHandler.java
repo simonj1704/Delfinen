@@ -226,7 +226,6 @@ public class MemberHandler {
             input = in.nextLine();
             if (input.equalsIgnoreCase("y")) {
                 discipline = discipline + ", " + getDiscipline();
-                isRunning = true;
             } else if (input.equalsIgnoreCase("n")) {
                 System.out.println("You chose to not enter another discipline.");
                 isRunning = false;
