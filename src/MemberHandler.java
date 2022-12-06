@@ -401,6 +401,8 @@ public class MemberHandler {
             ButterflyTimeComparator flySorter = new ButterflyTimeComparator();
             eliteSwimmers.sort(flySorter);
         }
+
+
         for (int i = 0; i < 5; i++) {
             System.out.println(eliteSwimmers.get(i).printTimeFor5Top(discipline));
         }
