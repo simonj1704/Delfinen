@@ -189,7 +189,7 @@ public class MemberHandler {
                 "Age: " + fileHandler.readMembers.get(index).getAge() + "     " +
                 "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
                 "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "     " +
-                "Passive" + fileHandler.readMembers.get(index).isPassive() + "\n");
+                "Passive: " + fileHandler.readMembers.get(index).isPassive() + "\n");
         System.out.println("------------------------------------------------");
         System.out.println("What do you want to change: ");
         System.out.println("Passive\nArrears");
@@ -199,7 +199,7 @@ public class MemberHandler {
                 case "passive" -> {
                     System.out.print("Do you want to set this member as passive(yes) or register active(no): ");
                     String passive = in.nextLine();
-                    fileHandler.readMembers.get(index).setHasArrears(passive.equals("yes"));
+                    fileHandler.readMembers.get(index).setIsPassive(passive.equals("yes"));
                     isRunning = false;
                 }
                 case "arrears" -> {
