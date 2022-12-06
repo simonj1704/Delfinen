@@ -52,8 +52,7 @@ public class EliteSwimmer extends Member {
     }
 
     public String[] splitTimes(String input){
-        String[] out = input.split(":");
-        return out;
+        return input.split(":");
     }
 
     public String[] getDate(String date){
@@ -61,8 +60,7 @@ public class EliteSwimmer extends Member {
     }
 
     public String[] splitTourney(String input){
-        String[] out = input.split(":");
-        return out;
+        return input.split(":");
     }
     public void setCoach(String coach) {
         this.coach = coach;
