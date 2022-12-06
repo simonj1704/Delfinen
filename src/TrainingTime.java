@@ -12,7 +12,8 @@ public class TrainingTime {
 
     // Constructors
     public TrainingTime(LocalDate date, int trainingSeconds, int trainingMilSeconds, String discipline) {
-        setTrainingTime(trainingSeconds,trainingMilSeconds);
+        setTrainingSeconds(trainingSeconds);
+        setTrainingMilSeconds(trainingMilSeconds);
         setDiscipline(discipline);
         this.date = date;
     }
@@ -41,9 +42,6 @@ public class TrainingTime {
     }
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
-    }
-    public void setTrainingTime(int trainingSeconds, int trainingMilSeconds){
-        trainingTime = Double.parseDouble(trainingSeconds + "." + trainingMilSeconds);
     }
 
     public LocalDate getDate(){

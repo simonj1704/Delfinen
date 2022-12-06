@@ -358,6 +358,8 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
+                System.out.println();
+
             }
 
         }
@@ -372,6 +374,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)));
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
+                System.out.println();
             }
         }
     }
