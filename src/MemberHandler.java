@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberHandler {
-    public ArrayList<Member> members = new ArrayList<>();
     public FileHandler fileHandler = new FileHandler();
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
@@ -70,7 +69,6 @@ public class MemberHandler {
         coach = getCoach();
         discipline = getDiscipline();
         EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline, isPassive, hasArrears);
-        members.add(eliteSwimmer);
         fileHandler.writeMember(eliteSwimmer.printMember(eliteSwimmer));
     }
 
@@ -92,7 +90,6 @@ public class MemberHandler {
             }
         }
         Hobbyist hobbyist = new Hobbyist(name, age, isPassive, hasArrears);
-        members.add(hobbyist);
         fileHandler.writeMember(hobbyist.printMember(hobbyist));
     }
 
