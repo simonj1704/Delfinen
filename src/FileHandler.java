@@ -63,7 +63,8 @@ public class FileHandler {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
             fileWriter.println(member);
             fileWriter.close();
-            for (int i = 0; i < readMembers.size(); i++) {
+            int size = readMembers.size();
+            for (int i = 0; i < size; i++) {
                 readMembers.remove(i);
             }
             setReadMembers();
