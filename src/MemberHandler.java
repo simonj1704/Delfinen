@@ -404,4 +404,23 @@ public class MemberHandler {
             System.out.println(eliteSwimmers.get(i).printTimeFor5Top(discipline));
         }
     }
+
+    public void printEliteSwimmers(){
+        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
+
+            }
+        }
+        System.out.println("ELITE SWIMMERS");
+        for (int i = 0; i < eliteSwimmers.size(); i++) {
+            System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
+                            "TrainingTimes: %s \t Tournaments: %s \t Passive %-5s\n",
+                    eliteSwimmers.get(i).getId(), eliteSwimmers.get(i).getName(), eliteSwimmers.get(i).getAge(),
+                    eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
+                    eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
+                    eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
+        }
+    }
 }

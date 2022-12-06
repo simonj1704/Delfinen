@@ -23,6 +23,7 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
+
         String[] time = splitTimes(times);
         String[] tournament = splitTourney(tourney);
         if (tournament.length != 1) {
@@ -131,6 +132,14 @@ public class EliteSwimmer extends Member {
             }
         }
         return 0;
+    }
+
+    public ArrayList<TrainingTime> getTrainingTimes(){
+        return trainingTimes;
+    }
+
+    public ArrayList<TournamentBoard> getTournaments(){
+        return tournamentTimes;
     }
 
     public String printTimeFor5Top(String discipline){

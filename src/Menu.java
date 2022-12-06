@@ -65,7 +65,7 @@ public class Menu {
                     memberHandler.tournamentTimePrint();
                     break;
                 case 5:
-                    //View Elite Swimmers
+                    memberHandler.printEliteSwimmers();
                     break;
                 case 6:
                     memberHandler.top5Print();
