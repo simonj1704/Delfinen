@@ -189,28 +189,29 @@ public class MemberHandler {
                 "Age: " + fileHandler.readMembers.get(index).getAge() + "     " +
                 "Type: " + fileHandler.readMembers.get(index).getTypeOfMembership() + "     " +
                 "Arrears: " + fileHandler.readMembers.get(index).hasArrears() + "     " +
-                "Passive" + fileHandler.readMembers.get(index).isPassive() + "\n");
+                "Passive: " + fileHandler.readMembers.get(index).isPassive() + "\n");
         System.out.println("------------------------------------------------");
         System.out.println("What do you want to change: ");
-        System.out.println("Passive\nArrears");
+        System.out.println("1. Passive\n 2. Arrears");
         while (isRunning) {
-            String change = in.nextLine();
-            switch (change.toLowerCase()) {
-                case "passive" -> {
-                    System.out.print("Do you want to set this member as passive(yes) or register active(no): ");
+            int change = readChoiceInt();
+            switch (change) {
+                case 1 -> {
+                    System.out.print("Do you want to set this member as passive (Yes) or register active (No): ");
                     String passive = in.nextLine();
-                    fileHandler.readMembers.get(index).setHasArrears(passive.equals("yes"));
+                    fileHandler.readMembers.get(index).setIsPassive(passive.equalsIgnoreCase("yes"));
+                    fileHandler.changeMember();
                     isRunning = false;
                 }
-                case "arrears" -> {
-                    System.out.print("Do you want to give this member arrears(yes) or remove arrears(no): ");
+                case 2 -> {
+                    System.out.print("Do you want to give this member arrears (Yes) or remove arrears (No): ");
                     String arrears = in.nextLine();
-                    fileHandler.readMembers.get(index).setHasArrears(arrears.equals("yes"));
+                    fileHandler.readMembers.get(index).setHasArrears(arrears.equalsIgnoreCase("yes"));
+                    fileHandler.changeMember();
                     isRunning = false;
                 }
                 default -> System.out.println("Unknown Input.");
             }
-            fileHandler.changeMember();
         }
     }
 
