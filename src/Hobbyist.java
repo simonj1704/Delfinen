@@ -2,8 +2,8 @@ package src;
 
 public class Hobbyist extends Member {
 
-    public Hobbyist(String name, int age) {
-        super(name, age, false, false, "Hobbyist");
+    public Hobbyist(String name, int age, boolean isPassive, boolean hasArrears) {
+        super(name, age, isPassive, hasArrears, "Hobbyist");
     }
 
 }

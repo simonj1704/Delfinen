@@ -11,14 +11,14 @@ public class EliteSwimmer extends Member {
     private ArrayList<TrainingTime> trainingTimes = new ArrayList<>();
     private ArrayList<TournamentBoard> tournamentTimes = new ArrayList<>();
 
-    public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline) {
-        super(name, age, false, false, "Elite Swimmer");
+    public EliteSwimmer(String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears) {
+        super(name, age, isPassive, hasArrears, "Elite Swimmer");
         setCoach(coach);
         setSwimmingDiscipline(swimmingDiscipline);
     }
 
     public EliteSwimmer(int id, String name, int age, String coach, String swimmingDiscipline, boolean isPassive, boolean hasArrears, String tourney, String times) {
-        super(id, name, age, "Elite Swimmer", false, false);
+        super(id, name, age, "Elite Swimmer", isPassive, hasArrears);
         setCoach(coach);
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);

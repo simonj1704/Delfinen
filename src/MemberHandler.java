@@ -32,7 +32,7 @@ public class MemberHandler {
         int choice;
         int age;
         String name;
-        System.out.print("1. Create Hobbyist. \n2. Create Elite Swimmer. \n3. Create Member. \nEnter Input: ");
+        System.out.print("1. Create Hobbyist. \n2. Create Elite Swimmer. \nEnter Input: ");
         choice = readChoiceInt();
 
         System.out.print("Enter Name: ");
@@ -44,33 +44,54 @@ public class MemberHandler {
         switch (choice) {
             case 1 -> createHobbyist(name, age);
             case 2 -> createElite(name, age);
-            case 3 -> createMember(name, age);
             default -> System.out.print("Error.");
         }
-    }
-
-    public void createMember(String name, int age) {
-        boolean isPassive = isPassive();
-        boolean hasArrears = hasArrears();
-        String typeOfSwimmer = getTypeOfSwimmer();
-
-        members.add(new Member(name, age, isPassive, hasArrears, typeOfSwimmer));
-        fileHandler.writeMember(member.printMember(new Member(name, age, isPassive, hasArrears, typeOfSwimmer)));
     }
 
     public void createElite(String name, int age) {
         String coach;
         String discipline;
-
+        boolean isPassive = false;
+        boolean hasArrears = false;
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.print("Do you want to add Arrears or Passive to Member? (Yes) or (No): ");
+            String choice = in.nextLine();
+            if (choice.equalsIgnoreCase("Yes")) {
+                isPassive = isPassive();
+                hasArrears = hasArrears();
+                isRunning = false;
+            } else if (choice.equalsIgnoreCase("No")) {
+                isRunning = false;
+            } else {
+                System.out.print("Unknown Input, Try again.");
+            }
+        }
         coach = getCoach();
         discipline = getDiscipline();
-        EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline);
+        EliteSwimmer eliteSwimmer = new EliteSwimmer(name, age, coach, discipline, isPassive, hasArrears);
         members.add(eliteSwimmer);
         fileHandler.writeMember(eliteSwimmer.printMember(eliteSwimmer));
     }
 
     public void createHobbyist(String name, int age) {
-        Hobbyist hobbyist = new Hobbyist(name, age);
+        boolean isPassive = false;
+        boolean hasArrears = false;
+        boolean isRunning = true;
+        while (isRunning) {
+            System.out.print("Do you want to add Arrears or Passive to Member? (Yes) or (No): ");
+            String choice = in.nextLine();
+            if (choice.equalsIgnoreCase("Yes")) {
+                isPassive = isPassive();
+                hasArrears = hasArrears();
+                isRunning = false;
+            } else if (choice.equalsIgnoreCase("No")) {
+                isRunning = false;
+            } else {
+                System.out.print("Unknown Input, Try again.");
+            }
+        }
+        Hobbyist hobbyist = new Hobbyist(name, age, isPassive, hasArrears);
         members.add(hobbyist);
         fileHandler.writeMember(hobbyist.printMember(hobbyist));
     }
@@ -228,7 +249,7 @@ public class MemberHandler {
             if (input.equalsIgnoreCase("yes")) {
                 discipline = discipline + ", " + getDiscipline();
             } else if (input.equalsIgnoreCase("no")) {
-                System.out.println("You chose to not enter another discipline.");
+                System.out.println("You chose to not enter another Discipline.");
                 isRunning = false;
             } else {
                 System.out.println("I don't understand what you mean. Enter Yes or No!");
@@ -252,6 +273,7 @@ public class MemberHandler {
 
     public boolean isPassive() {
         boolean isPassive = false;
+        isRunning = true;
         while (isRunning) {
             System.out.print("Is the member passive (Yes) or active (No): ");
             input = in.nextLine();
@@ -270,6 +292,7 @@ public class MemberHandler {
 
     public boolean hasArrears() {
         boolean hasArrears = false;
+        isRunning = true;
         System.out.print("Does the member have arrears? (Yes) or (No): ");
         input = in.nextLine();
         while (isRunning) {
