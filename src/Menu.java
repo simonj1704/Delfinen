@@ -71,7 +71,7 @@ public class Menu {
                     memberHandler.top5Print();
                     break;
                 case 7:
-                    //Delete Training Result
+                    memberHandler.deleteTrainingResult();
                     break;
                 case 8:
                     //Delete tournament Result
