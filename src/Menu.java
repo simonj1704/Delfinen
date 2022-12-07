@@ -71,7 +71,7 @@ public class Menu {
                     memberHandler.top5Print();
                     break;
                 case 7:
-                    //Delete Training Result
+                    memberHandler.deleteTrainingResult();
                     break;
                 case 8:
                     //Delete tournament Result
@@ -164,7 +164,8 @@ public class Menu {
         } else if (username.equalsIgnoreCase(usernameTreasurer) && password.equals(passwordTreasurer)) {
             treasurerMenu();
         } else {
-            System.out.println("Access denied.");
+            System.out.println("Access denied. Try again!");
+            userLogin();
         }
     }
 }

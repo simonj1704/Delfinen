@@ -1,5 +1,8 @@
 package src;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -427,6 +430,66 @@ public class MemberHandler {
                     eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
                     eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
                     eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
+        }
+    }
+
+    public void deleteTrainingResult() {
+        int searchID;
+        int input;
+        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
+            }
+        }
+        System.out.println("ELITE SWIMMERS");
+        for (int i = 0; i < eliteSwimmers.size(); i++) {
+            System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
+                            "TrainingTimes: %s \t Tournaments: %s \t Passive %-5s\n",
+                    eliteSwimmers.get(i).getId(), eliteSwimmers.get(i).getName(), eliteSwimmers.get(i).getAge(),
+                    eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
+                    eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
+                    eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
+        }
+        System.out.println("Enter swimmer ID:");
+        searchID = readChoiceInt();
+        for (int i = 0; i < eliteSwimmers.size(); i++) {
+            if (searchID == eliteSwimmers.get(i).getId()) {
+                if (eliteSwimmers.get(i).getTrainingTimes().size() > 1){
+                    System.out.println(eliteSwimmers.get(i).getTrainingTimes().toString());
+                    System.out.println("Which training time to you want to delete? 1/2/3/4.");
+                    input = readChoiceInt();
+                    if (input == 1){
+                        eliteSwimmers.get(i).getTrainingTimes().remove(0);
+                    } else if (input == 2) {
+                        eliteSwimmers.get(i).getTrainingTimes().remove(1);
+                    } else if (input == 3){
+                        eliteSwimmers.get(i).getTrainingTimes().remove(2);
+                    } else {
+                        eliteSwimmers.get(i).getTrainingTimes().remove(3);
+                    }
+                } else {
+                    eliteSwimmers.get(i).getTrainingTimes().remove(i);
+                }
+            }
+             try {
+                PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
+                for (i = 0; i < fileHandler.readMembers.size(); i++) {
+                    if(fileHandler.readMembers.get(i) instanceof EliteSwimmer){
+                    fileWriter.println(new EliteSwimmer(fileHandler.readMembers.get(i).getId(),
+                            fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
+                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
+                            fileHandler.readMembers.get(i).isPassive(), fileHandler.readMembers.get(i).hasArrears(),
+                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTournaments().toString(),
+                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) fileHandler.readMembers.get(i)));
+                    }
+                }
+                System.out.println("Training time deleted.");
+                fileWriter.close();
+            } catch (FileNotFoundException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
