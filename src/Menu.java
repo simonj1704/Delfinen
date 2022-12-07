@@ -74,7 +74,7 @@ public class Menu {
                     memberHandler.deleteTrainingResult();
                     break;
                 case 8:
-                    //Delete tournament Result
+                    memberHandler.deleteTournamentResult();
                     break;
                 case 9:
                     System.out.println("You've Chosen to Quit.");
