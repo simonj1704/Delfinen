@@ -114,7 +114,7 @@ public class MemberHandler {
         }
     }
 
-    public void changeMember(){
+    public void changeMember() {
         boolean isRunning = true;
         int choice;
         printMembers();
@@ -122,7 +122,7 @@ public class MemberHandler {
         choice = readChoiceInt();
         int index = -1;
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i).getId() == choice){
+            if (fileHandler.readMembers.get(i).getId() == choice) {
                 index = i;
             }
         }
@@ -174,7 +174,7 @@ public class MemberHandler {
     }
 
 
-    public void changeArrears(){
+    public void changeArrears() {
         boolean isRunning = true;
         int choice;
         printMembers();
@@ -182,7 +182,7 @@ public class MemberHandler {
         choice = readChoiceInt();
         int index = -1;
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i).getId() == choice){
+            if (fileHandler.readMembers.get(i).getId() == choice) {
                 index = i;
             }
         }
@@ -322,12 +322,19 @@ public class MemberHandler {
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i).getId() == searchId) {
-                EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
-                eliteSwimmer.addTime(newTime);
-                System.out.printf(eliteSwimmer.toString());
+            try {
+                if (fileHandler.readMembers.get(i).getId() == searchId) {
+                    EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
+                    eliteSwimmer.addTime(newTime);
+                    fileHandler.changeMember();
+                    System.out.printf(eliteSwimmer.toString());
+                }
+            } catch (ClassCastException e) {
+                System.out.println("This ID is not a Elite Swimmer\nTry Again");
+                searchId = readChoiceInt();
             }
         }
+
     }
 
     public void createTournamentResult() {
@@ -346,16 +353,30 @@ public class MemberHandler {
                 , placementTimeMilliseconds, discipline);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
-        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i).getId() == searchId) {
-                EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
-                eliteSwimmer.addTourney(newTournamentBoard);
-                System.out.println(eliteSwimmer);
+        boolean idFound = false;
+        while (!idFound) {
+            for (int i = 0; i < fileHandler.readMembers.size(); i++) {
+                try {
+                    if (fileHandler.readMembers.get(i).getId() == searchId) {
+                        EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
+                        eliteSwimmer.addTourney(newTournamentBoard);
+                        System.out.println(eliteSwimmer);
+                        idFound = true;
+                        fileHandler.changeMember();
+                    }
+                } catch (ClassCastException e) {
+                    System.out.println("This ID is not a Elite Swimmer\nTry Again");
+                    searchId = readChoiceInt();
+                }
+
             }
         }
+
     }
-    public void trainingTimePrint(){
-        for (int i = 0; i < fileHandler.readMembers.size(); i++){
+
+
+    public void trainingTimePrint() {
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
                 System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
                         fileHandler.readMembers.get(i).getId(),
@@ -369,8 +390,9 @@ public class MemberHandler {
 
         }
     }
-    public void tournamentTimePrint(){
-        for (int i = 0; i < fileHandler.readMembers.size();i++) {
+
+    public void tournamentTimePrint() {
+        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
                 System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Coach: %-10s Disciplines: %-20s\n",
                         fileHandler.readMembers.get(i).getId(),
@@ -384,7 +406,7 @@ public class MemberHandler {
         }
     }
 
-    public void top5Print(){
+    public void top5Print() {
         System.out.print("What Discipline do you want to print: ");
         String discipline = in.nextLine();
         ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
@@ -394,16 +416,16 @@ public class MemberHandler {
 
             }
         }
-        if (discipline.equalsIgnoreCase("ryg")){
+        if (discipline.equalsIgnoreCase("ryg")) {
             RygTimeComparator rygSorter = new RygTimeComparator();
             eliteSwimmers.sort(rygSorter);
-        } else if (discipline.equalsIgnoreCase("crawl")){
+        } else if (discipline.equalsIgnoreCase("crawl")) {
             CrawlTimeComparator crawlSorter = new CrawlTimeComparator();
             eliteSwimmers.sort(crawlSorter);
-        } else if (discipline.equalsIgnoreCase("bryst")){
+        } else if (discipline.equalsIgnoreCase("bryst")) {
             BrystTimeComparator brystSorter = new BrystTimeComparator();
             eliteSwimmers.sort(brystSorter);
-        } else if (discipline.equalsIgnoreCase("butterfly")){
+        } else if (discipline.equalsIgnoreCase("butterfly")) {
             ButterflyTimeComparator flySorter = new ButterflyTimeComparator();
             eliteSwimmers.sort(flySorter);
         }
@@ -414,7 +436,7 @@ public class MemberHandler {
         }
     }
 
-    public void printEliteSwimmers(){
+    public void printEliteSwimmers() {
         ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
@@ -455,15 +477,15 @@ public class MemberHandler {
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             if (searchID == eliteSwimmers.get(i).getId()) {
-                if (eliteSwimmers.get(i).getTrainingTimes().size() > 1){
+                if (eliteSwimmers.get(i).getTrainingTimes().size() > 1) {
                     System.out.println(eliteSwimmers.get(i).getTrainingTimes().toString());
                     System.out.println("Which training time to you want to delete? 1/2/3/4.");
                     input = readChoiceInt();
-                    if (input == 1){
+                    if (input == 1) {
                         eliteSwimmers.get(i).getTrainingTimes().remove(0);
                     } else if (input == 2) {
                         eliteSwimmers.get(i).getTrainingTimes().remove(1);
-                    } else if (input == 3){
+                    } else if (input == 3) {
                         eliteSwimmers.get(i).getTrainingTimes().remove(2);
                     } else {
                         eliteSwimmers.get(i).getTrainingTimes().remove(3);
@@ -472,17 +494,17 @@ public class MemberHandler {
                     eliteSwimmers.get(i).getTrainingTimes().remove(i);
                 }
             }
-             try {
+            try {
                 PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
                 for (i = 0; i < fileHandler.readMembers.size(); i++) {
-                    if(fileHandler.readMembers.get(i) instanceof EliteSwimmer){
-                    fileWriter.println(new EliteSwimmer(fileHandler.readMembers.get(i).getId(),
-                            fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
-                            fileHandler.readMembers.get(i).isPassive(), fileHandler.readMembers.get(i).hasArrears(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTournaments().toString(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) fileHandler.readMembers.get(i)));
+                    if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
+                        fileWriter.println(new EliteSwimmer(fileHandler.readMembers.get(i).getId(),
+                                fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
+                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
+                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
+                                fileHandler.readMembers.get(i).isPassive(), fileHandler.readMembers.get(i).hasArrears(),
+                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getTournaments().toString(),
+                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) fileHandler.readMembers.get(i)));
                     }
                 }
                 System.out.println("Training time deleted.");
