@@ -23,12 +23,20 @@ public class EliteSwimmer extends Member {
         setSwimmingDiscipline(swimmingDiscipline);
         setIsPassive(isPassive);
         setHasArrears(hasArrears);
+        setTrainingTimes(times);
+        setTournamentTimes(tourney);
+
+
+    }
+
+    public void setTrainingTimes(String times){
         String[] trainingTime = times.split(",");
-        String[] tournaments = tourney.split(",");
         String[] time = new String[0];
-        String[] tournament = new String[0];
         for (int i = 0; i < trainingTime.length; i++) {
             time = splitTimes(trainingTime[i]);
+            if (time[0].charAt(0) == ' '){
+                time[0] = time[0].replace(" ", "");
+            }
             if (time.length != 1) {
                 String[] date = getDate(time[3]);
                 date[2] = date[2].replace("]", "");
@@ -41,8 +49,16 @@ public class EliteSwimmer extends Member {
                 ));
             }
         }
+    }
+
+    public void setTournamentTimes(String tourney){
+        String[] tournaments = tourney.split(",");
+        String[] tournament = new String[0];
         for (int i = 0; i < tournaments.length; i++) {
             tournament = splitTourney(tournaments[i]);
+            if (tournament[0].charAt(0) == ' '){
+                tournament[0] = tournament[0].replace(" ", "");
+            }
             if (tournament.length != 1) {
                 String[] date = getDate(tournament[5]);
                 date[2] = date[2].replace("]", "");
@@ -54,8 +70,6 @@ public class EliteSwimmer extends Member {
                 ));
             }
         }
-
-
     }
 
     public String[] splitTimes(String input){
@@ -125,8 +139,6 @@ public class EliteSwimmer extends Member {
 
     public void printTournaments(){
         for (int i = 0; i < tournamentTimes.size(); i++) {
-            System.out.println(tournamentTimes);
-            System.out.println(tournamentTimes.get(i).getPlacement());
             System.out.printf("Tourney Name: %s \t Placement: %s \t Discipline: %s \t Time: %d:%d\n",tournamentTimes.get(i).getTourneyName(),
                     tournamentTimes.get(i).getPlacement(), tournamentTimes.get(i).getDiscipline(),
                     tournamentTimes.get(i).getPlacementTimeSeconds(),

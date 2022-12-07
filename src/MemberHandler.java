@@ -332,7 +332,7 @@ public class MemberHandler {
         System.out.print("Input tourney name: ");
         String tourneyName = in.nextLine();
         System.out.print("Input tournament placement: ");
-        String placement = in.nextLine();
+        String placement = in.nextLine().replace(" ", "_");
         System.out.print("Input swim time seconds: ");
         int placementTimeSeconds = readChoiceInt();
         System.out.print("Input swim time ms: ");

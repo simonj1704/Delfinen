@@ -39,7 +39,7 @@ public class TournamentBoard {
         return placementTimeMilliseconds;
     }
     public String getPlacement(){
-        return tourneyName;
+        return placement;
     }
     public String getTourneyName(){
         return tourneyName;
@@ -70,7 +70,7 @@ public class TournamentBoard {
         this.placement = placement;
     }
     public void setTourneyName(String tourneyName){
-        this.tourneyName = tourneyName;
+        this.tourneyName = tourneyName.replace("_", " ");
     }
 
     @Override
