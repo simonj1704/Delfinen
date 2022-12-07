@@ -27,7 +27,7 @@ public class EliteSwimmer extends Member {
         String[] tournaments = tourney.split(",");
         String[] time = new String[0];
         String[] tournament = new String[0];
-        for (int i = 0; i < trainingTime.length -1; i++) {
+        for (int i = 0; i < trainingTime.length; i++) {
             time = splitTimes(trainingTime[i]);
             if (time.length != 1) {
                 String[] date = getDate(time[3]);
@@ -41,7 +41,7 @@ public class EliteSwimmer extends Member {
                 ));
             }
         }
-        for (int i = 0; i < tournaments.length -1; i++) {
+        for (int i = 0; i < tournaments.length; i++) {
             tournament = splitTourney(tournaments[i]);
             if (tournament.length != 1) {
                 String[] date = getDate(tournament[5]);
@@ -49,10 +49,8 @@ public class EliteSwimmer extends Member {
                 tournament[0] = tournament[0].replace("[","");
                 tournamentTimes.add(new TournamentBoard(
                         LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])),
-                        tournament[0],
-                        tournament[1],
-                        Integer.parseInt(tournament[2]),
-                        Integer.parseInt(tournament[3])
+                        tournament[0], tournament[1], Integer.parseInt(tournament[2]),
+                        Integer.parseInt(tournament[3]), tournament[4]
                 ));
             }
         }
@@ -127,7 +125,8 @@ public class EliteSwimmer extends Member {
 
     public void printTournaments(){
         for (int i = 0; i < tournamentTimes.size(); i++) {
-            System.out.printf("Tourney Name: %s \t Placement: %s \t Discipline: %s \t Time: %d:%d",tournamentTimes.get(i).getTourneyName(),
+            System.out.println(tournamentTimes);
+            System.out.printf("Tourney Name: %s \t Placement: %s \t Discipline: %s \t Time: %d:%d\n",tournamentTimes.get(i).getTourneyName(),
                     tournamentTimes.get(i).getPlacement(), tournamentTimes.get(i).getDiscipline(),
                     tournamentTimes.get(i).getPlacementTimeSeconds(),
                     tournamentTimes.get(i).getPlacementTimeMilliseconds());

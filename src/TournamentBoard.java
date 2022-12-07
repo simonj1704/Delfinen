@@ -15,9 +15,11 @@ public class TournamentBoard {
 
     // Constructors
     public TournamentBoard(LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
-                           int placementTimeMilliseconds) {
+                           int placementTimeMilliseconds, String discipline) {
         setPlacement(placement);
         setDiscipline(discipline);
+        setPlacementTimeSeconds(placementTimeSeconds);
+        setPlacementTimeMilliseconds(placementTimeMilliseconds);
         setPlacementTime(placementTimeSeconds,placementTimeMilliseconds);
         setTourneyName(tourneyName);
         this.date = date;

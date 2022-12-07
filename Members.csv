@@ -1,6 +1,6 @@
 1;Bob;15;Junior;Hobbyist;false;false;1000
 2;John;20;Senior;Elite Swimmer;Daniel;Crawl;false;false;1600;[];[Ryg:20:12:2022-12-06, Crawl:15:14:2022-12-07]
-3;John;20;Senior;Elite Swimmer;Daniel;Crawl;false;false;1600;[Hasnæs Turnering:1. Plads:2:1:Unknown:2022-12-05, Hasnæs Turnering:1. Plads:2:1:Unknown:2022-12-05];[]
+3;John;20;Senior;Elite Swimmer;Daniel;Crawl;false;false;1600;[Hasnæs Turnering:1. Plads:22:12:ryg:2022-12-05, Hasnæs Turnering:1. Plads:25:11:crawl:2022-12-05];[]
 5;Johnny Hansen;34;Senior;Elite Swimmer;Daniel;Crawl;true;false;500;[];[]
 7;Johnny Hansen 2;32;Senior;Elite Swimmer;Daniel;Crawl;false;false;1600;[];[]
 8;Johnny Hansen 3;35;Senior;Hobbyist;false;false;1600
@@ -19,4 +19,4 @@
 23;kaj;456;Senior;Hobbyist;false;false;1200
 24;ælkj;34;Senior;Hobbyist;true;true;500
 5;Johnny Hansen;34;Senior;Elite Swimmer;true;false;500
-5;Johnny Hansen;34;Senior;Elite Swimmer;Daniel;Crawl;true;false;500;[ryg:23:11:2022-12-06];[]
+5;Johnny Hansen;34;Senior;Elite Swimmer;Daniel;Crawl;true;false;500;[];[ryg:23:11:2022-12-06]

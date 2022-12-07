@@ -329,16 +329,18 @@ public class MemberHandler {
 
     public void createTournamentResult() {
         int searchId;
-        System.out.println("Input tourney name");
+        System.out.print("Input tourney name: ");
         String tourneyName = in.nextLine();
-        System.out.println("Input tournament placement");
+        System.out.print("Input tournament placement: ");
         String placement = in.nextLine();
-        System.out.println("Input swim time seconds");
+        System.out.print("Input swim time seconds: ");
         int placementTimeSeconds = readChoiceInt();
-        System.out.println("Input swim time ms");
+        System.out.print("Input swim time ms: ");
         int placementTimeMilliseconds = readChoiceInt();
+        System.out.print("Input swim discipline: ");
+        String discipline = in.nextLine();
         TournamentBoard newTournamentBoard = new TournamentBoard(date, tourneyName, placement, placementTimeSeconds
-                , placementTimeMilliseconds);
+                , placementTimeMilliseconds, discipline);
         System.out.print("Input ID for Time-placement on Swimmer: ");
         searchId = readChoiceInt();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
