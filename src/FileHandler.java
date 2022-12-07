@@ -74,7 +74,16 @@ public class FileHandler {
         try {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
             for (int i = 0; i < readMembers.size(); i++) {
+                if (readMembers.get(i) instanceof EliteSwimmer){
+                    fileWriter.println(new EliteSwimmer(readMembers.get(i).getId(),
+                            readMembers.get(i).getName(), readMembers.get(i).getAge(),
+                            ((EliteSwimmer) readMembers.get(i)).getCoach(), ((EliteSwimmer) readMembers.get(i)).getSwimmingDiscipline(),
+                            readMembers.get(i).isPassive(), readMembers.get(i).hasArrears(),
+                            ((EliteSwimmer) readMembers.get(i)).getTournaments().toString(),
+                            ((EliteSwimmer) readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) readMembers.get(i)));
+                } else {
                 fileWriter.println(new Member().printMember(readMembers.get(i)));
+                }
             }
             System.out.println("Member successfully Changed");
             fileWriter.close();
@@ -96,7 +105,16 @@ public class FileHandler {
                 try {
                     PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
                     for (i = 0; i < readMembers.size(); i++) {
-                        fileWriter.println(new Member().printMember(readMembers.get(i)));
+                        if (readMembers.get(i) instanceof EliteSwimmer){
+                            fileWriter.println(new EliteSwimmer(readMembers.get(i).getId(),
+                                    readMembers.get(i).getName(), readMembers.get(i).getAge(),
+                                    ((EliteSwimmer) readMembers.get(i)).getCoach(), ((EliteSwimmer) readMembers.get(i)).getSwimmingDiscipline(),
+                                    readMembers.get(i).isPassive(), readMembers.get(i).hasArrears(),
+                                    ((EliteSwimmer) readMembers.get(i)).getTournaments().toString(),
+                                    ((EliteSwimmer) readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) readMembers.get(i)));
+                        } else {
+                            fileWriter.println(new Member().printMember(readMembers.get(i)));
+                        }
                     }
                     System.out.println("Member successfully deleted");
                     deleted = true;

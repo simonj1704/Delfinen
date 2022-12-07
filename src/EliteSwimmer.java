@@ -91,7 +91,7 @@ public class EliteSwimmer extends Member {
         out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
                 member.getTypeOfSwimmer() + ";" + member.getCoach() + ";" + member.getSwimmingDiscipline()
                 + ";" + member.isPassive() + ";" + member.hasArrears() + ";" + member.getSubscriptionPrice() + ";"
-                + member.trainingTimes + ";" + member.tournamentTimes;
+                + member.tournamentTimes + ";" + member.trainingTimes;
         return out;
     }
 
@@ -126,6 +126,7 @@ public class EliteSwimmer extends Member {
     public void printTournaments(){
         for (int i = 0; i < tournamentTimes.size(); i++) {
             System.out.println(tournamentTimes);
+            System.out.println(tournamentTimes.get(i).getPlacement());
             System.out.printf("Tourney Name: %s \t Placement: %s \t Discipline: %s \t Time: %d:%d\n",tournamentTimes.get(i).getTourneyName(),
                     tournamentTimes.get(i).getPlacement(), tournamentTimes.get(i).getDiscipline(),
                     tournamentTimes.get(i).getPlacementTimeSeconds(),
