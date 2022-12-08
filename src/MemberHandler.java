@@ -473,25 +473,13 @@ public class MemberHandler {
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             if (searchID == eliteSwimmers.get(i).getId()) {
-                if (eliteSwimmers.get(i).getTrainingTimes().size() > 1) {
-                    eliteSwimmers.get(i).printTimes();
-                    System.out.print("Which training time to you want to delete? 1/2/3/4...: ");
-                    input = readChoiceInt();
-                    if (input == 1) {
-                        eliteSwimmers.get(i).getTrainingTimes().remove(0);
-                    } else if (input == 2) {
-                        eliteSwimmers.get(i).getTrainingTimes().remove(1);
-                    } else if (input == 3) {
-                        eliteSwimmers.get(i).getTrainingTimes().remove(2);
-                    } else {
-                        eliteSwimmers.get(i).getTrainingTimes().remove(3);
-                    }
-                } else {
-                    eliteSwimmers.get(i).getTrainingTimes().remove(i);
-                }
+                eliteSwimmers.get(i).printTimes();
+                System.out.println("Which Training Time to you want to delete?");
+                input = readChoiceInt() - 1;
+                eliteSwimmers.get(i).getTrainingTimes().remove(input);
             }
-            fileHandler.deleteResults("Training results deleted");
         }
+        fileHandler.deleteResults("Training results deleted");
     }
     public void deleteTournamentResult() {
         int searchID;
@@ -501,7 +489,7 @@ public class MemberHandler {
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             if (searchID == eliteSwimmers.get(i).getId()) {
-                System.out.println(eliteSwimmers.get(i).getTournaments().toString());
+                eliteSwimmers.get(i).printTournaments();
                 System.out.println("Which tournament result to you want to delete?");
                 input = readChoiceInt() - 1;
                 eliteSwimmers.get(i).getTournaments().remove(input);
