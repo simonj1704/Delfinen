@@ -38,16 +38,16 @@ public class Menu {
         return choice;
     }
 
-    public void coachMenu(){
+    public void coachMenu() {
         boolean isRunning = true;
         System.out.println("Welcome Coach");
         while (isRunning) {
             menuHeader = "Main Menu";
             leadText = "Please choose an option:";
             menuItems = new String[]{"1. Add a training result", "2. Add a tournament result", "3. View training results",
-                    "4. View tournament results","5. View Elite Swimmers", "6. View Top 5 Swimmers" ,
+                    "4. View tournament results", "5. View Elite Swimmers", "6. View Top 5 Swimmers",
                     "7. Delete training result", "8. Delete tournament result",
-            "9. Quit"};
+                    "9. Quit"};
             printMenu();
             int inputChoice = readChoiceInt();
 
@@ -84,7 +84,7 @@ public class Menu {
         }
     }
 
-    public void treasurerMenu(){
+    public void treasurerMenu() {
         boolean isRunning = true;
         System.out.println("Welcome Treasurer");
         while (isRunning) {
@@ -105,13 +105,13 @@ public class Menu {
         }
     }
 
-    public void presidentMenu(){
+    public void presidentMenu() {
         boolean isRunning = true;
         System.out.print("\nWelcome President.");
         while (isRunning) {
             menuHeader = "Main Menu:";
             leadText = "Please choose an option:";
-            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Change Member", "5. Quit" };
+            menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Change Member", "5. Quit"};
             printMenu();
             System.out.print("Enter input: ");
             int inputChoice = readChoiceInt();
@@ -137,7 +137,7 @@ public class Menu {
         }
     }
 
-    public void userLogin(){
+    public void userLogin() {
         String username;
         String password;
 
@@ -157,7 +157,7 @@ public class Menu {
         System.out.print("Enter password: ");
         password = in.nextLine();
 
-        if(username.equalsIgnoreCase(usernamePresident) && password.equals(passwordPresident)){
+        if (username.equalsIgnoreCase(usernamePresident) && password.equals(passwordPresident)) {
             presidentMenu();
         } else if (username.equalsIgnoreCase(usernameCoach) && password.equals(passwordCoach)) {
             coachMenu();

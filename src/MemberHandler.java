@@ -12,6 +12,7 @@ public class MemberHandler {
     public Member member = new Member();
     Scanner in = new Scanner(System.in);
     private boolean isRunning = true;
+    private boolean isPassive;
     private String input;
     LocalDate date = LocalDate.now();
     ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
@@ -55,7 +56,7 @@ public class MemberHandler {
     public void createElite(String name, int age) {
         String coach;
         String discipline;
-        boolean isPassive = false;
+        isPassive = false;
         boolean hasArrears = false;
         boolean isRunning = true;
         while (isRunning) {
@@ -78,7 +79,7 @@ public class MemberHandler {
     }
 
     public void createHobbyist(String name, int age) {
-        boolean isPassive = false;
+        isPassive = false;
         boolean hasArrears = false;
         boolean isRunning = true;
         while (isRunning) {
@@ -117,7 +118,7 @@ public class MemberHandler {
     }
 
     public void changeMember() {
-        boolean isRunning = true;
+        isRunning = true;
         int choice;
         printMembers();
         System.out.print("What member do you want to change(ID): ");
@@ -276,7 +277,7 @@ public class MemberHandler {
     }
 
     public boolean isPassive() {
-        boolean isPassive = false;
+        isPassive = false;
         isRunning = true;
         while (isRunning) {
             System.out.print("Is the member passive (Yes) or active (No): ");
@@ -437,7 +438,7 @@ public class MemberHandler {
         }
     }
 
-    public void setEliteSwimmers(){
+    public void setEliteSwimmers() {
         eliteSwimmers.clear();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
@@ -451,12 +452,13 @@ public class MemberHandler {
         setEliteSwimmers();
         System.out.println("ELITE SWIMMERS");
         for (int i = 0; i < eliteSwimmers.size(); i++) {
+            EliteSwimmer eliteSwimmer = eliteSwimmers.get(i);
             System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
                             "TrainingTimes: %s \t Tournaments: %s \t Passive %-5s\n",
-                    eliteSwimmers.get(i).getId(), eliteSwimmers.get(i).getName(), eliteSwimmers.get(i).getAge(),
-                    eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
-                    eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
-                    eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
+                    eliteSwimmer.getId(), eliteSwimmer.getName(), eliteSwimmer.getAge(),
+                    eliteSwimmer.getTypeOfMembership(), eliteSwimmer.getCoach(),
+                    eliteSwimmer.getSwimmingDiscipline(), eliteSwimmer.getTrainingTimes(),
+                    eliteSwimmer.getTournaments(), eliteSwimmer.isPassive());
         }
     }
 
@@ -488,20 +490,21 @@ public class MemberHandler {
             fileHandler.deleteResults("Training results deleted");
         }
     }
+
     public void deleteTournamentResult() {
         int searchID;
         int input;
         printEliteSwimmers();
         System.out.println("Enter swimmer ID:");
         searchID = readChoiceInt();
-        for (int i = 0; i < eliteSwimmers.size(); i++) {
-            if (searchID == eliteSwimmers.get(i).getId()) {
-                System.out.println(eliteSwimmers.get(i).getTournaments().toString());
+        for (EliteSwimmer eliteSwimmer : eliteSwimmers) {
+            if (searchID == eliteSwimmer.getId()) {
+                System.out.println(eliteSwimmer.getTournaments().toString());
                 System.out.println("Which tournament result to you want to delete?");
                 input = readChoiceInt() - 1;
-                eliteSwimmers.get(i).getTournaments().remove(input);
+                eliteSwimmer.getTournaments().remove(input);
             }
         }
-       fileHandler.deleteResults("Tournament result deleted.");
+        fileHandler.deleteResults("Tournament result deleted.");
     }
 }
