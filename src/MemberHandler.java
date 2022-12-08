@@ -334,7 +334,7 @@ public class MemberHandler {
                     EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
                     eliteSwimmer.addTime(newTime);
                     fileHandler.changeMember();
-                    System.out.printf(eliteSwimmer.toString());
+                    eliteSwimmer.printTimes();
                     System.out.println();
                 }
             } catch (ClassCastException e) {
@@ -391,7 +391,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
-                System.out.println();
+                System.out.println("------------------------------------------------------------------------------------------------");
 
             }
 
@@ -408,7 +408,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)));
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
-                System.out.println();
+                System.out.println("------------------------------------------------------------------------------------------------");
             }
         }
     }
@@ -469,13 +469,13 @@ public class MemberHandler {
         int searchID;
         int input;
         printEliteSwimmers();
-        System.out.println("Enter swimmer ID:");
+        System.out.print("Enter swimmer ID: ");
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             if (searchID == eliteSwimmers.get(i).getId()) {
                 if (eliteSwimmers.get(i).getTrainingTimes().size() > 1) {
-                    System.out.println(eliteSwimmers.get(i).getTrainingTimes().toString());
-                    System.out.println("Which training time to you want to delete? 1/2/3/4.");
+                    eliteSwimmers.get(i).printTimes();
+                    System.out.print("Which training time to you want to delete? 1/2/3/4...: ");
                     input = readChoiceInt();
                     if (input == 1) {
                         eliteSwimmers.get(i).getTrainingTimes().remove(0);
