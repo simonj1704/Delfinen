@@ -12,9 +12,6 @@ public class Member {
     private int id;
     private static int nextId;
 
-    public void setNextId(int nextId) {
-        Member.nextId = nextId;
-    }
 
     // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
@@ -96,12 +93,12 @@ public class Member {
         isPassive = passive;
     }
 
-    public void setTypeOfMembership(String typeOfMembership) {
-        this.typeOfMembership = typeOfMembership;
-    }
-
     public void setTypeOfSwimmer(String typeOfSwimmer) {
         this.typeOfSwimmer = typeOfSwimmer;
+    }
+
+    public void setNextId(int nextId) {
+        Member.nextId = nextId;
     }
 
     public int getId() {
@@ -132,11 +129,11 @@ public class Member {
         return out;
     }
 
-    public void viewMember(Member member) {
+    /*public void viewMember(Member member) {
         System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Subscription Price: %-7d Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
                 member.getId(), member.getName(), member.getAge(), member.getTypeOfMembership(),
                 member.getSubscriptionPrice(), member.getTypeOfSwimmer(), member.hasArrears(), member.isPassive());
-    }
+    }*/
 
 
     @Override
