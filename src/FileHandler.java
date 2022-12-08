@@ -127,4 +127,25 @@ public class FileHandler {
             System.out.println("Member not Found.");
         }
     }
+    public void deleteResults(String message){
+        try {
+            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
+            for (int i = 0; i < readMembers.size(); i++) {
+                if (readMembers.get(i) instanceof EliteSwimmer) {
+                    fileWriter.println(new EliteSwimmer(readMembers.get(i).getId(),
+                            readMembers.get(i).getName(), readMembers.get(i).getAge(),
+                            ((EliteSwimmer) readMembers.get(i)).getCoach(),
+                            ((EliteSwimmer) readMembers.get(i)).getSwimmingDiscipline(),
+                            readMembers.get(i).isPassive(), readMembers.get(i).hasArrears(),
+                            ((EliteSwimmer) readMembers.get(i)).getTournaments().toString(),
+                            ((EliteSwimmer) readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) readMembers.get(i)));
+                }
+            }
+            System.out.println(message);
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
 }
