@@ -9,6 +9,8 @@ public class Menu {
     MemberHandler memberHandler = new MemberHandler();
     Scanner in = new Scanner(System.in);
 
+
+
     public Menu(String menuHeader, String leadText, String[] menuItems) {
         this.menuHeader = menuHeader;
         this.leadText = leadText;
@@ -22,22 +24,6 @@ public class Menu {
         System.out.print("\n" + printString);
     }
 
-    public int readChoiceInt() {
-        boolean validChoice = false;
-        int choice = -1;
-
-        while (!validChoice) {
-            if (in.hasNextInt()) {
-                choice = in.nextInt();
-                validChoice = true;
-            } else {
-                in.nextLine();
-                System.out.print(leadText);
-            }
-        }
-        return choice;
-    }
-
     public void coachMenu() {
         boolean isRunning = true;
         System.out.println("Welcome Coach");
@@ -49,7 +35,7 @@ public class Menu {
                     "7. Delete training result", "8. Delete tournament result",
                     "9. Quit"};
             printMenu();
-            int inputChoice = readChoiceInt();
+            int inputChoice = memberHandler.readChoiceInt();
 
             switch (inputChoice) {
                 case 1:
@@ -92,7 +78,7 @@ public class Menu {
             leadText = "Please choose an option:";
             menuItems = new String[]{"1. View Arrears/Passive", "2. Change Arrears/Passive", "3. Quit"};
             printMenu();
-            int input = readChoiceInt();
+            int input = memberHandler.readChoiceInt();
 
             switch (input) {
                 case 1 -> memberHandler.printMembers();
@@ -114,7 +100,7 @@ public class Menu {
             menuItems = new String[]{"1. Add member", "2. Delete members", "3. View members", "4. Change Member", "5. Quit"};
             printMenu();
             System.out.print("Enter input: ");
-            int inputChoice = readChoiceInt();
+            int inputChoice = memberHandler.readChoiceInt();
 
             switch (inputChoice) {
                 case 1:

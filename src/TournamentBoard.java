@@ -31,7 +31,6 @@ public class TournamentBoard {
         return discipline;
     }
 
-
     public int getPlacementTimeSeconds() {
         return placementTimeSeconds;
     }
@@ -48,12 +47,7 @@ public class TournamentBoard {
         return tourneyName;
     }
 
-    public double getPlacementTime() {
-        return placementTime;
-    }
-
     // Setters
-
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;

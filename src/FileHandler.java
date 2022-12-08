@@ -41,23 +41,6 @@ public class FileHandler {
         }
     }
 
-    public int readChoiceInt() {
-        boolean validChoice = false;
-        int choice = -1;
-
-        while (!validChoice) {
-            if (in.hasNextInt()) {
-                choice = in.nextInt();
-                in.nextLine();
-                validChoice = true;
-            } else {
-                System.out.print("Please choose an option\n");
-                in.nextLine();
-            }
-        }
-        return choice;
-    }
-
     public void writeMember(String member) {
         try {
             PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv", true));
@@ -96,7 +79,7 @@ public class FileHandler {
         boolean deleted = false;
         int delete;
         System.out.print("What member do you want to delete(ID): ");
-        delete = readChoiceInt();
+        delete = new MemberHandler().readChoiceInt();
         int index;
         for (int i = 0; i < readMembers.size(); i++) {
             if (readMembers.get(i).getId() == delete){
