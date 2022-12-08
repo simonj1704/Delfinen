@@ -14,42 +14,40 @@ public class TournamentBoard {
 
 
     // Constructors
-    public TournamentBoard(LocalDate date, String tourneyName,String placement, int placementTimeSeconds,
+    public TournamentBoard(LocalDate date, String tourneyName, String placement, int placementTimeSeconds,
                            int placementTimeMilliseconds, String discipline) {
         setPlacement(placement);
         setDiscipline(discipline);
         setPlacementTimeSeconds(placementTimeSeconds);
         setPlacementTimeMilliseconds(placementTimeMilliseconds);
-        setPlacementTime(placementTimeSeconds,placementTimeMilliseconds);
+        setPlacementTime(placementTimeSeconds, placementTimeMilliseconds);
         setTourneyName(tourneyName);
         this.date = date;
     }
 
 
     // Getters
-    public String getDiscipline(){
+    public String getDiscipline() {
         return discipline;
     }
 
-
-    public int getPlacementTimeSeconds(){
+    public int getPlacementTimeSeconds() {
         return placementTimeSeconds;
     }
-    public int getPlacementTimeMilliseconds(){
+
+    public int getPlacementTimeMilliseconds() {
         return placementTimeMilliseconds;
     }
-    public String getPlacement(){
+
+    public String getPlacement() {
         return placement;
     }
-    public String getTourneyName(){
+
+    public String getTourneyName() {
         return tourneyName;
-    }
-    public double getPlacementTime(){
-        return placementTime;
     }
 
     // Setters
-
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
@@ -62,14 +60,16 @@ public class TournamentBoard {
     public void setPlacementTimeMilliseconds(int placementTimeMilliseconds) {
         this.placementTimeMilliseconds = placementTimeMilliseconds;
     }
-    public void setPlacementTime(int placementSeconds, int placementMilliSeconds){
+
+    public void setPlacementTime(int placementSeconds, int placementMilliSeconds) {
         placementTime = Double.parseDouble(placementSeconds + "." + placementMilliSeconds);
     }
 
-    public void setPlacement(String placement){
+    public void setPlacement(String placement) {
         this.placement = placement;
     }
-    public void setTourneyName(String tourneyName){
+
+    public void setTourneyName(String tourneyName) {
         this.tourneyName = tourneyName.replace("_", " ");
     }
 
@@ -77,7 +77,7 @@ public class TournamentBoard {
     public String toString() {
         return tourneyName +
                 ":" + placement +
-                ":" + placementTimeSeconds + ":" + placementTimeMilliseconds+
+                ":" + placementTimeSeconds + ":" + placementTimeMilliseconds +
                 ":" + discipline + ":" + date;
     }
 }
