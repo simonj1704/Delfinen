@@ -14,6 +14,8 @@ public class MemberHandler {
     private boolean isRunning = true;
     private String input;
     LocalDate date = LocalDate.now();
+    ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
+
 
     public MemberHandler() {
         member.setNextId(setNextId());
@@ -375,7 +377,6 @@ public class MemberHandler {
 
     }
 
-
     public void trainingTimePrint() {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
@@ -414,7 +415,6 @@ public class MemberHandler {
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
                 eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
-
             }
         }
         if (discipline.equalsIgnoreCase("ryg")) {
@@ -437,14 +437,18 @@ public class MemberHandler {
         }
     }
 
-    public void printEliteSwimmers() {
-        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
+    public void setEliteSwimmers(){
+        eliteSwimmers.clear();
         for (int i = 0; i < fileHandler.readMembers.size(); i++) {
             if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
                 eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
 
             }
         }
+    }
+
+    public void printEliteSwimmers() {
+        setEliteSwimmers();
         System.out.println("ELITE SWIMMERS");
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
@@ -459,21 +463,7 @@ public class MemberHandler {
     public void deleteTrainingResult() {
         int searchID;
         int input;
-        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
-        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
-                eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
-            }
-        }
-        System.out.println("ELITE SWIMMERS");
-        for (int i = 0; i < eliteSwimmers.size(); i++) {
-            System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
-                            "TrainingTimes: %s \t Tournaments: %s \t Passive %-5s\n",
-                    eliteSwimmers.get(i).getId(), eliteSwimmers.get(i).getName(), eliteSwimmers.get(i).getAge(),
-                    eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
-                    eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
-                    eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
-        }
+        printEliteSwimmers();
         System.out.println("Enter swimmer ID:");
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
@@ -495,44 +485,13 @@ public class MemberHandler {
                     eliteSwimmers.get(i).getTrainingTimes().remove(i);
                 }
             }
-            try {
-                PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-                for (i = 0; i < fileHandler.readMembers.size(); i++) {
-                    if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
-                        fileWriter.println(new EliteSwimmer(fileHandler.readMembers.get(i).getId(),
-                                fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
-                                fileHandler.readMembers.get(i).isPassive(), fileHandler.readMembers.get(i).hasArrears(),
-                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getTournaments().toString(),
-                                ((EliteSwimmer) fileHandler.readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) fileHandler.readMembers.get(i)));
-                    }
-                }
-                System.out.println("Training time deleted.");
-                fileWriter.close();
-            } catch (FileNotFoundException e) {
-                System.out.println(e.getMessage());
-            }
+            fileHandler.deleteResults("Training results deleted");
         }
     }
     public void deleteTournamentResult() {
         int searchID;
         int input;
-        ArrayList<EliteSwimmer> eliteSwimmers = new ArrayList<>();
-        for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-            if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
-                eliteSwimmers.add((EliteSwimmer) fileHandler.readMembers.get(i));
-            }
-        }
-        System.out.println("ELITE SWIMMERS");
-        for (int i = 0; i < eliteSwimmers.size(); i++) {
-            System.out.printf("ID: %-2d \t Name: %-20s \t Age: %-3d \t Type: %-6s \t Coach: %-10s \t Discipline: %-15s \t" +
-                            "TrainingTimes: %s \t Tournaments: %s \t Passive %-5s\n",
-                    eliteSwimmers.get(i).getId(), eliteSwimmers.get(i).getName(), eliteSwimmers.get(i).getAge(),
-                    eliteSwimmers.get(i).getTypeOfMembership(), eliteSwimmers.get(i).getCoach(),
-                    eliteSwimmers.get(i).getSwimmingDiscipline(), eliteSwimmers.get(i).getTrainingTimes(),
-                    eliteSwimmers.get(i).getTournaments(), eliteSwimmers.get(i).isPassive());
-        }
+        printEliteSwimmers();
         System.out.println("Enter swimmer ID:");
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
@@ -543,23 +502,6 @@ public class MemberHandler {
                 eliteSwimmers.get(i).getTournaments().remove(input);
             }
         }
-        try {
-            PrintStream fileWriter = new PrintStream(new FileOutputStream("Members.csv"));
-            for (int i = 0; i < fileHandler.readMembers.size(); i++) {
-                if (fileHandler.readMembers.get(i) instanceof EliteSwimmer) {
-                    fileWriter.println(new EliteSwimmer(fileHandler.readMembers.get(i).getId(),
-                            fileHandler.readMembers.get(i).getName(), fileHandler.readMembers.get(i).getAge(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
-                            fileHandler.readMembers.get(i).isPassive(), fileHandler.readMembers.get(i).hasArrears(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTournaments().toString(),
-                            ((EliteSwimmer) fileHandler.readMembers.get(i)).getTrainingTimes().toString()).printMember((EliteSwimmer) fileHandler.readMembers.get(i)));
-                }
-            }
-            System.out.println("Tournament result deleted.");
-            fileWriter.close();
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
+       fileHandler.deleteResults("Tournament result deleted.");
     }
 }
