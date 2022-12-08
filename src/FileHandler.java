@@ -13,6 +13,7 @@ public class FileHandler {
 
     public void setReadMembers(){
         try {
+            readMembers.clear();
             Scanner fileReader = new Scanner(new File("Members.csv"));
             while(fileReader.hasNextLine()){
                 ArrayList<String> tokens = new ArrayList<>();

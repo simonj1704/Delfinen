@@ -170,6 +170,7 @@ public class MemberHandler {
                 default -> System.out.println("Unknown Input.");
             }
             fileHandler.changeMember();
+            fileHandler.setReadMembers();
         }
     }
 
