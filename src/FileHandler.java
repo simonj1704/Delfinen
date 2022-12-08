@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class FileHandler {
     ArrayList<Member> readMembers = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-    private static final int nextId = 0;
 
     public void setReadMembers(){
         try {
@@ -97,7 +96,7 @@ public class FileHandler {
         int delete;
         System.out.print("What member do you want to delete(ID): ");
         delete = readChoiceInt();
-        int index = -1;
+        int index;
         for (int i = 0; i < readMembers.size(); i++) {
             if (readMembers.get(i).getId() == delete){
                 index = i;
