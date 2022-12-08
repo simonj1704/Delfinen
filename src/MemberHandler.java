@@ -22,9 +22,13 @@ public class MemberHandler {
     }
 
     public int setNextId() {
-        fileHandler.setReadMembers();
         int nextId;
-        return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
+        fileHandler.setReadMembers();
+        if (!fileHandler.readMembers.isEmpty()) {
+            return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
+        } else {
+            return nextId = 0;
+        }
     }
 
     public void deleteMember() {
@@ -330,6 +334,7 @@ public class MemberHandler {
                     eliteSwimmer.addTime(newTime);
                     fileHandler.changeMember();
                     System.out.printf(eliteSwimmer.toString());
+                    System.out.println();
                 }
             } catch (ClassCastException e) {
                 System.out.println("This ID is not a Elite Swimmer\nTry Again");
@@ -419,13 +424,13 @@ public class MemberHandler {
             }
         }
         if (discipline.equalsIgnoreCase("ryg")) {
-            RygTimeComparator rygSorter = new RygTimeComparator();
+            BackTimeComparator rygSorter = new BackTimeComparator();
             eliteSwimmers.sort(rygSorter);
         } else if (discipline.equalsIgnoreCase("crawl")) {
-            CrawlTimeComparator crawlSorter = new CrawlTimeComparator();
+            FreestyleTimeComparator crawlSorter = new FreestyleTimeComparator();
             eliteSwimmers.sort(crawlSorter);
         } else if (discipline.equalsIgnoreCase("bryst")) {
-            BrystTimeComparator brystSorter = new BrystTimeComparator();
+            BreastTimeComparator brystSorter = new BreastTimeComparator();
             eliteSwimmers.sort(brystSorter);
         } else if (discipline.equalsIgnoreCase("butterfly")) {
             ButterflyTimeComparator flySorter = new ButterflyTimeComparator();
