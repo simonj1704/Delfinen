@@ -30,7 +30,7 @@ public class TrainingTime {
         return discipline;
     }
     public double getTime(){
-        return trainingTime;
+        return Double.parseDouble(trainingSeconds+"."+trainingMilSeconds);
     }
 
     // Setters

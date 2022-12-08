@@ -23,9 +23,13 @@ public class MemberHandler {
     }
 
     public int setNextId() {
-        fileHandler.setReadMembers();
         int nextId;
-        return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
+        fileHandler.setReadMembers();
+        if (!fileHandler.readMembers.isEmpty()) {
+            return nextId = fileHandler.readMembers.get(fileHandler.readMembers.size() - 1).getId() + 1;
+        } else {
+            return nextId = 0;
+        }
     }
 
     public void deleteMember() {
@@ -331,7 +335,8 @@ public class MemberHandler {
                     EliteSwimmer eliteSwimmer = (EliteSwimmer) fileHandler.readMembers.get(i);
                     eliteSwimmer.addTime(newTime);
                     fileHandler.changeMember();
-                    System.out.printf(eliteSwimmer.toString());
+                    eliteSwimmer.printTimes();
+                    System.out.println();
                 }
             } catch (ClassCastException e) {
                 System.out.println("This ID is not a Elite Swimmer\nTry Again");
@@ -387,7 +392,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getCoach(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
-                System.out.println();
+                System.out.println("------------------------------------------------------------------------------------------------");
 
             }
 
@@ -404,7 +409,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline(),
                         ((EliteSwimmer) fileHandler.readMembers.get(i)));
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTournaments();
-                System.out.println();
+                System.out.println("------------------------------------------------------------------------------------------------");
             }
         }
     }
@@ -419,13 +424,13 @@ public class MemberHandler {
             }
         }
         if (discipline.equalsIgnoreCase("ryg")) {
-            RygTimeComparator rygSorter = new RygTimeComparator();
+            BackTimeComparator rygSorter = new BackTimeComparator();
             eliteSwimmers.sort(rygSorter);
         } else if (discipline.equalsIgnoreCase("crawl")) {
-            CrawlTimeComparator crawlSorter = new CrawlTimeComparator();
+            FreestyleTimeComparator crawlSorter = new FreestyleTimeComparator();
             eliteSwimmers.sort(crawlSorter);
         } else if (discipline.equalsIgnoreCase("bryst")) {
-            BrystTimeComparator brystSorter = new BrystTimeComparator();
+            BreastTimeComparator brystSorter = new BreastTimeComparator();
             eliteSwimmers.sort(brystSorter);
         } else if (discipline.equalsIgnoreCase("butterfly")) {
             ButterflyTimeComparator flySorter = new ButterflyTimeComparator();
@@ -466,13 +471,13 @@ public class MemberHandler {
         int searchID;
         int input;
         printEliteSwimmers();
-        System.out.println("Enter swimmer ID:");
+        System.out.print("Enter swimmer ID: ");
         searchID = readChoiceInt();
         for (int i = 0; i < eliteSwimmers.size(); i++) {
             if (searchID == eliteSwimmers.get(i).getId()) {
                 if (eliteSwimmers.get(i).getTrainingTimes().size() > 1) {
-                    System.out.println(eliteSwimmers.get(i).getTrainingTimes().toString());
-                    System.out.println("Which training time to you want to delete? 1/2/3/4.");
+                    eliteSwimmers.get(i).printTimes();
+                    System.out.print("Which training time to you want to delete? 1/2/3/4...: ");
                     input = readChoiceInt();
                     if (input == 1) {
                         eliteSwimmers.get(i).getTrainingTimes().remove(0);

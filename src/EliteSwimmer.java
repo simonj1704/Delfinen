@@ -113,14 +113,7 @@ public class EliteSwimmer extends Member {
     }
 
     public void addTime(TrainingTime newTime) {
-        for (int i = 0; i < trainingTimes.size(); i++) {
-            if (trainingTimes.get(i).getDiscipline().equalsIgnoreCase(newTime.getDiscipline())){
-                trainingTimes.set(i,newTime);
-                break;
-            } else {
-                trainingTimes.add(newTime);
-            }
-        }
+        trainingTimes.add(newTime);
     }
     public void addTourney(TournamentBoard newTournamentBoard){
         tournamentTimes.add(newTournamentBoard);
