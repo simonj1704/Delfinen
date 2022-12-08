@@ -1,8 +1,5 @@
 package src;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -436,9 +433,9 @@ public class MemberHandler {
             eliteSwimmers.sort(flySorter);
         }
 
-
+        System.out.printf("Ranking Discipline %S:\n" ,discipline);
         for (int i = 0; i < 5; i++) {
-            System.out.println(eliteSwimmers.get(i).printTimeFor5Top(discipline));
+            eliteSwimmers.get(i).printTimeForTop5(discipline);
         }
     }
 

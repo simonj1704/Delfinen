@@ -154,10 +154,9 @@ public class EliteSwimmer extends Member {
         return tournamentTimes;
     }
 
-    public String printTimeFor5Top(String discipline){
-        String out;
-        out = getId() + " " + getName() + " " + getTrainingTime(discipline);
-        return out;
+    public void printTimeForTop5(String discipline){
+        System.out.printf("ID: %-4d  Name: %-20s  Time: %-5.02f Seconds\n", getId(), getName(), getTrainingTime(discipline));
+
     }
 
 
