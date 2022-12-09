@@ -12,8 +12,6 @@ public class TournamentBoard {
     private double placementTime = 0;
     private String discipline = "Unknown";
 
-
-    // Constructors
     public TournamentBoard(LocalDate date, String tourneyName, String placement, int placementTimeSeconds,
                            int placementTimeMilliseconds, String discipline) {
         setPlacement(placement);
@@ -25,8 +23,6 @@ public class TournamentBoard {
         this.date = date;
     }
 
-
-    // Getters
     public String getDiscipline() {
         return discipline;
     }
@@ -46,8 +42,6 @@ public class TournamentBoard {
     public String getTourneyName() {
         return tourneyName;
     }
-
-    // Setters
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;

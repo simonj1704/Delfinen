@@ -18,33 +18,35 @@ public class TrainingTime {
         this.date = date;
     }
 
-
-    // Getters
     public int getTrainingMilSeconds() {
         return trainingMilSeconds;
     }
+
     public int getTrainingSeconds() {
         return trainingSeconds;
     }
+
     public String getDiscipline() {
         return discipline;
     }
-    public double getTime(){
-        return Double.parseDouble(trainingSeconds+"."+trainingMilSeconds);
+
+    public double getTime() {
+        return Double.parseDouble(trainingSeconds + "." + trainingMilSeconds);
     }
 
-    // Setters
     public void setTrainingMilSeconds(int trainingMilSeconds) {
         this.trainingMilSeconds = trainingMilSeconds;
     }
+
     public void setTrainingSeconds(int trainingSeconds) {
         this.trainingSeconds = trainingSeconds;
     }
+
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
     }
 
-    public LocalDate getDate(){
+    public LocalDate getDate() {
         return date;
     }
 

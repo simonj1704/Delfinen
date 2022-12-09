@@ -4,16 +4,14 @@ package src;
 public class Member {
     private int age;
     private String name;
-    private String typeOfMembership; // Senior / junior
-    private String typeOfSwimmer; // Elite / hobbyist
+    private String typeOfMembership;
+    private String typeOfSwimmer;
     private boolean isPassive;
-    private boolean hasArrears; // Restance
+    private boolean hasArrears;
     private int subscriptionPrice;
     private int id;
     private static int nextId;
 
-
-    // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
         setName(name);
         setAge(age);
@@ -23,7 +21,6 @@ public class Member {
         setTypeOfMembership(age);
         setSubscriptionPrice();
         id = nextId++;
-
     }
 
     public Member(int id, String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
@@ -35,12 +32,10 @@ public class Member {
         setTypeOfMembership(age);
         setSubscriptionPrice();
         this.id = id;
-
     }
 
     public Member() {
     }
-
 
     public void setTypeOfMembership(int age) {
         if (age < 18) {
@@ -50,7 +45,6 @@ public class Member {
         }
     }
 
-    // Getters
     public String getName() {
         return name;
     }
@@ -74,8 +68,6 @@ public class Member {
     public boolean isPassive() {
         return isPassive;
     }
-
-    // Setters
 
     public void setName(String name) {
         this.name = name;
@@ -128,13 +120,6 @@ public class Member {
                 + member.getSubscriptionPrice();
         return out;
     }
-
-    /*public void viewMember(Member member) {
-        System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Subscription Price: %-7d Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
-                member.getId(), member.getName(), member.getAge(), member.getTypeOfMembership(),
-                member.getSubscriptionPrice(), member.getTypeOfSwimmer(), member.hasArrears(), member.isPassive());
-    }*/
-
 
     @Override
     public String toString() {

@@ -9,8 +9,6 @@ public class Menu {
     MemberHandler memberHandler = new MemberHandler();
     Scanner in = new Scanner(System.in);
 
-
-
     public Menu(String menuHeader, String leadText, String[] menuItems) {
         this.menuHeader = menuHeader;
         this.leadText = leadText;
@@ -38,34 +36,18 @@ public class Menu {
             int inputChoice = memberHandler.readChoiceInt();
 
             switch (inputChoice) {
-                case 1:
-                    memberHandler.createTrainingTime();
-                    break;
-                case 2:
-                    memberHandler.createTournamentResult();
-                    break;
-                case 3:
-                    memberHandler.trainingTimePrint();
-                    break;
-                case 4:
-                    memberHandler.tournamentTimePrint();
-                    break;
-                case 5:
-                    memberHandler.printEliteSwimmers();
-                    break;
-                case 6:
-                    memberHandler.top5Print();
-                    break;
-                case 7:
-                    memberHandler.deleteTrainingResult();
-                    break;
-                case 8:
-                    memberHandler.deleteTournamentResult();
-                    break;
-                case 9:
+                case 1 -> memberHandler.createTrainingTime();
+                case 2 -> memberHandler.createTournamentResult();
+                case 3 -> memberHandler.trainingTimePrint();
+                case 4 -> memberHandler.tournamentTimePrint();
+                case 5 -> memberHandler.printEliteSwimmers();
+                case 6 -> memberHandler.top5Print();
+                case 7 -> memberHandler.deleteTrainingResult();
+                case 8 -> memberHandler.deleteTournamentResult();
+                case 9 -> {
                     System.out.println("You've Chosen to Quit.");
                     isRunning = false;
-                    break;
+                }
             }
         }
     }
@@ -103,22 +85,14 @@ public class Menu {
             int inputChoice = memberHandler.readChoiceInt();
 
             switch (inputChoice) {
-                case 1:
-                    memberHandler.addMember();
-                    break;
-                case 2:
-                    memberHandler.deleteMember();
-                    break;
-                case 3:
-                    memberHandler.printMembers();
-                    break;
-                case 4:
-                    memberHandler.changeMember();
-                    break;
-                case 5:
+                case 1 -> memberHandler.addMember();
+                case 2 -> memberHandler.deleteMember();
+                case 3 -> memberHandler.printMembers();
+                case 4 -> memberHandler.changeMember();
+                case 5 -> {
                     System.out.println("You've chosen to Quit.");
                     isRunning = false;
-                    break;
+                }
             }
         }
     }
@@ -127,16 +101,12 @@ public class Menu {
         String username;
         String password;
 
-        //Usernames
         String usernamePresident = "President";
         String usernameCoach = "Coach";
         String usernameTreasurer = "Treasurer";
-
-        //Passwords
         String passwordPresident = "president";
         String passwordCoach = "coach";
         String passwordTreasurer = "treasurer";
-
 
         System.out.print("Enter username: ");
         username = in.nextLine();

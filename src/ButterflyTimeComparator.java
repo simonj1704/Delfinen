@@ -18,5 +18,4 @@ public class ButterflyTimeComparator implements Comparator<EliteSwimmer> {
         }
         return Double.compare(trainingTime1, trainingTime2);
     }
-
 }

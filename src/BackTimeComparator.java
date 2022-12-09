@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 public class BackTimeComparator implements Comparator<EliteSwimmer> {
 
-
     public int compare(EliteSwimmer e1, EliteSwimmer e2) {
         double trainingTime1;
         double trainingTime2;
@@ -20,5 +19,4 @@ public class BackTimeComparator implements Comparator<EliteSwimmer> {
         }
         return Double.compare(trainingTime1, trainingTime2);
     }
-
 }
