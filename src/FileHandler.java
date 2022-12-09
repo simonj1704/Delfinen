@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class FileHandler {
     ArrayList<Member> readMembers = new ArrayList<>();
     Scanner in = new Scanner(System.in);
-
     public void setReadMembers(){
         try {
             Scanner fileReader = new Scanner(new File("Members.csv"));

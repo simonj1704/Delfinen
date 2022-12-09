@@ -336,7 +336,6 @@ public class MemberHandler {
                 searchId = readChoiceInt();
             }
         }
-
     }
 
     public void createTournamentResult() {
@@ -370,10 +369,8 @@ public class MemberHandler {
                     System.out.println("This ID is not a Elite Swimmer\nTry Again");
                     searchId = readChoiceInt();
                 }
-
             }
         }
-
     }
 
     public void trainingTimePrint() {
@@ -386,9 +383,7 @@ public class MemberHandler {
                         ((EliteSwimmer) fileHandler.readMembers.get(i)).getSwimmingDiscipline());
                 ((EliteSwimmer) fileHandler.readMembers.get(i)).printTimes();
                 System.out.println();
-
             }
-
         }
     }
 
