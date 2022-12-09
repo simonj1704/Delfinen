@@ -113,14 +113,7 @@ public class EliteSwimmer extends Member {
     }
 
     public void addTime(TrainingTime newTime) {
-        for (int i = 0; i < trainingTimes.size(); i++) {
-            if (trainingTimes.get(i).getDiscipline().equalsIgnoreCase(newTime.getDiscipline())){
-                trainingTimes.set(i,newTime);
-                break;
-            } else {
-                trainingTimes.add(newTime);
-            }
-        }
+        trainingTimes.add(newTime);
     }
     public void addTourney(TournamentBoard newTournamentBoard){
         tournamentTimes.add(newTournamentBoard);
@@ -161,10 +154,9 @@ public class EliteSwimmer extends Member {
         return tournamentTimes;
     }
 
-    public String printTimeFor5Top(String discipline){
-        String out;
-        out = getId() + " " + getName() + " " + getTrainingTime(discipline);
-        return out;
+    public void printTimeForTop5(String discipline){
+        System.out.printf("ID: %-4d  Name: %-20s  Time: %-5.02f Seconds\n", getId(), getName(), getTrainingTime(discipline));
+
     }
 
 

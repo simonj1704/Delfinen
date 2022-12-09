@@ -1,11 +1,7 @@
 package src;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Member {
-    public ArrayList<Member> members = new ArrayList<>();
-    Scanner in = new Scanner(System.in);
     private int age;
     private String name;
     private String typeOfMembership; // Senior / junior
@@ -16,9 +12,6 @@ public class Member {
     private int id;
     private static int nextId;
 
-    public void setNextId(int nextId){
-        Member.nextId = nextId;
-    }
 
     // Constructors
     public Member(String name, int age, boolean isPassive, boolean hasArrears, String typeOfSwimmer) {
@@ -33,7 +26,7 @@ public class Member {
 
     }
 
-    public Member(int id,String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
+    public Member(int id, String name, int age, String typeOfSwimmer, boolean isPassive, boolean hasArrears) {
         setName(name);
         setAge(age);
         setIsPassive(isPassive);
@@ -45,7 +38,8 @@ public class Member {
 
     }
 
-    public Member() {}
+    public Member() {
+    }
 
 
     public void setTypeOfMembership(int age) {
@@ -99,46 +93,47 @@ public class Member {
         isPassive = passive;
     }
 
-    public void setTypeOfMembership(String typeOfMembership) {
-        this.typeOfMembership = typeOfMembership;
-    }
-
     public void setTypeOfSwimmer(String typeOfSwimmer) {
         this.typeOfSwimmer = typeOfSwimmer;
     }
 
-    public int getId(){
+    public void setNextId(int nextId) {
+        Member.nextId = nextId;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setSubscriptionPrice(){
-        if (this.age < 18){
+    public void setSubscriptionPrice() {
+        if (this.age < 18) {
             this.subscriptionPrice = 1000;
         } else if (this.age > 60) {
             this.subscriptionPrice = 1200;
-        } else if (isPassive){
+        } else if (isPassive) {
             this.subscriptionPrice = 500;
         } else {
             this.subscriptionPrice = 1600;
         }
     }
-    public int getSubscriptionPrice(){
+
+    public int getSubscriptionPrice() {
         return subscriptionPrice;
     }
 
-    public String printMember(Member member){
+    public String printMember(Member member) {
         String out;
         out = member.getId() + ";" + member.getName() + ";" + member.getAge() + ";" + member.getTypeOfMembership() + ";" +
-        member.getTypeOfSwimmer() + ";" + member.isPassive() + ";" + member.hasArrears() + ";"
+                member.getTypeOfSwimmer() + ";" + member.isPassive() + ";" + member.hasArrears() + ";"
                 + member.getSubscriptionPrice();
         return out;
     }
 
-    public void viewMember(Member member){
+    /*public void viewMember(Member member) {
         System.out.printf("ID: %-4d \t Name: %-30s Age: %-4d Type: %-8s Subscription Price: %-7d Member: %-15s Arrears: %-7s Passive Member: %-7s\n",
                 member.getId(), member.getName(), member.getAge(), member.getTypeOfMembership(),
                 member.getSubscriptionPrice(), member.getTypeOfSwimmer(), member.hasArrears(), member.isPassive());
-    }
+    }*/
 
 
     @Override

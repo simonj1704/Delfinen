@@ -12,6 +12,7 @@ public class FileHandler {
     Scanner in = new Scanner(System.in);
     public void setReadMembers(){
         try {
+            readMembers.clear();
             Scanner fileReader = new Scanner(new File("Members.csv"));
             while(fileReader.hasNextLine()){
                 ArrayList<String> tokens = new ArrayList<>();
@@ -37,23 +38,6 @@ public class FileHandler {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public int readChoiceInt() {
-        boolean validChoice = false;
-        int choice = -1;
-
-        while (!validChoice) {
-            if (in.hasNextInt()) {
-                choice = in.nextInt();
-                in.nextLine();
-                validChoice = true;
-            } else {
-                System.out.print("Please choose an option\n");
-                in.nextLine();
-            }
-        }
-        return choice;
     }
 
     public void writeMember(String member) {
@@ -94,7 +78,7 @@ public class FileHandler {
         boolean deleted = false;
         int delete;
         System.out.print("What member do you want to delete(ID): ");
-        delete = readChoiceInt();
+        delete = new MemberHandler().readChoiceInt();
         int index;
         for (int i = 0; i < readMembers.size(); i++) {
             if (readMembers.get(i).getId() == delete){
